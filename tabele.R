@@ -1,0 +1,85 @@
+# Uvozimo podatke za bolnišnice
+
+bolnisnica <- read_csv("Podatki/bolnisnica.csv", 
+                       col_types = cols(id = col_integer(), 
+                                        zaloga = col_number()))
+
+
+# Uvozimo podatke za kri
+
+kri1 <- read_csv("Podatki/kri1.csv", col_types = cols(datum_prejetja = col_date(format = "%d/%m/%Y"), 
+                                                      stevilka_vrecke = col_integer()))
+
+kri2 <- read_csv("Podatki/kri2.csv", col_types = cols(datum_prejetja = col_date(format = "%d/%m/%Y"), 
+                                                      stevilka_vrecke = col_integer()))
+
+kri <- rbind(kri1, kri2)
+
+
+# Uvozimo podatke za donatorje
+
+donor1 <- read_csv("Podatki/donor1.csv", 
+                   col_types = cols(Hemoglobin = col_number(), 
+                                    Starost = col_integer(), Telefon = col_number(), 
+                                    Teza = col_number(), datum_donacije = col_date(format = "%d/%m/%Y"), 
+                                    id = col_integer()))
+
+donor2 <- read_csv("Podatki/donor2.csv", 
+                   col_types = cols(Hemoglobin = col_number(), 
+                                    Starost = col_integer(), Telefon = col_number(), 
+                                    Teza = col_number(), datum_donacije = col_date(format = "%d/%m/%Y"), 
+                                    id = col_integer()))
+
+donator <- rbind(donor1, donor2)
+
+
+# Uvozimo podatke za prejemnike
+
+prejemnik1 <- read_csv("Podatki/prejemnik1.csv", 
+                       col_types = cols(Starost = col_integer(), 
+                                        Telefon = col_number(), datum_vloge = col_date(format = "%d/%m/%Y"), 
+                                        id = col_integer()))
+
+prejemnik2 <- read_csv("Podatki/prejemnik2.csv", 
+                       col_types = cols(Starost = col_integer(), 
+                                        Telefon = col_number(), datum_vloge = col_date(format = "%d/%m/%Y"), 
+                                        id = col_integer()))
+
+prejemnik <- rbind(prejemnik1, prejemnik2)
+
+
+# Funkcija, ki zgenerira naključne krvne skupine za donatorje in prejemnike
+# (sample upošteva pogostost krvnih skupin v Evropi)
+
+x <- c("A+", "A-", "B+", "B-", "AB+", "AB-", "0+", "0-")
+  
+skupine_donator <- sample(x, prob = c(.34, .06, 0.09, 0.02, 0.03, 0.01, 0.38, 0.07), size = 2000, replace = TRUE) 
+
+vektor_donator <- as.data.frame(skupine_donator)
+
+skupine_prejemnik <- sample(x, prob = c(.34, .06, 0.09, 0.02, 0.03, 0.01, 0.38, 0.07), size = 2000, replace = TRUE) 
+
+vektor_prejemnik <- as.data.frame(skupine_prejemnik)
+
+
+# Krvne skupine dodamo donatorjem in prejemnikom
+
+donator <- cbind(donator, vektor_donator)
+
+colnames(donator) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
+                     "teza", "hemoglobin", "datum_donacije", "krvna_skupina")
+
+prejemnik <- cbind(prejemnik, vektor_prejemnik)
+
+colnames(prejemnik) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
+                         "datum_vloge", "krvna_skupina")
+
+
+# Stolpec datum_prejetja v tabeli kri se ujema s stolpcem datum_donacije iz tabele donator,
+# dodamo pa še podatek o hemoglobinu in krvni skupini donatorja vrečke krvi
+
+dodatek <- donator[, c(8, 10, 9)]
+
+kri <- cbind(kri[, c(1)], dodatek)
+
+colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "krvna_skupina", "datum_prejetja")
