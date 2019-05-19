@@ -1,51 +1,1001 @@
-id,Ime,Kraj,Drzava,Direktor
-184000,"Connelly, McGlynn and Pacocha",Rodniki,Russia,Alika Barhams
-011263,Hickle LLC,Cabanas,Portugal,Boonie Kenneford
-516619,"Prohaska, Schmitt and Cremin",Miejska Górka,Poland,Kamila Ceely
-739866,McClure-Haag,Suodenniemi,Finland,Gonzales Clissell
-466578,Paucek and Sons,Ribeira,Portugal,Millisent Corde
-574910,Toy Inc,Noyelles-sous-Lens,France,Adiana Doag
-558872,Walsh-Labadie,Česká Skalice,Czech Republic,Euell Late
-403184,"Hand, Feeney and Zemlak",Velyka Bilozerka,Ukraine,Angelo Summerside
-020903,Borer Inc,Almodôvar,Portugal,Addi Clemintoni
-707711,"Moen, Murphy and Mohr",Makhalino,Russia,Yettie Bysouth
-915224,Rosenbaum-Dicki,Koslan,Russia,Todd Wormleighton
-065497,"Price, Ritchie and Renner",Marićka,Bosnia and Herzegovina,Hussein Wyss
-017360,"Jaskolski, Rogahn and Veum",Burgas,Bulgaria,Marin O'Mullaney
-035069,King LLC,Tungor,Russia,Barbra Licciardello
-892997,Morar Group,Tyczyn,Poland,Florian Yea
-514119,Hagenes-Prosacco,Nantes,France,Bayard Eadmeads
-513594,Feest and Sons,Milano,Italy,Lindsey Christoffersen
-997646,Armstrong-Larkin,Varge Mondar,Portugal,Marne Tansly
-155841,"Quitzon, Weissnat and Ritchie",Áno Liósia,Greece,Andrea Walmsley
-259434,Shields-Eichmann,Krechevitsy,Russia,Lexine Peddar
-356042,"Gibson, Conroy and Zieme",Kučevo,Serbia,Jamey Mowat
-030590,Koch LLC,Ust’-Kalmanka,Russia,Fielding Huckett
-338498,Cruickshank-Bergstrom,Kamyshin,Russia,Nichole Weekland
-080294,Abbott-Olson,Horta,Portugal,Jess Sellick
-558872,Buckridge Group,Pedrulheira,Portugal,Erv Scully
-292252,"Denesik, Jakubowski and Koelpin",Zwolle,Netherlands,Devondra Moberley
-805753,Price-Koepp,Infantas,Portugal,Vassily Stronough
-058066,Swaniawski Group,Kostyantynivka,Ukraine,Riordan Sarll
-338296,Greenholt-Littel,Rungis,France,Terry Lapthorn
-937180,Wintheiser-Beier,Pevek,Russia,Hoyt Verduin
-528656,"Marvin, Bartell and Effertz",Salon-de-Provence,France,Carolynn Corradeschi
-772415,"Kilback, Cummerata and Bode",Aykhal,Russia,Wilfrid De Roos
-204642,Glover-Gutmann,Yeni Suraxanı,Azerbaijan,Nathan Junkinson
-627571,Volkman-Kohler,Saumur,France,Karney Gawthrope
-246825,"Skiles, Jacobson and Bogisich",Osby,Sweden,Chick Burnage
-003567,"Oberbrunner, Yundt and Gerhold",Motala,Sweden,Gareth Alday
-817075,Schneider Inc,Izborsk,Russia,Tedmund Polden
-041886,Erdman-Predovic,Bělá pod Bezdězem,Czech Republic,Valentine Shout
-634846,"Simonis, Waters and Cormier",Fryazino,Russia,Dirk Hattersley
-122787,Dickens-Stracke,Milano,Italy,Carling Hrynczyk
-174415,Yundt-Yost,Babice,Poland,Kippie Walthall
-508661,Konopelski-Green,Varėna,Lithuania,Carleton Skuce
-493509,Swift-Abernathy,Kýthnos,Greece,Marlee Champagne
-292596,O'Connell-Keeling,Huddinge,Sweden,Stanton Lahrs
-877605,Volkman and Sons,Ravne na Koroškem,Slovenia,Dolly Chomicki
-888462,"Pouros, Block and Streich",Bondoufle,France,Carissa Eidelman
-130487,Gleichner Group,Yegorlykskaya,Russia,Yvor Coton
-512044,Tremblay-Beier,Regnów,Poland,Hyacinthie Rechert
-042184,Gerlach Group,Uhniv,Ukraine,Von Barbara
-404446,"Sawayn, Kozey and Mitchell",Peras Ruivas,Portugal,Chaddie Eastmead
+id,ime,kraj,drzava,direktor,zaloga
+462035,Kutch Hospital,Yizhivtsi,Ukraine,Rebekkah Wagge,818
+800850,Lebsack Hospital,Astromil,Portugal,Caleb McQuirk,418
+966506,Goldner Hospital,Vidoši,Bosnia and Herzegovina,Stephanie Jennins,616
+374819,Stroman Hospital,Kruševac,Serbia,Glenna Ensley,925
+722898,Tromp Hospital,Gislaved,Sweden,Curry Van Der Hoog,150
+946495,Weber Hospital,Kohtla-Järve,Estonia,Athena Balm,572
+198838,McClure Hospital,Maisons-Laffitte,France,Kessia Taudevin,593
+154255,Bernier Hospital,Alexandroúpoli,Greece,Dar Farens,492
+389402,Yost Hospital,Stebnyk,Ukraine,Coleen Murrell,10
+419853,Harvey Hospital,Lopatyn,Ukraine,Melva Speer,607
+436241,Gleichner Hospital,Sámi,Greece,Cristin Stobart,276
+153128,Kunze Hospital,Obukhiv,Ukraine,Adan Conerding,831
+005121,Ondricka Hospital,Évreux,France,Karita Hearnah,467
+303708,Walker Hospital,Sandviken,Sweden,Zackariah Vogeler,780
+448341,Lemke Hospital,Kirove,Ukraine,Joye Eastcourt,505
+882614,Thiel Hospital,Sundsvall,Sweden,Barton Milley,879
+919397,Crist Hospital,Korolëv Stan,Belarus,Warden Angliss,975
+559400,Mitchell Hospital,Apače,Slovenia,Brendon McQueen,266
+200253,Windler Hospital,Strelka,Russia,Paulie McGiveen,140
+891542,Mayert Hospital,Saint-Herblain,France,Waylin MacCurley,702
+804830,Greenfelder Hospital,Göteborg,Sweden,Eba Cometti,223
+782538,Bernhard Hospital,Juuka,Finland,Hillary Di Dello,12
+912191,Ankunding Hospital,Paris 09,France,Candy Newlove,105
+076382,Jacobs Hospital,Västerås,Sweden,Jammal Danet,900
+266129,Mayert Hospital,Östersund,Sweden,Guinevere Lashbrook,335
+906756,Treutel Hospital,Delft,Netherlands,Collen Ferby,809
+009332,Fay Hospital,Daugavpils,Latvia,Binni O' Loughran,315
+807760,Conroy Hospital,Dondar Quşçu,Azerbaijan,Alvan Pierrepoint,529
+915935,Waters Hospital,Kornyn,Ukraine,Bettina Brantl,52
+842516,Parker Hospital,Gubkinskiy,Russia,Bowie Hubberstey,854
+277329,Corwin Hospital,Miastków Kościelny,Poland,Cathy Wilderspoon,273
+709552,Wiegand Hospital,Casais,Portugal,Gilly Hovington,251
+943397,Reinger Hospital,Vodňany,Czech Republic,Teriann Le Borgne,768
+462152,Auer Hospital,Gelgaudiškis,Lithuania,Rob Leadstone,235
+193206,Mayert Hospital,Ursus,Poland,Katherine Steljes,694
+632394,Lowe Hospital,Batanovtsi,Bulgaria,Skipp Cicero,444
+048645,Hane Hospital,Lewin Kłodzki,Poland,Ranna Guy,740
+609485,Quitzon Hospital,Mulhouse,France,Jonathan Mushart,581
+873494,Herzog Hospital,Alchevs’k,Ukraine,Agosto Wayte,243
+468111,Anderson Hospital,Kondrovo,Russia,Margy Tembridge,769
+658870,Nikolaus Hospital,Nor Yerznka,Armenia,Allin Oscroft,203
+457956,Breitenberg Hospital,Marićka,Bosnia and Herzegovina,Alley Willowby,621
+469538,Ankunding Hospital,Dubna,Russia,Cass Reaney,485
+774334,Hintz Hospital,Kimry,Russia,Bonnee Devinn,699
+554419,Baumbach Hospital,Vilkaviskis,Lithuania,Shelley Beeze,609
+540857,Moen Hospital,La Garde,France,Maximilian Karolowski,305
+511870,Pacocha Hospital,Rudolfov,Czech Republic,Katerine Couroy,732
+223259,Connelly Hospital,Lesnikovo,Russia,Maryanne Fenech,809
+904478,Bernhard Hospital,Zainsk,Russia,Gae Licas,282
+420472,Lynch Hospital,Hats’avan,Armenia,Shay Abernethy,120
+201495,Lesch Hospital,Arnhem,Netherlands,Alida Duggan,700
+771324,Bernier Hospital,Argel,Armenia,Britte Pettus,987
+074361,Treutel Hospital,Zavetnoye,Russia,Gauthier Illsley,503
+216898,Cronin Hospital,Stepanovićevo,Serbia,Ivonne Galiero,141
+975844,Wintheiser Hospital,Klenčí pod Čerchovem,Czech Republic,Loree Poone,908
+024272,Fay Hospital,Saint-Rémy-de-Provence,France,Becka Birdfield,81
+768837,Wyman Hospital,Newmarket on Fergus,Ireland,Bennett Carruth,448
+541678,Schmeler Hospital,Aleksandrovac,Serbia,Bonny Stanistrete,584
+820040,Bernhard Hospital,Izobil’nyy,Russia,Olag MacCoveney,366
+145419,Hayes Hospital,La Plaine-Saint-Denis,France,Johnnie Tidder,919
+973120,Zboncak Hospital,Pau,France,Arleta Woodeson,876
+683014,Huel Hospital,Pestovo,Russia,Thorny Havelin,128
+335670,Weissnat Hospital,Debesy,Russia,Quinton Manus,659
+409065,Lueilwitz Hospital,Karabanovo,Russia,Cindee Carnachen,972
+313907,Douglas Hospital,Sandviken,Sweden,Anstice Tiuit,28
+284591,Kuphal Hospital,Muromtsevo,Russia,Lynna Bumpass,753
+525885,Willms Hospital,Oslo,Norway,Finley Pethybridge,360
+750982,Williamson Hospital,Serednye Vodyane,Ukraine,Meredithe Trill,386
+991631,Paucek Hospital,Maganha,Portugal,Jilleen Lambal,949
+904522,Huels Hospital,Annonay,France,Boris Kingsmill,922
+177190,Nolan Hospital,Tvŭrditsa,Bulgaria,Ali Teggart,718
+275164,Weissnat Hospital,Fotolívos,Greece,Harlie Revely,288
+698377,Mosciski Hospital,Osielec,Poland,Mel McGaughay,979
+643133,Franecki Hospital,Arco de Baúlhe,Portugal,Guthrey De Vaan,31
+155610,Wuckert Hospital,Fleury-les-Aubrais,France,Andriana Trorey,846
+080879,Dach Hospital,Baranowo,Poland,Germaine Beckey,588
+941406,Rempel Hospital,Odoyev,Russia,Fabio Goodyear,942
+340085,Stark Hospital,Nizhnyaya Tura,Russia,Rolfe Persence,741
+530502,Hahn Hospital,Kunda,Estonia,Cristian Elderkin,286
+013178,Connelly Hospital,Pankovka,Russia,Enrika Alfonzo,108
+628747,Wiegand Hospital,Zelenogradsk,Russia,Emmery Dannohl,530
+611120,Powlowski Hospital,Guingamp,France,Reiko Stuchburie,143
+817653,White Hospital,Trondheim,Norway,Sarajane Ellington,969
+384151,Pfeffer Hospital,Anthoúsa,Greece,Jory Northgraves,887
+106876,Ebert Hospital,Corujeira,Portugal,Chrisse Serrier,629
+193631,Kris Hospital,Saint-Grégoire,France,Bertrando Mosedill,901
+143036,Funk Hospital,Brzeźnica,Poland,Loralie Pendrey,582
+251257,Jerde Hospital,Porta,Portugal,Olimpia Wisdish,410
+508912,Donnelly Hospital,Bile,Ukraine,Sashenka Buttler,477
+396760,Bergstrom Hospital,Turki,Russia,Winn Fansy,273
+562931,Stehr Hospital,Enköping,Sweden,Eirena Cutcliffe,657
+276292,Mayert Hospital,Neochóri,Greece,Torie Bloodworth,586
+268330,Moore Hospital,Brest,France,Ronica Ducaen,236
+521510,Krajcik Hospital,Kcynia,Poland,Ardisj Winship,948
+364482,Von Hospital,Krivaja,Serbia,Zelig Oxberry,599
+678331,Smitham Hospital,Nagornyy,Russia,Web Markussen,409
+508659,Hintz Hospital,Kizlyar,Russia,Carleton Marcone,665
+190562,Braun Hospital,Kapan,Armenia,Serge Shervington,722
+478584,Olson Hospital,Štítná nad Vláří,Czech Republic,Myrta Spillane,206
+410561,Jakubowski Hospital,Reinaldes,Portugal,Jorie Hekkert,870
+014499,Hermann Hospital,Potok Złoty,Poland,Nani Albro,924
+070005,Morissette Hospital,Cepões,Portugal,Judie Toffolo,19
+872342,Larson Hospital,Krasnyy Profintern,Russia,Cherilynn Accum,349
+871056,Orn Hospital,Sokolovo,Russia,Ebenezer Rorke,44
+963560,Reilly Hospital,Bachowice,Poland,Annadiane Pilmoor,591
+486474,Heidenreich Hospital,Nowosielce,Poland,Mag Berkley,304
+987286,Ledner Hospital,Pécs,Hungary,Fielding Tillett,445
+758690,Konopelski Hospital,Vénissieux,France,Melva Lutsch,525
+538902,Christiansen Hospital,Sollefteå,Sweden,Jefferson Eveling,21
+039103,Lemke Hospital,Yelenendorf,Azerbaijan,Brandice Dawtre,271
+950018,Runte Hospital,Denton,United Kingdom,Steffie Domegan,866
+504015,Rempel Hospital,Zebrzydowice,Poland,Tiebold Lamey,704
+520017,Gulgowski Hospital,Stuttgart,Germany,Quinton Larwood,407
+489933,Gaylord Hospital,Novozavedennoye,Russia,Carney McVee,781
+932792,Torphy Hospital,Smyshlyayevka,Russia,Daniella Portam,51
+862172,Bartoletti Hospital,Mardakyany,Azerbaijan,Lem Hearsey,412
+772625,Hermann Hospital,Konče,Macedonia,Delilah Lorkin,637
+315611,Hamill Hospital,Oslo,Norway,Sula Stanistrete,321
+264667,Cole Hospital,Inđija,Serbia,Jodi Bendell,767
+474244,Fritsch Hospital,Slobodskoy,Russia,Agnes Fritschel,272
+838302,Daniel Hospital,Czudec,Poland,Bil Shippey,602
+267224,Padberg Hospital,Zaqatala,Azerbaijan,Joleen Castagnet,309
+312485,Mueller Hospital,Berendeyevo,Russia,Glyn Twiddell,244
+901793,Marvin Hospital,Domaradz,Poland,Margarete Yushkin,629
+290668,Mante Hospital,Södertälje,Sweden,Vania Wilkinson,418
+208628,Von Hospital,Ursus,Poland,Saxe Lange,793
+671825,Ward Hospital,Szemud,Poland,Carole Crips,345
+823605,Leannon Hospital,Zakroczym,Poland,Howey Biford,225
+358472,Gibson Hospital,Požarevac,Serbia,Dag Shafier,375
+100845,Stracke Hospital,Landskrona,Sweden,Yevette Hillyatt,676
+687817,Miller Hospital,Yeri,Cyprus,Tonnie Ivers,213
+332209,Beatty Hospital,Néa Kíos,Greece,Frazer Cheetham,817
+978497,Yundt Hospital,Polýkastro,Greece,Daren Gosson,71
+329557,Zieme Hospital,Rozsypne,Ukraine,Elvira Hebdon,327
+714956,Barton Hospital,Polunochnoye,Russia,Ranice Pien,526
+742792,Parisian Hospital,Krasnaye,Belarus,Katha Breen,994
+589611,McCullough Hospital,Kivsharivka,Ukraine,Karrah Bettenson,886
+114829,O'Kon Hospital,Funchal,Portugal,Johny Slograve,696
+071886,Bartoletti Hospital,Połajewo,Poland,Nanci Evert,376
+733594,Boyer Hospital,Larnaca,Cyprus,Carol Jumeau,745
+669691,Russel Hospital,Syzran’,Russia,Gilligan McReidy,889
+801308,Labadie Hospital,Halle,Germany,Kiri Kilpatrick,416
+730959,Macejkovic Hospital,Évora,Portugal,Mile Duval,509
+835504,Hilpert Hospital,Söderhamn,Sweden,Lola Gifkins,844
+293867,Swaniawski Hospital,Tyukalinsk,Russia,Yelena Pietrusiak,1
+304923,Wisozk Hospital,Bielawa,Poland,Leighton Stonhewer,470
+141034,Feil Hospital,Miastków Kościelny,Poland,David MacGown,805
+035734,Haag Hospital,Pedroso,Portugal,Ewan Heams,493
+180030,Bruen Hospital,Bezons,France,Stacee Doulton,723
+743444,Lang Hospital,Mysiadło,Poland,Denna Jonson,311
+015429,Ullrich Hospital,Tarbes,France,Wayne O'Doherty,284
+978784,Fay Hospital,Újezd,Czech Republic,Row Leythley,824
+157565,Kuhlman Hospital,Wissous,France,Dallas Bryers,819
+538859,Flatley Hospital,Beauvais,France,Augy Lomond,748
+506592,Feeney Hospital,Apatin,Serbia,Willetta Gibbins,148
+465473,Yost Hospital,Karlskrona,Sweden,Leandra Thorington,178
+687736,King Hospital,Souto,Portugal,Aggie Tapsfield,222
+836092,Christiansen Hospital,Saransk,Russia,Booth Dowber,734
+053292,Schneider Hospital,Yaransk,Russia,Cosimo Orwin,604
+906971,Fay Hospital,Nizhneivkino,Russia,Jeri Walden,97
+421105,Lubowitz Hospital,Johanneshov,Sweden,Anselm Daily,698
+729871,Deckow Hospital,Lukovica pri Domžalah,Slovenia,Richie Carmen,332
+730729,Gusikowski Hospital,Vale Maceiras,Portugal,Clarabelle Badwick,696
+774977,Hahn Hospital,Rio Covo ( Santa Eulália ),Portugal,Camille Hamon,332
+862536,Dietrich Hospital,Juupajoki,Finland,Ebony Tampin,607
+253678,Balistreri Hospital,Olszówka,Poland,Thorndike Brekonridge,281
+966799,Weimann Hospital,Karlobag,Croatia,Zitella Nettles,419
+123373,Streich Hospital,Trpinja,Croatia,Dael Olley,796
+326436,Thompson Hospital,Káto Glikóvrisi,Greece,Joletta Pull,431
+194687,Hilll Hospital,Cernik,Croatia,Sterne Klulisek,885
+655980,Morar Hospital,Niort,France,Robinet Ollerenshaw,987
+840979,Maggio Hospital,Obrenovac,Serbia,Nollie Valentim,817
+049789,Crist Hospital,Wuppertal,Germany,Norrie Castellet,10
+905943,Kuvalis Hospital,Enschede,Netherlands,Leonard Brownlea,699
+656959,Walsh Hospital,Tyczyn,Poland,Torrin Smurthwaite,6
+340775,Runolfsson Hospital,Aldeia da Mata,Portugal,Garry De Moreno,771
+549779,Beahan Hospital,Mežica,Slovenia,Dusty Glamart,418
+178477,Rohan Hospital,Njivice,Croatia,Marven Phripp,38
+076065,Beahan Hospital,Langley,United Kingdom,Corney Rosengarten,355
+007657,Stokes Hospital,Strömsund,Sweden,Doro Chiplin,975
+963694,Leuschke Hospital,Marisol,Portugal,Cindie Hayter,875
+316501,Marks Hospital,Bairro de Santo António,Portugal,Roselia Ashpole,599
+512569,Shanahan Hospital,Čoka,Serbia,Agna Vina,805
+636162,Herzog Hospital,Bełk,Poland,Emalia Moorman,276
+251806,Lemke Hospital,Sarajevo,Bosnia and Herzegovina,Karney Laurenty,22
+820682,Gorczany Hospital,Tullamore,Ireland,Editha Cordeix,136
+944725,Senger Hospital,Rouen,France,Helaina Drugan,303
+863450,Feeney Hospital,Yurovka,Russia,Kalinda MacBrearty,502
+126941,Strosin Hospital,Lewin Kłodzki,Poland,Nikolaus Pietron,363
+476797,Koelpin Hospital,Fabianki,Poland,Kary Bellson,499
+016994,Hirthe Hospital,Świętochłowice,Poland,Maureene Andreev,822
+428973,Stoltenberg Hospital,Oni,Georgia,Quintin Ottee,303
+259770,Dooley Hospital,Klenovyy,Ukraine,Gareth Dreier,640
+522181,Hermann Hospital,Nowe Miasto,Poland,Dante O Mullen,198
+765150,Bogisich Hospital,Asprángeloi,Greece,Isidro Henrichs,481
+001311,Cruickshank Hospital,Khlevnoye,Russia,Madelon Standish,268
+695409,McCullough Hospital,Järfälla,Sweden,Othelia Bridgeland,41
+749010,Lehner Hospital,Białobrzegi,Poland,Lilah Mattityahou,661
+568377,Becker Hospital,Locminé,France,Sharia Batman,434
+042892,Gulgowski Hospital,Chrastava,Czech Republic,Morrie Normavell,650
+753601,Reichel Hospital,Kurortnyy,Russia,Michel Ogilvie,889
+175602,Sporer Hospital,Gyumri,Armenia,Ellary McGrudder,154
+439941,Feil Hospital,Arklow,Ireland,Wilone Niesing,598
+448099,Botsford Hospital,Portëz,Albania,Georgine Beautyman,760
+864761,Schmitt Hospital,Astara,Azerbaijan,Audre Canellas,86
+406583,Hoeger Hospital,Strasbourg,France,Sheelah Pollack,362
+778559,Harris Hospital,Eaubonne,France,Sibby McGifford,598
+286083,Stracke Hospital,Hausjärvi,Finland,Pammi Frays,866
+941684,Stamm Hospital,Shchigry,Russia,Keefer McCook,368
+635899,Cremin Hospital,Lidköping,Sweden,Moll Jakubowski,801
+755128,Hoppe Hospital,Buchach,Ukraine,Ros Boame,270
+088193,Stracke Hospital,Alvaiázere,Portugal,Marielle Canny,261
+677972,Keeling Hospital,Kalinovo,Russia,Marin Pietzker,846
+398979,Herman Hospital,Belsk Duży,Poland,Teresa Foxen,493
+119887,Labadie Hospital,Monte Novo,Portugal,Bettine Housecroft,778
+381179,Mayer Hospital,Krasnodon,Ukraine,Jerald Robjohns,70
+467211,McLaughlin Hospital,Lipnica Wielka,Poland,Daniela Escritt,971
+221122,Lueilwitz Hospital,Mesopotamía,Greece,Nikolaus Corbally,110
+671956,Collier Hospital,Tlumach,Ukraine,Joella Maine,187
+851163,Hessel Hospital,Sosándra,Greece,Elnore Willshee,845
+830567,Leuschke Hospital,Uppsala,Sweden,Kerrin Sigars,839
+965551,Harris Hospital,Sayansk,Russia,Pascal Renals,472
+076471,Hudson Hospital,Mnichovo Hradiště,Czech Republic,Orly Smallsman,174
+499660,Huels Hospital,Vetrino,Bulgaria,Rosmunda Masseo,761
+449902,Rice Hospital,Campanário,Portugal,Robina Barth,922
+557009,Goodwin Hospital,Klimovsk,Russia,Baudoin Crabbe,230
+534462,Smitham Hospital,Alenquer,Portugal,Sherry Doddemeede,223
+638952,Powlowski Hospital,Havířov,Czech Republic,Nita Syred,338
+206914,Hickle Hospital,Toulouse,France,Veriee Fransewich,824
+114126,Frami Hospital,Zainsk,Russia,Wilbur Dacres,276
+989005,Beatty Hospital,Sofia,Bulgaria,Julian Girardin,479
+794404,Kessler Hospital,Boulaide,Luxembourg,Randall Broggetti,285
+510185,Buckridge Hospital,Tyresö,Sweden,Esmaria Couvet,883
+564758,Bosco Hospital,Łubnice,Poland,Cash Bullent,508
+333513,Heaney Hospital,Aleksandrovka,Ukraine,Gena Bankhurst,361
+167294,Metz Hospital,Aban,Russia,Hymie Westwater,262
+607815,Kunze Hospital,Cambrai,France,Temp Shuttlewood,869
+576206,Kuhic Hospital,Sainte-Luce-sur-Loire,France,Claybourne Thoresbie,370
+131030,Collier Hospital,Martingança-Gare,Portugal,Sibilla Tomini,953
+778737,Crooks Hospital,Perovo,Russia,Eugen Eburah,617
+452762,Prosacco Hospital,Grojec,Poland,Odille Davidowsky,578
+335655,Rohan Hospital,Nancy,France,Glen Rolfs,462
+171183,Koepp Hospital,Bourgoin-Jallieu,France,Anstice De Carolis,516
+579898,Mohr Hospital,Oslo,Norway,Wilma Shires,953
+532083,Hessel Hospital,Goczałkowice Zdrój,Poland,Moselle Caunt,824
+953611,O'Kon Hospital,Dubki,Russia,Tybalt Muslim,589
+616851,Kovacek Hospital,Meget,Russia,Cristobal Christmas,386
+424658,Schamberger Hospital,Várzea de Sintra,Portugal,Kalila Wadly,269
+572784,Brown Hospital,Metsovo,Greece,Chandra Laise,332
+562063,Ziemann Hospital,Duas Igrejas,Portugal,Sandy Matisoff,856
+819497,Auer Hospital,Arcossó,Portugal,Tye MacLice,13
+651361,Bernhard Hospital,Pisão,Portugal,Corby Wheatland,227
+366754,Smith Hospital,Bratislava,Slovakia,Eden Rockcliffe,624
+234421,O'Connell Hospital,Montpellier,France,Sherwynd Vedstra,341
+682540,Ankunding Hospital,Skópelos,Greece,Anneliese Moxley,760
+535745,Streich Hospital,Saint-Denis,France,Reinhard Welldrake,337
+677970,Reichel Hospital,Íasmos,Greece,Juliann Penk,346
+066867,Mann Hospital,Falun,Sweden,Jessamine Whitford,653
+861588,Cummings Hospital,Sagopshi,Russia,Blaire McOmish,498
+672074,Reinger Hospital,Troitskiy,Russia,Bay Barendtsen,512
+458175,Okuneva Hospital,Sabnova,Russia,Nicolea Leif,3
+858483,Wehner Hospital,Neochóri,Greece,Mord Blazewicz,958
+330798,Larkin Hospital,Nyrob,Russia,Roley Herrieven,532
+370114,Monahan Hospital,Frýdlant,Czech Republic,Duane Sydes,984
+893154,Greenfelder Hospital,Calais,France,Charlena Gulley,584
+431671,Howe Hospital,Skerries,Ireland,Dela De Goey,900
+047280,Aufderhar Hospital,Dzhiginka,Russia,Sonnnie Ducker,335
+099872,Lubowitz Hospital,Malinovoye Ozero,Russia,Evanne Bird,485
+177742,Koss Hospital,Paris 12,France,Katuscha Spillman,140
+590937,Yundt Hospital,Pryvol’ny,Belarus,Elspeth Dahmel,70
+728763,Jacobi Hospital,Zarichchya,Ukraine,Antonius Culcheth,797
+132182,Langworth Hospital,Järfälla,Sweden,Elizabeth Shearsby,394
+903865,Runolfsson Hospital,Mukhen,Russia,Natale Cahalan,225
+585419,Predovic Hospital,Lenešice,Czech Republic,Courtney Lanston,551
+623952,Fritsch Hospital,Malgobek,Russia,Lazaro Espinosa,231
+458104,Feest Hospital,Peterhof,Russia,Shanie Bover,177
+218293,Schuster Hospital,Boxholm,Sweden,Ramona McQuaker,299
+147606,Boehm Hospital,Almodôvar,Portugal,Denna Brosh,351
+968544,Stoltenberg Hospital,Sovetskaya,Russia,Robb Silbert,61
+479801,Mills Hospital,Stockholm,Sweden,Weider Longson,3
+836059,Waters Hospital,Młynary,Poland,Kathi Hardaway,422
+008333,Kertzmann Hospital,Doksy,Czech Republic,Chere Kettleson,334
+643737,Hayes Hospital,Vale de Mendiz,Portugal,Marie-jeanne Swapp,600
+720715,Halvorson Hospital,Kurzętnik,Poland,Dulci Dowzell,498
+756391,Cummings Hospital,Strzelce Krajeńskie,Poland,Baillie Constanza,376
+093641,Stanton Hospital,Lyubashivka,Ukraine,Lauren Donaldson,291
+980971,Kuphal Hospital,Murganhal,Portugal,Halsey Goundsy,672
+280948,Halvorson Hospital,Uglegorsk,Russia,Maurizio Conaghy,505
+689586,Will Hospital,Velingrad,Bulgaria,Bendite Kielt,471
+221516,Ankunding Hospital,Alingsås,Sweden,Vania Godsil,198
+082038,Turner Hospital,Montemor-o-Velho,Portugal,Gael Humm,828
+933138,Nader Hospital,Reisjärvi,Finland,Jeralee Castleton,635
+282430,Hessel Hospital,Grenoble,France,Bamby Joll,685
+186150,Cummerata Hospital,Belyye Berega,Russia,Donny Kaubisch,137
+222097,Feil Hospital,Jakubowice Murowane,Poland,Gipsy Polet,393
+034482,Rohan Hospital,Mariestad,Sweden,Maia Schleicher,408
+015677,Langosh Hospital,Smečno,Czech Republic,Monique Doelle,644
+693629,Rolfson Hospital,Bački Petrovac,Serbia,Olwen Skydall,855
+902616,Barrows Hospital,Enschede,Netherlands,Hilary Bythway,314
+504834,Jenkins Hospital,Paltamo,Finland,Odell Godon,456
+174412,Swaniawski Hospital,Čajniče,Bosnia and Herzegovina,Lotty Cobbald,522
+382592,Wuckert Hospital,Soledar,Ukraine,Jammal Hanstock,41
+226031,Bogisich Hospital,Mâcon,France,Augustin Smorthit,757
+431600,Monahan Hospital,Linëvo,Russia,Charlie Ahmed,67
+197114,Goldner Hospital,Dvinskoy,Russia,Charisse Lenaghen,836
+549755,Lind Hospital,Reggio Calabria,Italy,Pansie Wemes,696
+692822,Feest Hospital,Kimil’tey,Russia,Pennie Slator,921
+595644,Greenfelder Hospital,Stockholm,Sweden,Willyt Klicher,836
+746615,Eichmann Hospital,Aix-en-Provence,France,Ferdinande Philipsen,332
+948368,Cassin Hospital,Toulon,France,Candie Gouch,770
+673542,VonRueden Hospital,Novodvinsk,Russia,Dalton Goodfellowe,217
+286247,Lubowitz Hospital,Sychëvo,Russia,Candide Moehle,596
+143236,Koelpin Hospital,Borlänge,Sweden,Bart Torrent,46
+792674,Pollich Hospital,Zherdevka,Russia,Barn Jennemann,516
+410422,Murphy Hospital,Asbest,Russia,Bryn Groves,311
+098507,O'Hara Hospital,Kortkeros,Russia,Nonnah Huggill,231
+244723,Jewess Hospital,Gudja,Malta,Ronalda Boutellier,162
+366198,Towne Hospital,Troyes,France,Eddi Wrettum,106
+473960,Glover Hospital,Khrenovoye,Russia,Kristan Godridge,205
+479058,Rohan Hospital,Rasskazovo,Russia,Dorothea Andresen,572
+940357,Runolfsson Hospital,København,Denmark,Annalee Haile,352
+920591,Sauer Hospital,Niwiska,Poland,Anny Kerins,433
+400277,Russel Hospital,Santa Catarina,Portugal,Ervin Antognelli,513
+566247,Lemke Hospital,Isakly,Russia,Olga Dargan,752
+257452,Koss Hospital,Paris 17,France,Georas Farncomb,740
+119638,Leuschke Hospital,Novoanninskiy,Russia,Nicol Falconer,727
+724672,Herman Hospital,Jablunkov,Czech Republic,Feodora Ong,121
+094853,Cummings Hospital,Svilengrad,Bulgaria,Beret Elan,317
+221909,Erdman Hospital,Firovo,Russia,Harp Boorman,271
+176360,Huel Hospital,Lis,Albania,Thibaud Morrieson,936
+553967,Reinger Hospital,Zabrušany,Czech Republic,Glennie Saffrin,451
+168852,Nitzsche Hospital,Lechinkay,Russia,Gordon Conklin,955
+639616,Cartwright Hospital,Karlstad,Sweden,Ad Hartright,401
+887228,Marvin Hospital,Aubervilliers,France,Gloriana Gowry,76
+811100,Bashirian Hospital,Zelenodolsk,Russia,Birgitta Naish,596
+303032,Herman Hospital,Houten,Netherlands,Sissie Luciano,286
+836212,Schiller Hospital,Madrid,Spain,Derek Ottiwill,596
+554922,Bergstrom Hospital,Agara,Georgia,Renae Nudd,714
+741568,Stark Hospital,Karlskoga,Sweden,Melesa Woodhams,687
+082221,Feest Hospital,Tomilino,Russia,Sabine MacFadden,668
+944755,Mohr Hospital,La Roche-sur-Yon,France,Gregoire Josebury,164
+698720,Sporer Hospital,Béziers,France,Eba Reddie,215
+715544,Jenkins Hospital,Zwolle,Netherlands,Shandy Markie,639
+297927,O'Hara Hospital,Dinan,France,Iggy Kubicka,113
+709889,Wiza Hospital,Bełżec,Poland,Meggy Kubala,882
+298744,Crona Hospital,Donnybrook,Ireland,Alister MacCoughen,963
+898885,Dickinson Hospital,Castedo,Portugal,Perice Ciottoi,747
+347259,Heaney Hospital,Nurmo,Finland,Stephan Lathleiffure,624
+017152,Kuhn Hospital,Mospyne,Ukraine,Sadye Toll,622
+808506,Haag Hospital,Colmar,France,Celine Mainson,276
+002731,Gislason Hospital,Zakan-Yurt,Russia,Moyna Falls,961
+307919,Armstrong Hospital,Bosanski Šamac,Bosnia and Herzegovina,Basilius Martellini,277
+901116,Pfeffer Hospital,Göteborg,Sweden,Virginie Aldhous,295
+550829,Kertzmann Hospital,Vyaz’ma,Russia,Flori Peaden,615
+334593,Bernier Hospital,Buda-Kashalyova,Belarus,Row Reith,228
+421020,Ziemann Hospital,Stanisław Górny,Poland,Molli Ebourne,916
+514742,Ruecker Hospital,Stroitel’,Russia,Aviva Lines,240
+952345,Shields Hospital,Gagarin,Armenia,Hermann McInnery,679
+111848,Nienow Hospital,Horní Čermná,Czech Republic,Stavros Sustins,406
+186997,Bechtelar Hospital,Oslo,Norway,Yance Quarless,699
+656467,Marks Hospital,Šuto Orizare,Macedonia,Fernandina Meneer,336
+243945,Jerde Hospital,Achadinha,Portugal,Sam Castelletti,450
+458130,Dietrich Hospital,Chervonohryhorivka,Ukraine,Luke Hellin,893
+109589,Goodwin Hospital,Zheleznogorsk-Ilimskiy,Russia,Gil Chopin,190
+232331,Balistreri Hospital,Chernelytsya,Ukraine,Gregorio Jentgens,252
+733082,Wuckert Hospital,København,Denmark,Taber Cettell,894
+433280,Hettinger Hospital,Oslo,Norway,Lynn Suckling,324
+968203,Cormier Hospital,Dimitrovgrad,Bulgaria,Tandi Wayper,14
+561318,Doyle Hospital,Celestynów,Poland,Hanan Leaver,371
+920005,Ward Hospital,Wola Uhruska,Poland,Carlen Oliveto,740
+015907,Jerde Hospital,Västerås,Sweden,Leesa Lamzed,395
+795942,Lubowitz Hospital,Mingelchaur,Azerbaijan,Idalina McAlinden,255
+371005,Koelpin Hospital,Rokytne,Ukraine,Giorgio Orrick,662
+881643,Stiedemann Hospital,Pereyaslav-Khmel’nyts’kyy,Ukraine,Baily Belbin,30
+433446,Olson Hospital,Novokuz’minki,Russia,Daveen Jozwiak,124
+402494,Connelly Hospital,Skole,Ukraine,Ezekiel Frost,872
+232101,Sauer Hospital,Vale Boeiro,Portugal,Kirsti Burman,171
+842080,Gorczany Hospital,Kumla,Sweden,Christan Sames,906
+346956,Hickle Hospital,Bollstabruk,Sweden,Merola Jovicevic,612
+864495,Buckridge Hospital,Marseille,France,Nara Antyshev,41
+485994,Bahringer Hospital,Monte de Fralães,Portugal,Coriss Stinton,415
+856870,Trantow Hospital,Novozybkov,Russia,Evelyn Arro,801
+271560,Sporer Hospital,Novi Bilokorovychi,Ukraine,Karoly O'Currine,427
+676274,Watsica Hospital,Bol’shoy Karay,Russia,Thatch Reynolds,632
+508444,Haag Hospital,Mnichovo Hradiště,Czech Republic,Glyn Musslewhite,502
+139377,Bode Hospital,Zyablikovo,Russia,Angelica Zucker,112
+209319,Hodkiewicz Hospital,Thiais,France,Aidan Ramsdale,752
+046430,Reinger Hospital,Oktyabr’skiy,Russia,Enoch Sprackling,978
+393884,Zulauf Hospital,Löddeköpinge,Sweden,Ardith Hudghton,149
+618689,Crona Hospital,Jeziorany,Poland,Nicole Thaine,82
+030524,Boehm Hospital,Huddinge,Sweden,Myrlene Schimann,842
+060488,Zboncak Hospital,Rtyně v Podkrkonoší,Czech Republic,Marquita Tomley,528
+220363,Blick Hospital,Gävle,Sweden,Garvin Crebott,946
+056987,Kirlin Hospital,Sochaux,France,Ida Oboy,543
+297338,Feeney Hospital,Valinhos,Portugal,Arluene Suddaby,966
+293349,Feil Hospital,Sölvesborg,Sweden,Iona Puller,726
+831726,Wintheiser Hospital,Staryy Saltiv,Ukraine,Teirtza Rodie,771
+319519,Hermann Hospital,Vale de Figueira,Portugal,Emmalynn Lampen,702
+828447,Paucek Hospital,Marseille,France,Betteann Crinage,551
+791253,Stark Hospital,Dardhas,Albania,Darcie Yitzhak,505
+900385,Fritsch Hospital,Pontinha,Portugal,Amalia Bloodworth,120
+808764,Weber Hospital,Skoghall,Sweden,Bobbye Priestman,539
+885298,Beahan Hospital,Pembroke,Malta,Evin Dudderidge,943
+286435,Dickens Hospital,Qvareli,Georgia,Blayne Grimble,365
+028369,Murazik Hospital,Marinhais,Portugal,Nerta O'Concannon,458
+363723,Pagac Hospital,Bugojno,Bosnia and Herzegovina,Ruthie Spirritt,434
+558959,Kutch Hospital,Stockholm,Sweden,Tasha Traill,332
+767332,Koss Hospital,Podhum,Bosnia and Herzegovina,Fitzgerald Gontier,337
+337471,Fay Hospital,Áyios Vasílios,Greece,Bunny Capsey,758
+063821,Hauck Hospital,Telde,Spain,Marnie Lannen,26
+575506,Gottlieb Hospital,Pokrovo-Prigorodnoye,Russia,Rayner Venditti,811
+907746,Hane Hospital,Alvito,Portugal,Mela McIntee,68
+733714,Kemmer Hospital,Abbeville,France,Cynthia Bowery,193
+292886,Sawayn Hospital,Tríkeri,Greece,Aubree Howchin,606
+998025,Becker Hospital,Pavlovskiy Posad,Russia,Sile Pott,22
+080902,Lang Hospital,Pontevedra,Spain,Kate Tiesman,767
+003704,Tillman Hospital,Bairro dos Marinheiros,Portugal,Sibilla Mowle,103
+831580,Hickle Hospital,Mizoch,Ukraine,Annalee Boother,741
+414192,Crooks Hospital,Rožaje,Montenegro,Ianthe Rivalant,118
+951418,Cremin Hospital,Gostivar,Macedonia,Geoff Jurick,699
+472703,Larkin Hospital,Stockholm,Sweden,Temple Pleat,856
+112344,Schroeder Hospital,Marly-le-Roi,France,Allan Mainson,593
+270088,Kertzmann Hospital,Makhalino,Russia,Tildy Haddeston,333
+767217,Parisian Hospital,Priupskiy,Russia,Daffi Large,995
+231822,Hermiston Hospital,Aix-en-Provence,France,Dorie Lacasa,166
+696537,Ritchie Hospital,Kilmacanoge,Ireland,Nerta Hemshall,849
+695233,Hagenes Hospital,Astghadzor,Armenia,Brok Brimilcombe,973
+853673,Terry Hospital,Velké Hoštice,Czech Republic,Artemas Leacock,175
+031116,King Hospital,Engel’s,Russia,Cammie Dabbs,156
+342103,Quitzon Hospital,Montargis,France,Hastings Elfitt,410
+765244,Swaniawski Hospital,Floirac,France,Ashely Moffatt,156
+825106,Dooley Hospital,Szamotuły,Poland,Alexa Ruddin,927
+737834,Marquardt Hospital,Naberezhnyye Chelny,Russia,Shirline Dumphries,531
+549176,Collier Hospital,Spas-Klepiki,Russia,Tiphany Eales,273
+223156,Tillman Hospital,Salaspils,Latvia,Burl Oxenbury,983
+905122,Kutch Hospital,Kirovskiy,Russia,Estevan Bernlin,659
+220565,Effertz Hospital,Eskilstuna,Sweden,Evangeline Waddam,805
+075505,Frami Hospital,Cieplice Śląskie Zdrój,Poland,Stacie Capner,428
+135822,Lueilwitz Hospital,Tuzha,Russia,Patric Morales,297
+322370,Beatty Hospital,Hiseti,Bosnia and Herzegovina,Bert Giorgeschi,111
+580819,McDermott Hospital,Łopuszno,Poland,Sauncho Roja,135
+063489,Kub Hospital,Kipen’,Russia,Ernesta Dimmick,238
+432765,Aufderhar Hospital,Lille,France,Kory Poizer,790
+971943,Sawayn Hospital,Kotuń,Poland,Sharlene Rotter,9
+877575,Fahey Hospital,Kruševica,Croatia,Etta Pibworth,869
+946918,Weber Hospital,Zavolzh’ye,Russia,Eimile Guinness,399
+782429,Gutmann Hospital,Zuya,Ukraine,Dulcinea Costelloe,400
+610058,Sanford Hospital,Claye-Souilly,France,Thorsten Lavalde,670
+737990,Witting Hospital,Mariestad,Sweden,Deanna Scartifield,705
+286970,Eichmann Hospital,Golubac,Serbia,Irina Stainland,528
+410238,Wyman Hospital,Santo Aleixo,Portugal,Free Ellyatt,828
+241659,Koelpin Hospital,Novoul’yanovsk,Russia,Juieta Pleming,396
+797934,Schaefer Hospital,Timrå,Sweden,Riane Jakov,22
+278637,Sipes Hospital,Itzig,Luxembourg,Alexei Broadhurst,445
+886404,Lowe Hospital,Laval,France,Katusha Gofton,325
+416591,Raynor Hospital,Olsztynek,Poland,Eolanda Brauns,653
+458605,Breitenberg Hospital,Kokemäki,Finland,Jorrie Mowbury,84
+797989,Leuschke Hospital,Venda do Valador,Portugal,Rachele Syer,851
+439905,Turner Hospital,Hazlov,Czech Republic,Ruy Undy,83
+728155,Schiller Hospital,Ust’-Koksa,Russia,Nikola Vasilchenko,929
+343255,Homenick Hospital,Mońki,Poland,Kanya Cummings,634
+915851,Dickens Hospital,Shikhazany,Russia,Meris Brunelleschi,345
+108586,Murphy Hospital,Rassvet,Russia,Calida Ashment,285
+834862,Kozey Hospital,Nové Strašecí,Czech Republic,Rosanne De Ortega,111
+113639,Hayes Hospital,Timrå,Sweden,Lyndsay Dargie,908
+238341,Hintz Hospital,Pyhäntä,Finland,Salim Streat,328
+988943,Hilll Hospital,Shchastya,Ukraine,Vincenz Rawlinson,144
+589602,Schamberger Hospital,Cholet,France,Shina Keppel,949
+275468,Steuber Hospital,Carvalhal,Portugal,Charissa Le Moucheux,643
+354492,Pollich Hospital,Götene,Sweden,Ivie Tilmouth,260
+010092,Herzog Hospital,A dos Negros,Portugal,Malcolm Streets,865
+008986,Stiedemann Hospital,Bor,Serbia,Demeter Eeles,460
+458904,Konopelski Hospital,Tullyallen,Ireland,Gloriana Sparshatt,501
+872029,Vandervort Hospital,Gijon,Spain,Oliver Marran,293
+429858,Pollich Hospital,Entradas,Portugal,Harley Mapes,272
+804593,Kuvalis Hospital,Biljača,Serbia,Shannan Alessandrucci,882
+105586,Kunze Hospital,Tamel,Portugal,Koenraad Diggens,697
+335104,Steuber Hospital,Śniadowo,Poland,Chere Crossley,571
+441341,Bogisich Hospital,Uryupinsk,Russia,Winston Fleckney,983
+888288,Wisozk Hospital,Lorino,Russia,Hobard Backler,697
+866873,Olson Hospital,Åtvidaberg,Sweden,Randy Shallo,457
+692653,Crist Hospital,Bengtsfors,Sweden,Sidonia Seifenmacher,677
+736396,Boehm Hospital,Ilek,Russia,Belia Imos,578
+659766,Kertzmann Hospital,Torzhok,Russia,Iormina Alesio,857
+421583,Langworth Hospital,Kuvandyk,Russia,Davita Upjohn,508
+090993,Parker Hospital,Ampeleíes,Greece,Pincas Thaxter,118
+029542,Mante Hospital,Mērsrags,Latvia,Doralyn Pennuzzi,369
+535893,Connelly Hospital,Saint-Quentin-en-Yvelines,France,Ardelia Nagle,942
+770384,Grimes Hospital,Yelets,Russia,Markus Lacey,615
+428767,Ledner Hospital,Svitlovods’k,Ukraine,Bethany Bodiam,198
+874024,Jast Hospital,Stockholm,Sweden,Aimil Bahlmann,814
+056287,Jenkins Hospital,Mosteiros,Portugal,Jorrie Feast,466
+150112,Hudson Hospital,Szeged,Hungary,Gabriel Zanuciolii,228
+867176,Bogan Hospital,Suslonger,Russia,Freddie Gamblin,369
+337068,Koepp Hospital,Zwierzyń,Poland,Sal Whetland,827
+128989,Lebsack Hospital,Shabo,Ukraine,Friedrick Clarkson,681
+806180,Terry Hospital,Jieznas,Lithuania,Levin Hargey,815
+586250,Lang Hospital,Jaworzyna Śląska,Poland,Neilla Laxton,442
+560088,Bins Hospital,Ronneby,Sweden,Nico Holtham,322
+759769,Kris Hospital,Kleszczewo,Poland,Dino Othen,494
+043764,Lueilwitz Hospital,Staré Město,Czech Republic,Ed Vasichev,341
+392516,Schmitt Hospital,Stavyshche,Ukraine,Martainn Agent,133
+923896,Upton Hospital,Utena,Lithuania,Rebecca Asgodby,107
+490172,Donnelly Hospital,Bruxelles,Belgium,Nikolai Coventry,820
+933267,Bailey Hospital,Rodópoli,Greece,Jayne Ferreras,595
+526301,Considine Hospital,Pertunmaa,Finland,Archaimbaud MacKerley,801
+717817,Gorczany Hospital,Zagnitkiv,Ukraine,Amory Westcot,141
+637658,Kuhic Hospital,Zarichchya,Ukraine,Engracia Mendonca,671
+175835,Fay Hospital,Cherëmushki,Russia,Kendricks Hurdle,846
+298590,Grimes Hospital,Lopar,Croatia,Verina Draysay,654
+388914,Klocko Hospital,Durrës,Albania,Baird Dugald,973
+395700,Lang Hospital,Drawsko,Poland,Jasmin Brummell,799
+309306,Murphy Hospital,Zbraslav,Czech Republic,Margie Nucci,478
+172693,Cremin Hospital,Skidal’,Belarus,Miran Novotne,412
+791309,Roberts Hospital,Pechersk,Russia,Allister Hulance,911
+040164,Klein Hospital,Kärdla,Estonia,Joellen Yokley,842
+871419,Heathcote Hospital,Pápa,Hungary,Shane Krook,860
+944641,Zemlak Hospital,Pukkila,Finland,Jarrod Caseborne,676
+844028,Lemke Hospital,Shalazhi,Russia,Whitney Cokely,944
+214107,Fisher Hospital,Spassk-Dal’niy,Russia,Reider Eccleshare,874
+013094,Boyle Hospital,Białobrzegi,Poland,Candie Luce,840
+902955,Grimes Hospital,Paris 11,France,Christalle Foro,823
+252559,Hyatt Hospital,Tsementnozavodskiy,Russia,Shannen Rubinchik,36
+634224,Mraz Hospital,Khoroshëvo-Mnevniki,Russia,Nanete McCaughan,870
+047655,Shanahan Hospital,Martin,Croatia,Daryle Avrahamof,929
+827755,Schaefer Hospital,Benavila,Portugal,Donnell Gurney,468
+391398,Koch Hospital,Călăraşi,Moldova,Denys McKinna,752
+888845,Willms Hospital,Sintra,Portugal,Claudianus Adolthine,221
+825458,Kunze Hospital,Mayenne,France,Antonietta Ruckledge,48
+018553,Auer Hospital,Aradac,Serbia,Elyssa Vasyuchov,514
+381088,O'Kon Hospital,Kuryłówka,Poland,Tarrance McMonies,796
+720097,Miller Hospital,Mosjøen,Norway,Demetris Carless,507
+303543,Walsh Hospital,Võhma,Estonia,Rafi Shanklin,821
+726865,Will Hospital,Marseille,France,Elisabet Farge,332
+302185,Roob Hospital,Valka,Latvia,Ranna Eastbrook,648
+630129,Gleason Hospital,Knyaginino,Russia,Irving Oxford,433
+922721,Beatty Hospital,Karviná,Czech Republic,Cathee Bussy,869
+808088,Crona Hospital,Skuratovskiy,Russia,Innis Simkovitz,489
+460359,Mosciski Hospital,Berezne,Ukraine,Othella Hamlington,425
+009189,Muller Hospital,Selishche,Russia,Lev Hanselmann,21
+382796,Schulist Hospital,Zlatar,Croatia,Giffie Dunnet,834
+379519,Hettinger Hospital,Misheronskiy,Russia,Ambrosius Boliver,837
+677394,Farrell Hospital,Otwock,Poland,Alameda Gammel,224
+775434,McLaughlin Hospital,Carregal,Portugal,Rube Aim,636
+120723,Okuneva Hospital,Kos,Greece,Rutger Lorain,451
+915045,Larson Hospital,Blarney,Ireland,Ossie Moakson,595
+994354,Macejkovic Hospital,Celje,Slovenia,Doretta Janiak,84
+102792,Haley Hospital,Outeiro de Polima,Portugal,Robby Caruth,181
+894284,Towne Hospital,Dolní Dunajovice,Czech Republic,Ferdie McAndie,31
+531107,Halvorson Hospital,Werbkowice,Poland,Lira Brodeau,748
+493937,Kirlin Hospital,Arsen’yev,Russia,Eziechiele Camplin,873
+250294,Schowalter Hospital,Veselí nad Lužnicí,Czech Republic,Mose Condell,239
+449426,Hartmann Hospital,Knin,Croatia,Carney Feirn,678
+328009,Nikolaus Hospital,Nelahozeves,Czech Republic,Patsy Limon,213
+459317,Hirthe Hospital,Tanumshede,Sweden,Nada Lochrie,472
+425734,Brown Hospital,Hudlice,Czech Republic,Germain Muttitt,266
+573903,Yost Hospital,Vybor,Russia,Kennan Mieville,163
+263321,Hamill Hospital,Donskoy,Russia,Francois Ketton,912
+064930,Wisoky Hospital,Gijon,Spain,Nappie Turgoose,661
+595376,Pfeffer Hospital,Prawdzinski,Belarus,Florri Musslewhite,30
+517336,Mosciski Hospital,Eaton,United Kingdom,Donalt Luten,18
+490688,Bartell Hospital,Challans,France,Shara Coffey,481
+055706,Wilkinson Hospital,Roriz,Portugal,Nananne Filipchikov,255
+045051,Maggio Hospital,Boulogne-sur-Mer,France,Benton Corns,223
+042804,Cartwright Hospital,Bambakashat,Armenia,Cynthy Trythall,42
+991859,Kiehn Hospital,Vila Fria,Portugal,Dinny Tomblin,897
+383779,Borer Hospital,Gislaved,Sweden,Angelico Tuckwood,640
+529966,Barrows Hospital,Berëzovskiy,Russia,Durward Leheude,734
+196756,Tillman Hospital,Hacı Zeynalabdin,Azerbaijan,Herby Scraney,449
+667910,Willms Hospital,Courbevoie,France,Burty Tubby,750
+783107,Jacobson Hospital,Nantes,France,Wilden Patrone,447
+333419,Goodwin Hospital,Chornoliztsi,Ukraine,Nichols Pes,848
+457003,Rempel Hospital,Aughrim,Ireland,Terry Gawthrop,902
+738677,Bechtelar Hospital,Siemiechów,Poland,Conni Mulkerrins,412
+093312,Raynor Hospital,Struga,Macedonia,Truman Cressor,432
+305484,Medhurst Hospital,Laveiras,Portugal,Aloin Sich,324
+729735,Beier Hospital,Goussainville,France,Claudianus Parlor,400
+050468,Dibbert Hospital,Antony,France,Gannon Sans,643
+324363,Batz Hospital,Chodów,Poland,Stacie McBride,569
+938372,Reichel Hospital,Lindesberg,Sweden,Ralph Pattenden,528
+295971,Gleichner Hospital,Boyle,Ireland,Ricard Valentinetti,458
+537518,Torp Hospital,Ust’-Dzheguta,Russia,Deonne Thorius,212
+493507,Bogan Hospital,Arnage,France,Austen Volks,164
+383006,Greenfelder Hospital,Dubki,Russia,Ted Chrippes,282
+424009,Wuckert Hospital,Sovetsk,Russia,Pet Lilion,532
+819688,Rogahn Hospital,Oslo,Norway,Garvey Shearsby,221
+514480,Pouros Hospital,Izyum,Ukraine,Cris Slidders,527
+693016,Wolff Hospital,Glamoč,Bosnia and Herzegovina,Agneta Brimelow,523
+674002,Gleason Hospital,Outeiro,Portugal,Benedicta Applewhaite,988
+809736,Gleason Hospital,Kalinovo,Russia,Payton Bisseker,470
+499972,Maggio Hospital,Pantin,France,Kevina Dobie,931
+381415,Parisian Hospital,Vavozh,Russia,Wang Raeburn,897
+666342,Walter Hospital,Tomelilla,Sweden,Gasparo Laidler,84
+238202,Cole Hospital,Sala,Sweden,Elmer Lount,991
+400687,Cassin Hospital,Pervomaysk,Russia,Vinni Coslitt,265
+076453,Lang Hospital,Clermont-Ferrand,France,Robinet Hayworth,360
+768391,Murphy Hospital,Dowsk,Belarus,Marcelle Edes,578
+140706,Heidenreich Hospital,Shlissel’burg,Russia,Jillana Ricketts,599
+165906,Graham Hospital,Bordeaux,France,Charyl Alven,43
+126624,Hane Hospital,Västerås,Sweden,Robenia Epinoy,561
+816500,Treutel Hospital,Ronov nad Doubravou,Czech Republic,Miltie Mowling,880
+886670,Quitzon Hospital,Savran’,Ukraine,Lorrie Gunther,953
+734857,Koss Hospital,Novki,Russia,Francesca Dikle,245
+151056,Hamill Hospital,Orange,France,Christel Broodes,249
+758250,Franecki Hospital,Mozhaysk,Russia,Nate Cisec,841
+593172,Price Hospital,Pécs,Hungary,Aili Neve,785
+804331,Walter Hospital,Rasony,Belarus,Waring Marval,744
+460821,Wunsch Hospital,Victoria,Malta,Randee Wandtke,849
+804165,Treutel Hospital,Główczyce,Poland,Betti Di Pietro,858
+755948,Osinski Hospital,Wojcieszków,Poland,Hillary How to preserve,102
+161514,Funk Hospital,Xhafzotaj,Albania,Ailsun Romagnosi,406
+192362,Skiles Hospital,Nürnberg,Germany,Neda Torbet,309
+106622,Koch Hospital,Rogóźno,Poland,Pegeen Cattermole,673
+300470,Schinner Hospital,Káto Miliá,Greece,Kyle Colerick,567
+379267,Krajcik Hospital,Dimovo,Bulgaria,Danya Suttling,865
+598459,McGlynn Hospital,Tomar,Portugal,Cory Kalewe,652
+545588,Kutch Hospital,Castres,France,Alford Tapley,331
+272029,Ledner Hospital,Siedlce,Poland,Shantee Trood,5
+716189,Gutkowski Hospital,Gävle,Sweden,Nicolas Swigg,451
+910278,Hartmann Hospital,Punat,Croatia,Grayce Pisco,769
+429614,Predovic Hospital,Zbraslav,Czech Republic,Mead Hynard,90
+320727,Beatty Hospital,Ryczów,Poland,Jessika Isabell,173
+926616,Little Hospital,Cortinhas,Portugal,Gibb Mueller,195
+456751,Von Hospital,Slobodka,Russia,Angele Manston,325
+122734,Daugherty Hospital,Rotterdam postbusnummers,Netherlands,Pierce Philipeaux,970
+298181,Ryan Hospital,Ivano-Frankove,Ukraine,Cliff Preshous,84
+257793,Rodriguez Hospital,Courtaboeuf,France,Joachim Haxbie,220
+543573,Deckow Hospital,Monte Redondo,Portugal,Terrill Elcock,172
+905942,Hettinger Hospital,Manzurka,Russia,Brynn Peiro,153
+487398,Ortiz Hospital,Vale,Georgia,Burch Skelcher,917
+867289,Wiegand Hospital,Venda Nova,Portugal,Alisander Guidera,756
+730261,Farrell Hospital,Urzuf,Ukraine,Corilla Duchart,613
+684682,Tremblay Hospital,Orikhiv,Ukraine,Trude Kruszelnicki,599
+170453,Leffler Hospital,Évlalo,Greece,Gael Gebbie,195
+491176,Ernser Hospital,Miedzichowo,Poland,Nessa Stabler,810
+160257,Barton Hospital,Sollefteå,Sweden,Sylvester Cavolini,425
+561023,O'Connell Hospital,Varakļāni,Latvia,Karlyn Praten,595
+227521,Lesch Hospital,Zheleznodorozhnyy,Russia,Emmy Delnevo,762
+800853,Dicki Hospital,Hradec nad Moravici,Czech Republic,Nadia Fishburn,398
+442334,Auer Hospital,Cobh,Ireland,Cathe Cockcroft,684
+415171,Beer Hospital,Stenungsund,Sweden,Boony Littrick,675
+488673,Hoeger Hospital,Bollnäs,Sweden,Jayson Dewer,300
+677384,Marvin Hospital,Millerovo,Russia,Jilleen Gatus,706
+214486,Koss Hospital,Balta,Ukraine,Cello Passie,941
+207198,Fahey Hospital,Markaryd,Sweden,Adrian Wrightam,904
+360331,Jewess Hospital,Le Mans,France,Willem Pride,514
+378026,Schulist Hospital,London,United Kingdom,Randie Sinclar,336
+907346,Leuschke Hospital,Sychëvo,Russia,Killie Clac,846
+653993,Swift Hospital,Siennica Różana,Poland,Shena Theobalds,285
+344089,Little Hospital,Gielniów,Poland,Stafford Elcox,129
+544320,Reinger Hospital,Kortkeros,Russia,Mandi Weadick,454
+205753,Rice Hospital,Tatarsk,Russia,Spencer Baversor,350
+347875,West Hospital,Molodizhne,Ukraine,Fawnia Beckenham,579
+404393,Lemke Hospital,Saint-Grégoire,France,Chantal Eborn,381
+409427,Dickinson Hospital,Parikkala,Finland,Aloysia Lanston,935
+635436,Swaniawski Hospital,Opinogóra Górna,Poland,Anallise Prosch,806
+187965,Cartwright Hospital,Kosaya Gora,Russia,Nev Sloane,636
+738474,Wiza Hospital,Picoto,Portugal,Abeu Fall,967
+296938,Hermann Hospital,Solomenskoye,Russia,Thea Bankes,175
+788536,Robel Hospital,Gråbo,Sweden,Melody Beuscher,447
+765092,Ortiz Hospital,Prostki,Poland,Winny Drysdell,738
+687642,Zulauf Hospital,Rybatskoye,Russia,Dodie McCahill,739
+347326,Stehr Hospital,Zaprudnya,Russia,Lucinda Palfreman,285
+416312,Bruen Hospital,Złocieniec,Poland,Chantalle Vernazza,763
+838398,Reichert Hospital,Virolahti,Finland,Jude Deathridge,52
+554342,Johns Hospital,Pryvol’ny,Belarus,Kinna Van Dale,487
+104165,Morissette Hospital,Otlja,Macedonia,Jules Hurich,256
+673863,Goodwin Hospital,Ronneby,Sweden,Imojean Dedman,169
+594326,Fisher Hospital,Dimovo,Bulgaria,Adham Palser,226
+783379,Greenfelder Hospital,Klenčí pod Čerchovem,Czech Republic,Reggis Balint,869
+387727,Green Hospital,Oborniki Śląskie,Poland,Lisetta Matejic,811
+549173,DuBuque Hospital,Marseille,France,Midge Gettens,383
+486442,Spinka Hospital,Kalininskiy,Russia,Hobie Gotfrey,313
+476007,Jenkins Hospital,Langres,France,Thea Leadbetter,563
+144728,Spencer Hospital,La Seyne-sur-Mer,France,Viviyan Vigours,429
+274935,Schamberger Hospital,Denyshi,Ukraine,Franky Dalziell,164
+576623,Schmidt Hospital,Nasilava,Belarus,Reggie Echallier,942
+811560,Beatty Hospital,Vreshtas,Albania,Moe Johnikin,892
+213871,McGlynn Hospital,Vil’nyans’k,Ukraine,Janella Hellyer,875
+812190,Auer Hospital,Yampil’,Ukraine,Johann Gracey,121
+352377,Mosciski Hospital,Księżpol,Poland,Eddy Dy,144
+470364,Beer Hospital,Zielonki,Poland,Juan Hoopper,547
+974246,Waters Hospital,Zbraslavice,Czech Republic,Amelie Merfin,21
+309847,Lind Hospital,Porkhov,Russia,Nat Persent,765
+081537,Dietrich Hospital,Pärnu-Jaagupi,Estonia,Pet Virr,511
+317756,Heathcote Hospital,Dhromolaxia,Cyprus,Humberto Pragnell,627
+900759,Heathcote Hospital,Redondos,Portugal,Beverley Fearey,207
+527510,Bartoletti Hospital,Knurów,Poland,Consuelo Frosch,922
+618659,Jones Hospital,Namur,Belgium,Zuzana Grouen,268
+727680,Fadel Hospital,Nizhnyaya Tura,Russia,Dougy Gonzalez,485
+762250,Ledner Hospital,Strašice,Czech Republic,Trude Pryer,483
+200024,Hartmann Hospital,Korczew,Poland,Audrie Gleader,516
+048564,Swaniawski Hospital,Clisson,France,Shane McMaster,96
+126148,Stamm Hospital,Valtimo,Finland,Debor Boerder,96
+243947,Predovic Hospital,Nakło nad Notecią,Poland,Baldwin MacTerlagh,829
+937263,Kassulke Hospital,Pesochnoye,Russia,Ravi Brahms,408
+268501,Moen Hospital,Pervoavgustovskiy,Russia,Camellia Addeycott,374
+040516,Thiel Hospital,Zelenokumsk,Russia,Fiorenze Huthart,926
+189618,Sanford Hospital,Blagoevgrad,Bulgaria,Bertie Bony,989
+709412,Boehm Hospital,Koceljeva,Serbia,Hyacinthia Cowthart,677
+383561,Hane Hospital,Peterhof,Russia,Sander Vsanelli,83
+284529,Wiza Hospital,Vyshneye Dolgoye,Russia,Heinrick Neagle,410
+491060,Runolfsson Hospital,Santiago do Cacém,Portugal,Tedman Housin,742
+938447,Grant Hospital,Sabugal,Portugal,Jaquenetta Jacquot,469
+479907,Ruecker Hospital,Silute,Lithuania,Corliss Farbrother,942
+565174,Fisher Hospital,Bordeaux,France,Claybourne Gamon,423
+148772,Lebsack Hospital,Trawniki,Poland,Blakeley Jzak,475
+991792,Herman Hospital,Vrakháti,Greece,Deana Bartholin,242
+176133,Ebert Hospital,Vršac,Serbia,Lurline Pennacci,712
+257946,Thompson Hospital,Zhukovskiy,Russia,Jacquie Chalfont,296
+783284,Roob Hospital,Butel,Macedonia,Adora Guillon,926
+548979,Graham Hospital,Novokuz’minki,Russia,Maynord Berry,352
+440095,Kub Hospital,Boronów,Poland,Carlin Bogey,294
+492259,Cummerata Hospital,Verkhnyaya Belka,Ukraine,Krishna Blincow,75
+546714,Donnelly Hospital,Sollefteå,Sweden,Daniele Cathcart,526
+377249,Considine Hospital,Kopychyntsi,Ukraine,Lissi Rollason,521
+441485,Harber Hospital,Ordzhonikidzevskaya,Russia,Muffin Relfe,887
+686202,Johns Hospital,Magadan,Russia,Shoshana Brignell,380
+674103,Stanton Hospital,Kamyanyets,Belarus,Akim Makepeace,203
+780034,Gleichner Hospital,Volkhov,Russia,Sibilla Brockway,89
+555952,Marks Hospital,Kunów,Poland,Luce Mosdill,421
+533517,Hickle Hospital,Maştağa,Azerbaijan,Jeri Rusling,509
+544355,Fritsch Hospital,Solnice,Czech Republic,Nanon Tetla,202
+752237,Dach Hospital,Pedreira,Portugal,Rey Verdie,905
+192004,Klein Hospital,Haradzyeya,Belarus,Lindie Farny,514
+042418,McCullough Hospital,Skaryszew,Poland,Ursola Ableson,942
+226380,Gottlieb Hospital,Lyskovo,Russia,Lyssa Bottom,422
+935915,Dooley Hospital,Bondy,France,Prentiss Leyman,73
+010533,Fahey Hospital,Obrenovac,Serbia,Ogdan Frid,278
+766525,Satterfield Hospital,Horki,Belarus,Noland Barck,932
+683279,Ondricka Hospital,Évry,France,Berry Boobier,453
+557716,Lakin Hospital,Dykan’ka,Ukraine,Jodi Hymer,722
+993980,Gleichner Hospital,Arklow,Ireland,Diego Moncey,333
+847781,Legros Hospital,Montfort-sur-Meu,France,Demetrius Blabber,319
+256345,Zulauf Hospital,Ust’-Kalmanka,Russia,Salaidh Cammocke,616
+805165,Bernier Hospital,Mnich,Poland,Ellissa Gilleon,601
+426822,Ratke Hospital,Lipka,Poland,Sharona Boxhall,375
+616025,Rodriguez Hospital,Antimácheia,Greece,Goddart Yearsley,665
+475262,Fay Hospital,Uyskoye,Russia,Catina Lumbers,770
+938683,Cremin Hospital,Messina,Italy,Matty Gillice,80
+898730,Stanton Hospital,Norakert,Armenia,Jodie Laverty,164
+611260,Mraz Hospital,Beijós,Portugal,Romy Vasilmanov,521
+236903,Kshlerin Hospital,Vlycháda,Greece,Sargent Jaffa,642
+147205,McLaughlin Hospital,Mingelchaur,Azerbaijan,Westbrooke Madders,245
+611750,Kilback Hospital,Napoli,Italy,Jarret Dawkes,53
+538383,Dietrich Hospital,Gijon,Spain,Raffarty Bolletti,146
+749297,Bashirian Hospital,Vol’no-Nadezhdinskoye,Russia,Hallsy Carbry,547
+720326,Cronin Hospital,Dobra,Poland,Tildi Bellon,621
+879821,Bayer Hospital,Omiš,Croatia,Alexandros Lopez,857
+259747,Steuber Hospital,Velyka Pysarivka,Ukraine,Clem Stanbro,167
+225218,Wilkinson Hospital,Shchëkino,Russia,Odessa Penning,811
+576531,Bogan Hospital,Alvega,Portugal,Lewes McQuilty,155
+140074,Tillman Hospital,Fréjus,France,Dixie Kernan,199
+652274,Bode Hospital,Berģi,Latvia,Barr Lacheze,844
+772247,Gusikowski Hospital,Apeldoorn,Netherlands,Martica Hanvey,259
+725645,Tillman Hospital,Angoulême,France,Donia Waters,40
+364668,Klein Hospital,Alcains,Portugal,Merrel Moncarr,845
+873909,Wisozk Hospital,Saltsjöbaden,Sweden,Flemming Buscombe,494
+642111,Hagenes Hospital,Mina de São Domingos,Portugal,Roselle Geerdts,125
+722361,Brakus Hospital,Lidzbark,Poland,Chadwick Guilbert,138
+548828,Effertz Hospital,Wojnicz,Poland,Alis Lamswood,765
+678036,Durgan Hospital,Pomiechówek,Poland,Alikee Jolin,702
+207079,Hyatt Hospital,Manevychi,Ukraine,Margarette Caudell,543
+336645,Kunde Hospital,Castelo,Portugal,Armand Tuffell,124
+737184,Waelchi Hospital,Inya,Russia,Ginni Toxell,854
+540786,Orn Hospital,Älvängen,Sweden,Farra Filewood,654
+748630,Ruecker Hospital,Kasimov,Russia,Fulvia Fouracres,490
+720801,Stoltenberg Hospital,Yasinya,Ukraine,Myrtle Jossum,517
+045018,Ebert Hospital,Khiv,Russia,Tine Wyre,300
+014465,Satterfield Hospital,Peraía,Greece,Maurizio Swiffan,657
+253771,Bayer Hospital,Njurunda,Sweden,Bradley Lafflina,397
+183085,Swaniawski Hospital,'s-Hertogenbosch,Netherlands,Dougy Musgrove,645
+906421,Simonis Hospital,Guimarães,Portugal,Garrik Bromige,757
+937929,Corkery Hospital,Birr,Ireland,Benjie Brandes,299
+629969,Feeney Hospital,Oslo,Norway,Aaron Baudinelli,800
+854727,Buckridge Hospital,Corga,Portugal,Sheila Ashby,596
+459860,Lesch Hospital,Paris 11,France,Sapphire Grishankov,931
+255763,Bradtke Hospital,Lille,France,Terrance Kenan,509
+251428,Crooks Hospital,Paris 16,France,Sayres Wardingly,790
+100118,Stamm Hospital,Sannikovo,Russia,Paton Allgood,223
+018647,Hahn Hospital,Besançon,France,Tanhya Ciabatteri,999
+059099,Sanford Hospital,Bilozerka,Ukraine,Tan Camidge,87
+580021,Harris Hospital,Psáry,Czech Republic,Mavra Epinoy,400
+231579,Legros Hospital,Gœsdorf,Luxembourg,Kris Spohr,678
+313627,Kirlin Hospital,Kerċem,Malta,Karoline Milson,497
+950346,Hilpert Hospital,Birr,Ireland,Bonny Poulsen,257
+297297,Prohaska Hospital,Starobachaty,Russia,Adler Mapson,588
+449818,Rodriguez Hospital,Kamennogorsk,Russia,Leland Raven,96
+491093,Gaylord Hospital,Rychvald,Czech Republic,Juliet Kinsley,370
+016389,Abernathy Hospital,Peterhof,Russia,Gene Merkle,202
+698293,Graham Hospital,Dąbrowa,Poland,Renata Baford,784
+948540,Nicolas Hospital,Klina,Kosovo,Farand Olivier,336
+654665,Weimann Hospital,Quimper,France,Kerry Chue,564
+923905,Lueilwitz Hospital,Dobrošte,Macedonia,Marybelle Janko,736
+811910,Goldner Hospital,Verkhniy Yasenov,Ukraine,Clementine Guiver,263
+550388,Trantow Hospital,Štítná nad Vláří,Czech Republic,Shurlock Hars,327
+722729,Prosacco Hospital,Töreboda,Sweden,Beverlee Selbie,448
+332267,Stamm Hospital,Nasielsk,Poland,Vinny Ajsik,985
+877500,Trantow Hospital,Cortes,Portugal,Chery Scorey,536
+604360,Klein Hospital,Bergen,Norway,Linnea Doughton,885
+385660,Jacobson Hospital,Tatarbunary,Ukraine,Rosetta Galego,834
+083599,Kutch Hospital,Gniechowice,Poland,Carry Lamps,637
+565261,Powlowski Hospital,Xylotymbou,Cyprus,Caterina Blowing,690
+925774,Braun Hospital,Kombësi,Albania,Roley Loos,938
+184270,Gorczany Hospital,Clichy,France,Melosa Locks,279
+312990,Langworth Hospital,Kiikala,Finland,Casie Reinbach,483
+107756,Fay Hospital,Hulyaypole,Ukraine,Edi Abbitt,935
+425876,Greenholt Hospital,Molchanovo,Russia,Felike Bertin,397
+491478,Wuckert Hospital,Sé,Portugal,Brig Philo,348
+265499,Bode Hospital,Rokitno,Poland,Salvador Waud,330
+208129,Daugherty Hospital,Pinhal de Frades,Portugal,Lezley Hatfull,32
+769781,Erdman Hospital,Paris La Défense,France,Hersh Fairham,571
+017839,Luettgen Hospital,Kobylanka,Poland,Fowler Tchaikovsky,816
+283770,Runte Hospital,Abóboda,Portugal,Stacee McKall,419
+524249,Kub Hospital,Shemursha,Russia,Rory Robarts,758
+859566,Daugherty Hospital,Zdíkov,Czech Republic,Vernon Radage,171
+350400,Willms Hospital,Sączów,Poland,Dionis Slayford,723
+146909,Stamm Hospital,Tyazhinskiy,Russia,Kania McCrea,16
+533813,Fisher Hospital,Tranås,Sweden,Viola Sjostrom,679
+758702,Rosenbaum Hospital,Murom,Russia,Liana Hadland,816
+439674,Farrell Hospital,Budapest,Hungary,Dela Caws,981
+670557,Thiel Hospital,Täby,Sweden,Guillaume Laetham,797
+996823,Turcotte Hospital,Chuchkovo,Russia,Emanuele Rubes,318
+436217,Veum Hospital,Vila Ribeiro,Portugal,Tracey Wadlow,132
+116132,Dach Hospital,Visby,Sweden,Cthrine O'Crevan,588
+005819,Aimonetti Hospital,Librazhd,Albania,Kahaleel Gillio,704
+707791,Weimann Hospital,Irbit,Russia,Pall Gludor,863
+445565,Douglas Hospital,Béziers,France,Madelaine Overy,832
+053391,Howell Hospital,Pytalovo,Russia,Stanton Caro,167
+940768,Weissnat Hospital,Orléans,France,Kakalina Klimov,817
+918530,Rau Hospital,Montalegre,Portugal,Eugenie Timmermann,864
+087721,Toy Hospital,Volochys’k,Ukraine,Randal Filippazzo,919
+070888,Blanda Hospital,Nema,Russia,Field Brumbye,105
+026312,Mohr Hospital,Znomenka,Ukraine,Lacy Moyes,820
+864210,Wolff Hospital,Linköping,Sweden,Corrina Calbaithe,28
+995414,Wilderman Hospital,Berlin,Germany,Wiatt Blaylock,734
+762990,Gulgowski Hospital,Delães,Portugal,Berna Dohms,601
+881468,Labadie Hospital,Portela,Portugal,Fairleigh Upsale,298
+043882,Keeling Hospital,Kalej,Poland,Abagail Schimmang,654
+274401,Casper Hospital,Buinsk,Russia,Nikos Arrault,717
+715328,Friesen Hospital,Czarnowąsy,Poland,Brendis Ricoald,189
+239651,Osinski Hospital,Tworków,Poland,Stefano Trudgion,909
+203520,Hermiston Hospital,Stan-Bekhtemir,Russia,Scotti Connors,894
+935509,Paucek Hospital,Uppsala,Sweden,Hervey Warmisham,915
+465367,Heidenreich Hospital,Angers,France,Marga Tappor,205
+340771,Cruickshank Hospital,Mrkonjić Grad,Bosnia and Herzegovina,Emanuele Talloe,14
+402923,Stokes Hospital,Cruzeiro,Portugal,Nicki Jallin,583
+162796,Hane Hospital,Hamburg,Germany,Antony Roache,967
+420973,Pouros Hospital,Veřovice,Czech Republic,Kameko Blanking,289
+927460,Nader Hospital,Staryye Atagi,Russia,Gena Perrycost,363
+904633,Pacocha Hospital,Pýli,Greece,Juieta Dyet,688
+577001,O'Connell Hospital,Vnanje Gorice,Slovenia,King Merigon,867
+117061,Huels Hospital,Kuznechikha,Russia,Lenette Barnwille,428
+362800,Grant Hospital,Sunne,Sweden,Salomon Rudall,480
+656209,Adams Hospital,Kavallári,Greece,Odey Winspar,937
+006912,Boehm Hospital,Straldzha,Bulgaria,Simonne Gilardengo,675
+468863,Gutkowski Hospital,Kamenka,Russia,Gloriane Cowlard,963
+215531,Schultz Hospital,Aráchova,Greece,Koren Lown,342
+179701,Hirthe Hospital,Wołomin,Poland,Amalia Caulkett,928
+023387,Russel Hospital,Woippy,France,Rodolfo Gauvin,293
+262721,Daniel Hospital,Agrelo,Portugal,Brien McCreadie,312
+315330,Dibbert Hospital,Putinci,Serbia,Josefina Ewins,268
+555857,Pfeffer Hospital,Radzanów,Poland,Randie Miroy,986
+701197,Torphy Hospital,Pinhal da Marquesa,Portugal,Patty Ballay,930
+987435,Pouros Hospital,Avignon,France,Gunter Lorenzetti,143
+356860,Rohan Hospital,Lebedyn,Ukraine,Brett Capeloff,535
+667579,Shields Hospital,Příbram,Czech Republic,Stevie Whittles,87
+475248,Nitzsche Hospital,Elista,Russia,Man Hender,381
+478818,Marvin Hospital,Plyeshchanitsy,Belarus,Cherin Skone,476
+473682,Hickle Hospital,Zaječov,Czech Republic,Oliy Oakly,62
+691539,Prohaska Hospital,Strančice,Czech Republic,Janice Chawkley,840
+255228,Wilderman Hospital,Zakupne,Ukraine,Karissa Ivashkin,77
+802318,Wiza Hospital,Llazicë,Kosovo,Pembroke Karczinski,250
+345099,Macejkovic Hospital,Clamart,France,Isacco Steuart,840
+297063,Wyman Hospital,Topola,Serbia,Sibyl Ludewig,461
+105762,Collins Hospital,Saint-Cloud,France,Elga Genney,717
+043638,Collier Hospital,Jönköping,Sweden,Malinda Sheffield,49
+298603,Harris Hospital,Ajaccio,France,Modestia Cleminson,582
+331385,DuBuque Hospital,Tlučná,Czech Republic,Lane Mathes,395
+381098,Trantow Hospital,Drakhtik,Armenia,Ebony Chilton,201
+792627,Cremin Hospital,Burgau,Portugal,Karlik Petrus,624
+496952,Durgan Hospital,Ternopil’,Ukraine,Rupert Worsalls,814
+027368,Witting Hospital,Garbolovo,Russia,Wilmer Jedraszek,876
+637855,Hackett Hospital,Marseille,France,Gracia Elcox,285
+422243,Schamberger Hospital,Broby,Finland,Nicoli Gittoes,620
+849601,Runolfsson Hospital,Domont,France,Kattie MacGruer,318
+429122,Feil Hospital,Chervonohryhorivka,Ukraine,Guido Strong,872
+263068,Ankunding Hospital,Celorico de Basto,Portugal,Sharon Saladin,38
+766916,Sauer Hospital,Primorsko-Akhtarsk,Russia,Giffard Niesing,182
+747562,Rath Hospital,Bessonovka,Russia,Larry Marchbank,137
+464314,Hayes Hospital,Tsimlyansk,Russia,Boycie Butt Gow,979
+743396,Denesik Hospital,Vawkavysk,Belarus,Wendie Salt,923
+191277,Grimes Hospital,Santa Cruz,Portugal,Paige Rime,738
+540224,Rohan Hospital,Canhestros,Portugal,Idell Wemes,373
+227264,Bogisich Hospital,Enköping,Sweden,Chrissie Lamborne,184
+871113,Price Hospital,Novais,Portugal,Mella Hail,194
+481672,Grady Hospital,Évora,Portugal,Mikel Karpinski,854
+456339,Corkery Hospital,Amsterdam Oud Zuid en Rivierenbuurt,Netherlands,Gloriana Boolsen,28
+941226,Stiedemann Hospital,Brailiv,Ukraine,Mace Gilhespy,588
+394840,Kautzer Hospital,Bílovice,Czech Republic,Mariele Worssam,893
+605851,Maggio Hospital,Jistebnice,Czech Republic,Kaleb Ingolotti,408
+424188,Zieme Hospital,Francova Lhota,Czech Republic,Niki Cartner,23
+860840,Purdy Hospital,Berezanka,Ukraine,Johanna Stonhouse,384
+884725,Wiza Hospital,Şirvan,Azerbaijan,Xenos Tyre,915
+536300,Koch Hospital,Mircze,Poland,Leicester Skryne,694
+223777,Bauch Hospital,Kultuk,Russia,Sue Hestrop,972
+190846,Cummerata Hospital,Berlin,Germany,Grantham Ead,480
+829699,Monahan Hospital,Marseille,France,Brandie Peche,61
+923047,Gutkowski Hospital,Yelyzavethradka,Ukraine,Othelia Trueman,155
+014530,Kuhlman Hospital,Urshel’skiy,Russia,Lorianne Orridge,413
+173334,Rogahn Hospital,Rogóźno,Poland,Lilas Hairyes,999
+875177,King Hospital,Siekierczyn,Poland,Keri Flindall,521
+192787,Bradtke Hospital,Buzdyak,Russia,Rene Kingswood,41
+404645,Gaylord Hospital,Uglyanets,Russia,Devin Oaks,519
+658413,Berge Hospital,Smolino,Russia,Wash Ivanyushkin,58
+156672,Langosh Hospital,Azurva,Portugal,Noella Verling,657
+181869,Nitzsche Hospital,Peterhof,Russia,Ive Hillam,370
+172141,Senger Hospital,Pervomayskoye,Russia,Erhard Philipsson,889
+298533,Hackett Hospital,Gozdnica,Poland,Vere Eloy,227
+163710,Wiegand Hospital,Picoto,Portugal,Gwenny Mahoney,135
+530920,Runte Hospital,Inta,Russia,Ellene Cheyenne,115
+040273,Turner Hospital,Hrvace,Croatia,Erina Nacci,811
+730217,Block Hospital,Ozorków,Poland,Conway Lancley,951
+045394,Hamill Hospital,Oslo,Norway,Andre Gilvear,452
+675003,Kertzmann Hospital,Klatovy,Czech Republic,Zack Mixworthy,411
+216694,Lubowitz Hospital,Stockholm,Sweden,Lyndsay Crookston,628
+149473,Hills Hospital,Luzino,Poland,Emili Woofenden,731
+923906,Green Hospital,Dubki,Russia,Leonie Sinnett,595
+069822,Powlowski Hospital,Marseille,France,Wandie Sandercock,813
+214340,Schulist Hospital,Stetseva,Ukraine,Codee Wickrath,992
+575722,White Hospital,Västervik,Sweden,Collie Corstorphine,604
+184618,Corwin Hospital,Vetrino,Bulgaria,Rob Wagen,340
+287259,Schulist Hospital,Norrtälje,Sweden,Hinze Muccino,344
+043645,Barton Hospital,Ochakiv,Ukraine,Ladonna Gant,931
+805771,Runte Hospital,Penza,Russia,Lyndsay Grandison,432
+031704,Stiedemann Hospital,Bełsznica,Poland,Stormy Marco,923
+173537,Keebler Hospital,La Ravoire,France,Sile Zumbusch,772
+293777,Mayer Hospital,Uvarovo,Russia,Gan De Ath,67
+410837,Krajcik Hospital,Thorpe,United Kingdom,Candy Edmenson,175
+425483,Marquardt Hospital,Mariestad,Sweden,Reina Lachaize,362
+624346,O'Connell Hospital,Ozëry,Russia,Stinky Bernadon,940
+758375,Christiansen Hospital,Candoso,Portugal,Paxton Pendock,206
+850277,Gleichner Hospital,Onega,Russia,Lyda Nore,799
+256407,Jakubowski Hospital,Strážná,Czech Republic,Roshelle Blaxton,181
+751844,Reilly Hospital,Nevinnomyssk,Russia,Carly Dumingo,17
+318094,Lubowitz Hospital,Pinhal Novo,Portugal,Farra Creaney,772
+837466,Wehner Hospital,Lwówek Śląski,Poland,Julissa Crummie,944
+112835,Tromp Hospital,Karlobag,Croatia,Cully Bruton,161
+534102,Beatty Hospital,Osieczany,Poland,Elvira Spellacey,694
+807448,Rogahn Hospital,Blyznyuky,Ukraine,Virginia Bunclark,30
+315695,Lang Hospital,Albergaria,Portugal,Krystyna Friday,432
+923645,Schinner Hospital,Idvor,Serbia,Melicent Really,649
+300747,Hamill Hospital,Zvenyhorodka,Ukraine,Jemie Danielot,901
+458958,Langosh Hospital,Hostomice,Czech Republic,Sissy Driscoll,450
+860035,Bogisich Hospital,Smolenskoye,Russia,Lucais Burges,785
+119565,Ledner Hospital,Kołbiel,Poland,Consuelo Brettell,588
+215359,Rice Hospital,Ejmiatsin,Armenia,Genevra Clemmey,866
+715330,Brown Hospital,Salmi,Russia,Daphne Challenor,420
+245508,King Hospital,Zambujeira,Portugal,Shermy Normansell,528
+253586,Daugherty Hospital,Glushkovo,Russia,Lincoln Pidcock,9
+729193,Breitenberg Hospital,Kasakh,Armenia,Eran McGeechan,320
+922918,Abbott Hospital,Zabłocie,Poland,Hillard Seczyk,371
+940170,Sporer Hospital,Příbram,Czech Republic,Jaymee Delgardo,942
+127649,Okuneva Hospital,Drobin,Poland,Nicoli Feary,327
+347287,Kuhic Hospital,Nasielsk,Poland,Daile Stroobant,957
+834235,White Hospital,Myślenice,Poland,Thia Sives,413
+584897,Lang Hospital,Ath,Belgium,Nettle Langer,378
+385049,Muller Hospital,Wisła,Poland,Delly Sausman,949
+707560,Heathcote Hospital,Uppsala,Sweden,Steward Salsbury,444
+755000,Kerluke Hospital,Norsborg,Sweden,Byrom Stubbe,734
+319853,Altenwerth Hospital,Grębków,Poland,Terrye Kleinstub,929
+485085,Johnston Hospital,Niort,France,Berri Altree,566
+685877,Graham Hospital,Ponte Nova,Portugal,Mureil Abramovitz,199
+324992,Fisher Hospital,Corujeira,Portugal,Wang Souness,810
+273935,Ortiz Hospital,Protvino,Russia,Miriam Vannucci,224
+510843,Osinski Hospital,Linëvo,Russia,Patrizio Signoret,867
+837406,Rath Hospital,Siekierczyn,Poland,Kass Prescott,492
+293078,Goodwin Hospital,Mozhga,Russia,Nanine Ream,396
+135463,Schamberger Hospital,Tomaševac,Serbia,Vilma Matashkin,552
+358810,Ziemann Hospital,Oldřišov,Czech Republic,Zacherie Livesley,832
+658439,Shields Hospital,Paris 11,France,Fay Boydon,970
+180847,Lesch Hospital,Kuzovatovo,Russia,Carmela Prendeville,60
+295477,Donnelly Hospital,Kulpin,Serbia,Nancy Spelman,541
+412593,Steuber Hospital,Humpolec,Czech Republic,Bethany Rickersy,52
+181121,Schulist Hospital,Elista,Russia,Malva Hearnden,717
+118402,Klocko Hospital,Velestíno,Greece,Lynn Wisdom,417
+719010,Wintheiser Hospital,Połomia,Poland,Jone Matussow,542
+601916,Maggio Hospital,Kąty Wrocławskie,Poland,Ava Blockey,299
+954202,Conroy Hospital,Daugavgrīva,Latvia,Willa Quinby,357
+015583,Sporer Hospital,Azenhas do Mar,Portugal,Katherine Pettendrich,646
+296487,Miller Hospital,Kotovs’k,Ukraine,Violetta Longcake,374
+284949,Prosacco Hospital,Pereiros,Portugal,Enrika Angus,415
+520729,Weber Hospital,Tukhlya,Ukraine,Jeromy Bosquet,426
+557210,Farrell Hospital,Pérama,Greece,Kellsie Crowhurst,379
+345934,Ortiz Hospital,Meylan,France,Rosalia Hallett,469
+806105,Bayer Hospital,Stockholm,Sweden,Merrel Yashunin,499
+019787,Kshlerin Hospital,Shchuchin,Belarus,Avie Muncaster,917
+318306,Hessel Hospital,São Vicente de Ferreira,Portugal,Wilbur Ribey,960
+610706,Waelchi Hospital,Qabaqçöl,Azerbaijan,Fionna Hiscoe,254
+145396,Harber Hospital,Lianovérgi,Greece,Tanhya Gaynesford,21
