@@ -1,4 +1,13 @@
-.Rproj.user
+*~
+__pycache__
+*.aux
+*.log
+*.out
+*.pyc
+.DS_Store
 .Rhistory
+.Rproj.user
 .RData
-.Ruserdata
+auth.py
+auth.R
+Thumbs.db
