@@ -20,14 +20,14 @@ kri <- rbind(kri1, kri2)
 
 donor1 <- read_csv("Podatki/donor1.csv", 
                    col_types = cols(Hemoglobin = col_number(), 
-                                    Starost = col_integer(), Telefon = col_number(), 
+                                    Starost = col_integer(), Telefon = col_character(), 
                                     Teza = col_number(), datum_donacije = col_date(format = "%d/%m/%Y"), 
                                     id = col_integer()))
 
 
 donor2 <- read_csv("Podatki/donor2.csv", 
                    col_types = cols(Hemoglobin = col_number(), 
-                                    Starost = col_integer(), Telefon = col_number(), 
+                                    Starost = col_integer(), Telefon = col_character(), 
                                     Teza = col_number(), datum_donacije = col_date(format = "%d/%m/%Y"), 
                                     id = col_integer()))
 
@@ -41,12 +41,12 @@ donator <- rbind(donor1, donor2)
 
 prejemnik1 <- read_csv("Podatki/prejemnik1.csv", 
                        col_types = cols(Starost = col_integer(), 
-                                        Telefon = col_number(), datum_vloge = col_date(format = "%d/%m/%Y"), 
+                                        Telefon = col_character(), datum_vloge = col_date(format = "%d/%m/%Y"), 
                                         id = col_integer()))
 
 prejemnik2 <- read_csv("Podatki/prejemnik2.csv", 
                        col_types = cols(Starost = col_integer(), 
-                                        Telefon = col_number(), datum_vloge = col_date(format = "%d/%m/%Y"), 
+                                        Telefon = col_character(), datum_vloge = col_date(format = "%d/%m/%Y"), 
                                         id = col_integer()))
 
 prejemnik <- rbind(prejemnik1, prejemnik2)
