@@ -84,6 +84,15 @@ ustvari_tabele <- function(){
     
     #nahaja <-
     
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    
+    dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_katjam TO javnost", con=conn))
+    dbSendQuery(conn, build_sql("GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost", con=conn))    
+    
   }, finally = {
     # Na koncu nujno prekinemo povezavo z bazo,
     # saj preveč odprtih povezav ne smemo imeti
@@ -118,6 +127,16 @@ pravice <- function(){
     dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_katjam TO jonag WITH GRANT OPTION", con=conn))
     
     dbSendQuery(conn, build_sql("GRANT ALL ON SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    
+    dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_katjam TO javnost", con=conn))
+    dbSendQuery(conn, build_sql("GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost", con=conn))    
+    
   }, finally = {
     # Na koncu nujno prekinemo povezavo z bazo,
     # saj preveč odprtih povezav ne smemo imeti

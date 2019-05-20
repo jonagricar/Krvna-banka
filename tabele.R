@@ -1,3 +1,23 @@
+# Knjižnice
+
+library(knitr)
+library(dplyr)
+library(readr)
+library(rvest)
+library(gsubfn)
+library(ggplot2)
+library(reshape2)
+library(shiny)
+library(devtools)
+library(tidyr)
+library(digest)
+library(rgeos)
+library(maptools)
+library(rmarkdown)
+library(DT)
+library(extrafont)
+
+
 # Uvozimo podatke za bolnišnice
 
 bolnisnica <- read_csv("Podatki/bolnisnica.csv", 
