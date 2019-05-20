@@ -111,4 +111,4 @@ kri <- cbind(kri[, c(2:4)], vrecka_id_tabela)
 kri <- kri[, c(4, 1:3)]
 colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "krvna_skupina", "datum prejetja")
 
-hehe
+
