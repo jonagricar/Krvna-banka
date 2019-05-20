@@ -95,20 +95,22 @@ vrecka_id_tabela <- as.data.frame(vrecka_id)
 
 donator <- cbind(donator[, c(2:10)], don_id)
 donator <- donator[, c(10, 1:9)]
-colnames(donator) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
-                       "teza", "hemoglobin", "datum_donacije", "krvna_skupina")
+colnames(donator) <- c("id", "ime", "kraj", "država", "starost", "telefon",
+                       "teža", "hemoglobin", "datum donacije", "krvna skupina")
 
 prejemnik <- cbind(prejemnik[, c(2:8)], prej_id)
 prejemnik <- prejemnik[, c(8, 1:7)]
-colnames(prejemnik) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
-                         "datum_vloge", "krvna_skupina")
+colnames(prejemnik) <- c("id", "ime", "kraj", "država", "starost", "telefon",
+                         "datum vloge", "krvna skupina")
 
 bolnisnica <- cbind(bolnisnica[, c(2:6)], bol_id)
 bolnisnica <- bolnisnica[, c(6, 1:5)]
-colnames(bolnisnica) <- c("id", "ime", "kraj", "drzava", "direktor", "zaloga")
+colnames(bolnisnica) <- c("id", "ime", "kraj", "država", "direktor", "zaloga")
 
 kri <- cbind(kri[, c(2:4)], vrecka_id_tabela)
 kri <- kri[, c(4, 1:3)]
-colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "krvna_skupina", "datum prejetja")
+colnames(kri) <- c("številka vrecke", "hemoglobin", "krvna skupina", "datum prejetja")
 
+# Zaloga bolnišnice: ena vrečka ima 400ml krvi
 
+bolnisnica$zaloga <- bolnisnica$zaloga * 0.4
