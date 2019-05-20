@@ -72,9 +72,6 @@ donator <- cbind(donator, vektor_donator)
 
 prejemnik <- cbind(prejemnik, vektor_prejemnik)
 
-colnames(prejemnik) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
-                         "datum_vloge", "krvna_skupina")
-
 
 # Stolpec datum_prejetja v tabeli kri se ujema s stolpcem datum_donacije iz tabele donator,
 # dodamo pa še podatek o hemoglobinu in krvni skupini donatorja vrečke krvi
@@ -83,18 +80,17 @@ dodatek <- donator[, c(8, 10, 9)]
 
 kri <- cbind(kri[, c(1)], dodatek)
 
-colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "krvna_skupina", "datum_prejetja")
 
 # Popravimo id-je in stevilko_vrecke
 
-vsi_id <- sample(100000:999999, size = 6000, replace = FALSE)
+vsi_id <- sample(100000:999999, size = 5000, replace = FALSE)
 vektor_id <- as.data.frame(vsi_id)
 
 don_id <- as.data.frame(vektor_id[c(1:2000),])
 prej_id <- as.data.frame(vektor_id[c(2001:4000),])
-bol_id <- as.data.frame(vektor_id[c(4001:6000),])
+bol_id <- as.data.frame(vektor_id[c(4001:5000),])
 
-vrecka_id <- sample(10000000:99999999, size = 6000, replace = FALSE)
+vrecka_id <- sample(10000000:99999999, size = 2000, replace = FALSE)
 vrecka_id_tabela <- as.data.frame(vrecka_id)
 
 donator <- cbind(donator[, c(2:10)], don_id)
@@ -102,4 +98,16 @@ donator <- donator[, c(10, 1:9)]
 colnames(donator) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
                        "teza", "hemoglobin", "datum_donacije", "krvna_skupina")
 
+prejemnik <- cbind(prejemnik[, c(2:8)], prej_id)
+prejemnik <- prejemnik[, c(8, 1:7)]
+colnames(prejemnik) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
+                         "datum_vloge", "krvna_skupina")
+
+bolnisnica <- cbind(bolnisnica[, c(2:6)], bol_id)
+bolnisnica <- bolnisnica[, c(6, 1:5)]
+colnames(bolnisnica) <- c("id", "ime", "kraj", "drzava", "direktor", "zaloga")
+
+kri <- cbind(kri[, c(2:4)], vrecka_id_tabela)
+kri <- kri[, c(4, 1:3)]
+colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "krvna_skupina", "datum prejetja")
 
