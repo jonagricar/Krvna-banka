@@ -24,6 +24,9 @@ delete_table <- function(){
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS prejemnik CASCADE", con=conn))
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS bolnisnica CASCADE", con=conn))
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS kri CASCADE", con=conn))
+    #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS prejme CASCADE", con=conn))
+    #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS hrani CASCADE", con=conn))
+    #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS nahaja CASCADE", con=conn))
     
   }, finally = {
     dbDisconnect(conn)
@@ -36,19 +39,19 @@ ustvari_tabele <- function(){
                       user = user, password = password)
     #tabele
     donator <- dbSendQuery(conn, build_sql("CREATE TABLE donator (
-                                         id numeric PRIMARY KEY,
+                                         id integer PRIMARY KEY,
                                          ime text,
                                          kraj text,
                                          drzava text,
                                          starost integer,
-                                         telefon numeric,
+                                         telefon text,
                                          teza numeric,
                                          hemoglobin numeric,
                                          datum_donacije date,
                                          krvna_skupina text)", con=conn))
     
     prejemnik <- dbSendQuery(conn, build_sql("CREATE TABLE prejemnik (
-                                           id numeric PRIMARY KEY,
+                                           id integer PRIMARY KEY,
                                            ime text,
                                            kraj text,
                                            drzava text,
@@ -58,7 +61,7 @@ ustvari_tabele <- function(){
                                            krvna_skupina text)", con=conn))
     
     bolnisnica <- dbSendQuery(conn, build_sql("CREATE TABLE bolnisnica (
-                                           id numeric PRIMARY KEY,
+                                           id integer PRIMARY KEY,
                                            ime text,
                                            kraj text,
                                            drzava text,
@@ -66,7 +69,7 @@ ustvari_tabele <- function(){
                                            zaloga numeric)", con=conn))
     
     kri <- dbSendQuery(conn, build_sql("CREATE TABLE kri (
-                                            stevika_vrecke numeric PRIMARY KEY,
+                                            stevilka_vrecke integer PRIMARY KEY,
                                             hemoglobin numeric,
                                             krvna_skupina text,
                                             datum_prejetja date)", con=conn))
@@ -77,12 +80,17 @@ ustvari_tabele <- function(){
     #                                       donor_datum_prejetja TEXT NOT NULL REFERENCES donor(datum_donacije),
     #                                       kri_datum_prejetja TEXT NOT NULL REFERENCES kri(datum_prejetja))", con=conn))
     
-    #to tut vrjetn ne rabva?: prejme <- dbSendQuery(conn, build_sql("CREATE TABLE hrani(
-    #                                        donor_datum_prejetja TEXT NOT NULL REFERENCES donor(datum_donacije),
-    #                                       kri_datum_prejetja TEXT NOT NULL REFERENCES kri(datum_prejetja))", con=conn))
-    #hrani <-
+    #prejme <- dbSendQuery(conn, build_sql("CREATE TABLE hrani(
+    #           prejemnik_id TEXT NOT NULL REFERENCES prejemnik(id),
+    #           kri_stevilka_vrecke TEXT NOT NULL REFERENCES kri(stevilka_vrecke))", con=conn))
     
-    #nahaja <-
+    #hrani <- dbSendQuery(conn, build_sql("CREATE TABLE hrani(
+    #           kri_stevilka_vrecke TEXT NOT NULL REFERENCES kri(stevilka_vrecke),
+    #           bolnisnica_id TEXT NOT NULL REFERENCES bolnisnica(id))", con=conn))
+    
+    #nahaja <- dbSendQuery(conn, build_sql("CREATE TABLE hrani(
+    #           prejemnik_id TEXT NOT NULL REFERENCES prejemnik(id),
+    #           bolnisnica_id TEXT NOT NULL REFERENCES bolnisnica(id))", con=conn))
     
   }, finally = {
     # Na koncu nujno prekinemo povezavo z bazo,
@@ -100,6 +108,12 @@ insert_data <- function(){
     conn <- dbConnect(drv, dbname = db, host = host, user = user, password = password)
     
     dbWriteTable(conn, name="donator", donator, append=T, row.names=FALSE)
+    dbWriteTable(conn, name="prejemnik", prejemnik, append=T, row.names=FALSE)
+    dbWriteTable(conn, name="bolnisnica", bolnisnica, append=T, row.names=FALSE)
+    dbWriteTable(conn, name="kri", kri, append=T, row.names=FALSE)
+    #dbWriteTable(conn, name="prejme", prejme, append=T, row.names=FALSE)
+    #dbWriteTable(conn, name="hrani", hrani, append=T, row.names=FALSE)
+    #dbWriteTable(conn, name="nahaja", nahaja, append=T, row.names=FALSE)
     
   }, finally = {
     dbDisconnect(conn) 
@@ -118,6 +132,11 @@ pravice <- function(){
     dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_katjam TO jonag WITH GRANT OPTION", con=conn))
     
     dbSendQuery(conn, build_sql("GRANT ALL ON SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    
   }, finally = {
     # Na koncu nujno prekinemo povezavo z bazo,
     # saj preveč odprtih povezav ne smemo imeti
