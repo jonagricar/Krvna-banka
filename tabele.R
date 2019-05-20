@@ -24,6 +24,7 @@ donor1 <- read_csv("Podatki/donor1.csv",
                                     Teza = col_number(), datum_donacije = col_date(format = "%d/%m/%Y"), 
                                     id = col_integer()))
 
+
 donor2 <- read_csv("Podatki/donor2.csv", 
                    col_types = cols(Hemoglobin = col_number(), 
                                     Starost = col_integer(), Telefon = col_number(), 
@@ -31,6 +32,9 @@ donor2 <- read_csv("Podatki/donor2.csv",
                                     id = col_integer()))
 
 donator <- rbind(donor1, donor2)
+
+
+
 
 
 # Uvozimo podatke za prejemnike
@@ -66,9 +70,6 @@ vektor_prejemnik <- as.data.frame(skupine_prejemnik)
 
 donator <- cbind(donator, vektor_donator)
 
-colnames(donator) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
-                     "teza", "hemoglobin", "datum_donacije", "krvna_skupina")
-
 prejemnik <- cbind(prejemnik, vektor_prejemnik)
 
 colnames(prejemnik) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
@@ -83,3 +84,22 @@ dodatek <- donator[, c(8, 10, 9)]
 kri <- cbind(kri[, c(1)], dodatek)
 
 colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "krvna_skupina", "datum_prejetja")
+
+# Popravimo id-je in stevilko_vrecke
+
+vsi_id <- sample(100000:999999, size = 6000, replace = FALSE)
+vektor_id <- as.data.frame(vsi_id)
+
+don_id <- as.data.frame(vektor_id[c(1:2000),])
+prej_id <- as.data.frame(vektor_id[c(2001:4000),])
+bol_id <- as.data.frame(vektor_id[c(4001:6000),])
+
+vrecka_id <- sample(10000000:99999999, size = 6000, replace = FALSE)
+vrecka_id_tabela <- as.data.frame(vrecka_id)
+
+donator <- cbind(donator[, c(2:10)], don_id)
+donator <- donator[, c(10, 1:9)]
+colnames(donator) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
+                       "teza", "hemoglobin", "datum_donacije", "krvna_skupina")
+
+
