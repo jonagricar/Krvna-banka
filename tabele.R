@@ -17,6 +17,59 @@ library(rmarkdown)
 library(DT)
 library(extrafont)
 
+drzave.slo <- c(
+  "Austria" = "Avstrija",
+  "Belgium" = "Belgija",
+  "Bosnia and Herzegovina" = "Bosna in Hercegovina",
+  "Denmark" = "Danska",
+  "Estonia" = "Estonija",
+  "Switzerland" = "Švica",
+  "France" = "Francija",
+  "Italy" = "Italija",
+  "Liechtenstein" = "Lihtenštajn",
+  "Sweden" = "Švedska",
+  "Luxembourg" = "Luksemburg",
+  "Norway" = "Norveška",
+  "Croatia" = "Hrvaška",
+  "Germany" = "Nemčija",
+  "Slovenia" = "Slovenija",
+  "Portugal" = "Portugalska",
+  "Romania" = "Romunija",
+  "United Kingdom" = "Združeno kraljestvo",
+  "Montenegro" = "Črna Gora",
+  "Turkey" = "Turčija",
+  "Australia" = "Avstralija",
+  "Bulgaria" = "Bolgarija",
+  "Greece" = "Grčija",
+  "Cyprus" = "Ciper",
+  "Hungary" = "Madžarska",
+  "Malta" = "Malta",
+  "Poland" = "Poljska",
+  "Czech Republic" = "Češka",
+  "Spain" = "Španija",
+  "Latvia" = "Latvija",
+  "Lithuania" = "Litva",
+  "Finland" = "Finska",
+  "Ireland" = "Irska",
+  "Iceland" = "Islandija",
+  "Russia" = "Rusija",
+  "Slovakia" = "Slovaška",
+  "Netherlands" = "Nizozemska",
+  "Czech Republic" = "Češka",
+  "Former Yugoslav Republic of Macedonia" = "Makedonija",
+  "Ukraine" = "Ukrajina",
+  "Serbia" = "Srbija",
+  "Albania" = "Albanija",
+  "Andorra" = "Andora",
+  "Armenia" = "Armenija",
+  "Azerbaijan" = "Azerbajdžan",
+  "Belarus" = "Belorusija",
+  "Georgia" = "Gruzija",
+  "Moldova" = "Moldavija",
+  "Monaco" = "Monako",
+  "Macedonia" = "Makedonija"
+)
+
 
 # Uvozimo podatke za bolnišnice
 
@@ -24,6 +77,7 @@ bolnisnica <- read_csv("Podatki/bolnisnica.csv",
                        col_types = cols(id = col_integer(), 
                                         zaloga = col_number()))
 
+bolnisnica <- bolnisnica %>% mutate(drzava = drzave.slo[drzava])
 
 # Uvozimo podatke za kri
 
@@ -35,7 +89,6 @@ kri2 <- read_csv("Podatki/kri2.csv", col_types = cols(datum_prejetja = col_date(
 
 kri <- rbind(kri1, kri2)
 
-
 # Uvozimo podatke za donatorje
 
 donor1 <- read_csv("Podatki/donor1.csv", 
@@ -44,6 +97,8 @@ donor1 <- read_csv("Podatki/donor1.csv",
                                     Teza = col_number(), datum_donacije = col_date(format = "%d/%m/%Y"), 
                                     id = col_integer()))
 
+donor1 <- donor1 %>% mutate(Drzava = drzave.slo[Drzava])
+
 
 donor2 <- read_csv("Podatki/donor2.csv", 
                    col_types = cols(Hemoglobin = col_number(), 
@@ -51,11 +106,9 @@ donor2 <- read_csv("Podatki/donor2.csv",
                                     Teza = col_number(), datum_donacije = col_date(format = "%d/%m/%Y"), 
                                     id = col_integer()))
 
+donor2 <- donor2 %>% mutate(Drzava = drzave.slo[Drzava])
+
 donator <- rbind(donor1, donor2)
-
-
-
-
 
 # Uvozimo podatke za prejemnike
 
@@ -64,13 +117,15 @@ prejemnik1 <- read_csv("Podatki/prejemnik1.csv",
                                         Telefon = col_character(), datum_vloge = col_date(format = "%d/%m/%Y"), 
                                         id = col_integer()))
 
+prejemnik1 <- prejemnik1 %>% mutate(Drzava = drzave.slo[Drzava])
+
 prejemnik2 <- read_csv("Podatki/prejemnik2.csv", 
                        col_types = cols(Starost = col_integer(), 
                                         Telefon = col_character(), datum_vloge = col_date(format = "%d/%m/%Y"), 
                                         id = col_integer()))
+prejemnik2 <- prejemnik2 %>% mutate(Drzava = drzave.slo[Drzava])
 
 prejemnik <- rbind(prejemnik1, prejemnik2)
-
 
 # Funkcija, ki zgenerira naključne krvne skupine za donatorje in prejemnike
 # (sample upošteva pogostost krvnih skupin v Evropi)
