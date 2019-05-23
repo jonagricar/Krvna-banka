@@ -67,7 +67,8 @@ drzave.slo <- c(
   "Georgia" = "Gruzija",
   "Moldova" = "Moldavija",
   "Monaco" = "Monako",
-  "Macedonia" = "Makedonija"
+  "Macedonia" = "Makedonija",
+  "Kosovo" = "Kosovo"
 )
 
 
@@ -170,8 +171,9 @@ vrecka_id_tabela <- as.data.frame(vrecka_id)
 
 donator <- cbind(donator[, c(2:10)], don_id)
 donator <- donator[, c(10, 1:9)]
+donator <- donator[, c(1:7, 9, 10)]
 colnames(donator) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
-                       "teza", "hemoglobin", "datum_donacije", "krvna_skupina")
+                       "teza", "datum_vpisa_v_evidenco", "krvna_skupina")
 
 prejemnik <- cbind(prejemnik[, c(2:8)], prej_id)
 prejemnik <- prejemnik[, c(8, 1:7)]
@@ -184,8 +186,45 @@ colnames(bolnisnica) <- c("id", "ime", "kraj", "drzava", "direktor", "zaloga")
 
 kri <- cbind(kri[, c(2:4)], vrecka_id_tabela)
 kri <- kri[, c(4, 1:3)]
-colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "krvna_skupina", "datum_prejetja")
+kri <- kri[, c(1, 2, 4)]
+colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "datum_prejetja")
 
 # Zaloga bolnišnice: ena vrečka ima 400ml krvi
 
 bolnisnica$zaloga <- bolnisnica$zaloga * 0.4
+
+#tabele relacij
+donira1 <- as.data.frame(donator[, c(1)])
+donira2 <- as.data.frame(kri[, c(1)])
+
+donira <-cbind(donira1, donira2)
+colnames(donira) <- c("id", "stevilka_vrecke")
+
+prejemnik_pomozna <- prejemnik[ , c(1, 3, 4)]
+bolnisnica_pomozna <- bolnisnica[ , c(1:4)]
+
+#če je bolnišnica v istem kraju kot prejemnik
+bolnisnica_nahaja1 <- left_join(prejemnik_pomozna, bolnisnica_pomozna, by="kraj")
+
+#funkcija, ki izbriše podatke NA
+delete.na <- function(DF, n=0) {
+  DF[rowSums(is.na(DF)) <= n,]
+}
+
+
+nahaja1 <- delete.na(bolnisnica_nahaja1)
+nahaja1 <- nahaja1 %>% group_by(id.x) %>% sample_n(1)
+nahaja1 <- nahaja1[, c(1,4)]
+colnames(nahaja1) <- c("id.x","id")
+
+#če bolnišnica ni v istem kraju kot prejemnik
+ostali <- bolnisnica_nahaja1[ !(bolnisnica_nahaja1$id.x %in% nahaja1$id.x), ]
+colnames(ostali)[colnames(ostali) == "drzava.x"] <- "drzava"
+
+nahaja2 <- left_join(ostali, bolnisnica_pomozna, by="drzava")
+nahaja2 <- nahaja2[, c(1,7)]
+nahaja2 <- nahaja2 %>% group_by(id.x) %>% sample_n(1)
+
+nahaja <- rbind.data.frame(nahaja1, nahaja2)
+#nahaja <- as.data.frame(mapply(c, nahaja1, nahaja2))
+colnames(nahaja) <- c("id_prejemnika", "id_bolnisnice")
