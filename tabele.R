@@ -90,6 +90,7 @@ bolnisnica2 <- read_csv("Podatki/bolnice_dodatno.csv",
                                          zaloga = col_number()))
 
 bolnisnica <- rbind(bolnisnica1, bolnisnica2)
+bolnisnica <- bolnisnica %>% group_by(kraj) %>%  filter(row_number()==1)
 
 bolnisnica <- bolnisnica %>% mutate(drzava = drzave.slo[drzava])
 
@@ -180,12 +181,12 @@ kri <- cbind(kri[, c(1)], dodatek)
 
 # Popravimo id-je in stevilko_vrecke
 
-vsi_id <- sample(100000:999999, size = 5200, replace = FALSE)
+vsi_id <- sample(100000:999999, size = 4938, replace = FALSE)
 vektor_id <- as.data.frame(vsi_id)
 
 don_id <- as.data.frame(vektor_id[c(1:2000),])
 prej_id <- as.data.frame(vektor_id[c(2001:4000),])
-bol_id <- as.data.frame(vektor_id[c(4001:5200),])
+bol_id <- as.data.frame(vektor_id[c(4001:4938),])
 
 vrecka_id <- sample(10000000:99999999, size = 2000, replace = FALSE)
 vrecka_id_tabela <- as.data.frame(vrecka_id)
@@ -243,17 +244,22 @@ delete.na <- function(DF, n=0) {
 nahaja1 <- delete.na(bolnisnica_nahaja1)
 nahaja1 <- nahaja1 %>% group_by(id.x) %>% sample_n(1)
 nahaja1 <- nahaja1[, c(1,4)]
-colnames(nahaja1) <- c("id.x","id")
 
 #če bolnišnica ni v istem kraju kot prejemnik
 ostali <- bolnisnica_nahaja1[ !(bolnisnica_nahaja1$id.x %in% nahaja1$id.x), ]
+ostali <- ostali[, c(1,2,3)]
 colnames(ostali)[colnames(ostali) == "drzava.x"] <- "drzava"
 
 nahaja2 <- left_join(ostali, bolnisnica_pomozna, by="drzava")
-nahaja2 <- nahaja2[, c(1,7)]
-nahaja2 <- nahaja2 %>% group_by(id.x) %>% sample_n(1)
+#prazne <- nahaja2[rowSums(is.na(nahaja2)) > 0,]
+nahaja2 <- nahaja2[, c(1,4)]
+colnames(nahaja2)[colnames(nahaja2) == "id"] <- "id.y"
+nahaja2 <- nahaja2 %>% group_by(id.x) %>%  filter(row_number()==1)
+#prazne2 <- nahaja2[rowSums(is.na(nahaja2)) > 0,]
 
 nahaja <- rbind.data.frame(nahaja1, nahaja2)
-#nahaja <- as.data.frame(mapply(c, nahaja1, nahaja2))
 colnames(nahaja) <- c("id_prejemnika", "id_bolnisnice")
 
+#izbrišemo NA ki se pojavijo pri rbind?
+#prazne <- nahaja[rowSums(is.na(nahaja)) > 0,]
+#nahaja <- nahaja [!(nahaja$id_prejemnika %in% prazne$id_prejemnika), ]

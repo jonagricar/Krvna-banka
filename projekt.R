@@ -44,7 +44,7 @@ ustvari_tabele <- function(){
                                          kraj text,
                                          drzava text,
                                          starost integer,
-                                         telefon text,
+                                         email text,
                                          teza numeric,
                                          hemoglobin numeric,
                                          datum_vpisa_v_evidenco date,
@@ -56,7 +56,7 @@ ustvari_tabele <- function(){
                                            kraj text,
                                            drzava text,
                                            starost text,
-                                           telefon text,
+                                           email text,
                                            datum_vloge date,
                                            krvna_skupina text)", con=conn))
     
