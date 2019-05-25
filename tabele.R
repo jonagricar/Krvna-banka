@@ -1,4 +1,4 @@
-# Knjižnice
+# KNJIŽNICE
 
 library(knitr)
 library(dplyr)
@@ -70,6 +70,8 @@ drzave.slo <- c(
   "Macedonia" = "Makedonija"
 )
 
+
+# GLAVNE TABELE
 
 # Uvozimo podatke za bolnišnice
 
@@ -189,3 +191,9 @@ colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "krvna_skupina", "datum_prej
 # Zaloga bolnišnice: ena vrečka ima 400ml krvi
 
 bolnisnica$zaloga <- bolnisnica$zaloga * 0.4
+
+
+# RELACIJSKE TABELE
+
+
+
