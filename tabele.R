@@ -90,9 +90,8 @@ bolnisnica2 <- read_csv("Podatki/bolnice_dodatno.csv",
                                          zaloga = col_number()))
 
 bolnisnica <- rbind(bolnisnica1, bolnisnica2)
-bolnisnica <- bolnisnica %>% group_by(kraj) %>%  filter(row_number()==1)
-
 bolnisnica <- bolnisnica %>% mutate(drzava = drzave.slo[drzava])
+
 
 # Uvozimo podatke za kri
 
@@ -172,7 +171,7 @@ prejemnik <- cbind(prejemnik, vektor_prejemnik)
 
 
 # Stolpec datum_prejetja v tabeli kri se ujema s stolpcem datum_donacije iz tabele donator,
-# dodamo pa še podatek o hemoglobinu in krvni skupini donatorja vrečke krvi
+# dodamo pa še podatek o hemoglobinu in skupini donatorja vrečke krvi
 
 dodatek <- donator[, c(8, 10, 9)]
 
@@ -181,12 +180,12 @@ kri <- cbind(kri[, c(1)], dodatek)
 
 # Popravimo id-je in stevilko_vrecke
 
-vsi_id <- sample(100000:999999, size = 4938, replace = FALSE)
+vsi_id <- sample(100000:999999, size = 5265, replace = FALSE)
 vektor_id <- as.data.frame(vsi_id)
 
 don_id <- as.data.frame(vektor_id[c(1:2000),])
 prej_id <- as.data.frame(vektor_id[c(2001:4000),])
-bol_id <- as.data.frame(vektor_id[c(4001:4938),])
+bol_id <- as.data.frame(vektor_id[c(4001:5265),])
 
 vrecka_id <- sample(10000000:99999999, size = 2000, replace = FALSE)
 vrecka_id_tabela <- as.data.frame(vrecka_id)
@@ -205,6 +204,8 @@ colnames(prejemnik) <- c("id", "ime", "kraj", "drzava", "starost", "email",
 bolnisnica <- cbind(bolnisnica[, c(2:6)], bol_id)
 bolnisnica <- bolnisnica[, c(6, 1:5)]
 colnames(bolnisnica) <- c("id", "ime", "kraj", "drzava", "direktor", "zaloga")
+
+bolnisnica <- bolnisnica %>% group_by(kraj) %>%  filter(row_number()==1) # ena bolnišnica v mestu
 
 kri <- cbind(kri[, c(2:4)], vrecka_id_tabela)
 kri <- kri[, c(4, 1:3)]
