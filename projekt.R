@@ -24,9 +24,9 @@ delete_table <- function(){
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS prejemnik CASCADE", con=conn))
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS bolnisnica CASCADE", con=conn))
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS kri CASCADE", con=conn))
-    #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS prejme CASCADE", con=conn))
+    dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS donira CASCADE", con=conn))
     #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS hrani CASCADE", con=conn))
-    #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS nahaja CASCADE", con=conn))
+    dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS nahaja CASCADE", con=conn))
     
   }, finally = {
     dbDisconnect(conn)
@@ -47,7 +47,7 @@ ustvari_tabele <- function(){
                                          telefon text,
                                          teza numeric,
                                          hemoglobin numeric,
-                                         datum_donacije date,
+                                         datum_vpisa_v_evidenco date,
                                          krvna_skupina text)", con=conn))
     
     prejemnik <- dbSendQuery(conn, build_sql("CREATE TABLE prejemnik (
@@ -76,9 +76,9 @@ ustvari_tabele <- function(){
     
     #tabele relacij:
     
-    #pomoje to ne rabva tabele: donira <- dbSendQuery(conn, build_sql("CREATE TABLE deloval(
-    #                                       donor_datum_prejetja TEXT NOT NULL REFERENCES donor(datum_donacije),
-    #                                       kri_datum_prejetja TEXT NOT NULL REFERENCES kri(datum_prejetja))", con=conn))
+    donira <- dbSendQuery(conn, build_sql("CREATE TABLE donira(
+                                id INTEGER NOT NULL REFERENCES donator(id),
+                                stevilka_vrecke INTEGER NOT NULL REFERENCES kri(stevilka_vrecke))", con=conn))
     
     #prejme <- dbSendQuery(conn, build_sql("CREATE TABLE hrani(
     #           prejemnik_id TEXT NOT NULL REFERENCES prejemnik(id),
@@ -88,9 +88,9 @@ ustvari_tabele <- function(){
     #           kri_stevilka_vrecke TEXT NOT NULL REFERENCES kri(stevilka_vrecke),
     #           bolnisnica_id TEXT NOT NULL REFERENCES bolnisnica(id))", con=conn))
     
-    #nahaja <- dbSendQuery(conn, build_sql("CREATE TABLE hrani(
-    #           prejemnik_id TEXT NOT NULL REFERENCES prejemnik(id),
-    #           bolnisnica_id TEXT NOT NULL REFERENCES bolnisnica(id))", con=conn))
+    nahaja <- dbSendQuery(conn, build_sql("CREATE TABLE nahaja(
+               id_prejemnika INTEGER NOT NULL REFERENCES prejemnik(id),
+               id_bolnisnice INTEGER NOT NULL REFERENCES bolnisnica(id))", con=conn))
     
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
@@ -120,9 +120,9 @@ insert_data <- function(){
     dbWriteTable(conn, name="prejemnik", prejemnik, append=T, row.names=FALSE)
     dbWriteTable(conn, name="bolnisnica", bolnisnica, append=T, row.names=FALSE)
     dbWriteTable(conn, name="kri", kri, append=T, row.names=FALSE)
-    #dbWriteTable(conn, name="prejme", prejme, append=T, row.names=FALSE)
+    dbWriteTable(conn, name="donira", donira, append=T, row.names=FALSE)
     #dbWriteTable(conn, name="hrani", hrani, append=T, row.names=FALSE)
-    #dbWriteTable(conn, name="nahaja", nahaja, append=T, row.names=FALSE)
+    dbWriteTable(conn, name="nahaja", nahaja, append=T, row.names=FALSE)
     
   }, finally = {
     dbDisconnect(conn) 
