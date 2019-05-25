@@ -17,6 +17,10 @@ library(rmarkdown)
 library(DT)
 library(extrafont)
 
+
+
+# SLOVAR DRŽAV
+
 drzave.slo <- c(
   "Austria" = "Avstrija",
   "Belgium" = "Belgija",
@@ -72,13 +76,20 @@ drzave.slo <- c(
 )
 
 
+
 # GLAVNE TABELE
 
 # Uvozimo podatke za bolnišnice
 
-bolnisnica <- read_csv("Podatki/bolnisnica.csv", 
+bolnisnica1 <- read_csv("Podatki/bolnisnica.csv", 
                        col_types = cols(id = col_integer(), 
                                         zaloga = col_number()))
+
+bolnisnica2 <- read_csv("Podatki/bolnice_dodatno.csv", 
+                        col_types = cols(id = col_integer(), 
+                                         zaloga = col_number()))
+
+bolnisnica <- rbind(bolnisnica1, bolnisnica2)
 
 bolnisnica <- bolnisnica %>% mutate(drzava = drzave.slo[drzava])
 
@@ -100,18 +111,21 @@ donor1 <- read_csv("Podatki/donor1.csv",
                                     Teza = col_number(), datum_donacije = col_date(format = "%d/%m/%Y"), 
                                     id = col_integer()))
 
-donor1 <- donor1 %>% mutate(Drzava = drzave.slo[Drzava])
-
-
 donor2 <- read_csv("Podatki/donor2.csv", 
                    col_types = cols(Hemoglobin = col_number(), 
                                     Starost = col_integer(), Telefon = col_character(), 
                                     Teza = col_number(), datum_donacije = col_date(format = "%d/%m/%Y"), 
                                     id = col_integer()))
 
-donor2 <- donor2 %>% mutate(Drzava = drzave.slo[Drzava])
-
 donator <- rbind(donor1, donor2)
+
+email_d1 <- read_csv("Podatki/email.csv")
+email_d2 <- read_csv("Podatki/email2.csv")
+email_d <- rbind(email_d1, email_d2)
+
+donator <- cbind(donator, email_d)
+donator <- donator[, c(1, 10, 3, 4, 5, 11, 7, 8, 9)]
+donator <- donator %>% mutate(Drzava = drzave.slo[Drzava])
 
 # Uvozimo podatke za prejemnike
 
@@ -120,15 +134,20 @@ prejemnik1 <- read_csv("Podatki/prejemnik1.csv",
                                         Telefon = col_character(), datum_vloge = col_date(format = "%d/%m/%Y"), 
                                         id = col_integer()))
 
-prejemnik1 <- prejemnik1 %>% mutate(Drzava = drzave.slo[Drzava])
-
 prejemnik2 <- read_csv("Podatki/prejemnik2.csv", 
                        col_types = cols(Starost = col_integer(), 
                                         Telefon = col_character(), datum_vloge = col_date(format = "%d/%m/%Y"), 
                                         id = col_integer()))
-prejemnik2 <- prejemnik2 %>% mutate(Drzava = drzave.slo[Drzava])
 
 prejemnik <- rbind(prejemnik1, prejemnik2)
+
+email_p1 <- read_csv("Podatki/email3.csv")
+email_p2 <- read_csv("Podatki/email4.csv")
+email_p <- rbind(email_p1, email_p2)
+
+prejemnik <- cbind(prejemnik, email_p)
+prejemnik <- prejemnik[, c(1, 8, 3, 4, 5, 9, 7)]
+prejemnik <- prejemnik %>% mutate(Drzava = drzave.slo[Drzava])
 
 # Funkcija, ki zgenerira naključne krvne skupine za donatorje in prejemnike
 # (sample upošteva pogostost krvnih skupin v Evropi)
@@ -161,12 +180,12 @@ kri <- cbind(kri[, c(1)], dodatek)
 
 # Popravimo id-je in stevilko_vrecke
 
-vsi_id <- sample(100000:999999, size = 5000, replace = FALSE)
+vsi_id <- sample(100000:999999, size = 5200, replace = FALSE)
 vektor_id <- as.data.frame(vsi_id)
 
 don_id <- as.data.frame(vektor_id[c(1:2000),])
 prej_id <- as.data.frame(vektor_id[c(2001:4000),])
-bol_id <- as.data.frame(vektor_id[c(4001:5000),])
+bol_id <- as.data.frame(vektor_id[c(4001:5200),])
 
 vrecka_id <- sample(10000000:99999999, size = 2000, replace = FALSE)
 vrecka_id_tabela <- as.data.frame(vrecka_id)
@@ -174,12 +193,12 @@ vrecka_id_tabela <- as.data.frame(vrecka_id)
 donator <- cbind(donator[, c(2:10)], don_id)
 donator <- donator[, c(10, 1:9)]
 donator <- donator[, c(1:7, 9, 10)]
-colnames(donator) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
+colnames(donator) <- c("id", "ime", "kraj", "drzava", "starost", "email",
                        "teza", "datum_vpisa_v_evidenco", "krvna_skupina")
 
 prejemnik <- cbind(prejemnik[, c(2:8)], prej_id)
 prejemnik <- prejemnik[, c(8, 1:7)]
-colnames(prejemnik) <- c("id", "ime", "kraj", "drzava", "starost", "telefon",
+colnames(prejemnik) <- c("id", "ime", "kraj", "drzava", "starost", "email",
                          "datum_vloge", "krvna_skupina")
 
 bolnisnica <- cbind(bolnisnica[, c(2:6)], bol_id)
@@ -195,19 +214,20 @@ colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "datum_prejetja")
 
 bolnisnica$zaloga <- bolnisnica$zaloga * 0.4
 
-<<<<<<< HEAD
+
 
 # RELACIJSKE TABELE
 
+# DONIRA
 
-
-=======
-#tabele relacij
 donira1 <- as.data.frame(donator[, c(1)])
 donira2 <- as.data.frame(kri[, c(1)])
 
 donira <-cbind(donira1, donira2)
 colnames(donira) <- c("id", "stevilka_vrecke")
+
+
+# NAHAJA
 
 prejemnik_pomozna <- prejemnik[ , c(1, 3, 4)]
 bolnisnica_pomozna <- bolnisnica[ , c(1:4)]
@@ -219,7 +239,6 @@ bolnisnica_nahaja1 <- left_join(prejemnik_pomozna, bolnisnica_pomozna, by="kraj"
 delete.na <- function(DF, n=0) {
   DF[rowSums(is.na(DF)) <= n,]
 }
-
 
 nahaja1 <- delete.na(bolnisnica_nahaja1)
 nahaja1 <- nahaja1 %>% group_by(id.x) %>% sample_n(1)
@@ -237,4 +256,4 @@ nahaja2 <- nahaja2 %>% group_by(id.x) %>% sample_n(1)
 nahaja <- rbind.data.frame(nahaja1, nahaja2)
 #nahaja <- as.data.frame(mapply(c, nahaja1, nahaja2))
 colnames(nahaja) <- c("id_prejemnika", "id_bolnisnice")
->>>>>>> 0a91ca9c56f5c6dbee72eb42ec9aad9a4647ddca
+
