@@ -23,9 +23,9 @@ delete_table <- function(){
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS oseba CASCADE", con=conn))
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS bolnisnica CASCADE", con=conn))
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS kri CASCADE", con=conn))
-    ##dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS donira CASCADE", con=conn))
+    dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS prejemnik CASCADE", con=conn))
     #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS hrani CASCADE", con=conn))
-    #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS nahaja CASCADE", con=conn))
+    #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS prejme CASCADE", con=conn))
     
   }, finally = {
     dbDisconnect(conn)
@@ -60,13 +60,18 @@ ustvari_tabele <- function(){
                                             stevilka_vrecke integer PRIMARY KEY,
                                             hemoglobin numeric,
                                             datum_prejetja date,
-                                            donator integer)", con=conn))
+                                            donator integer,
+                                            izvor integer)", con=conn))
+
+    prejemnik <- dbSendQuery(conn, build_sql("CREATE TABLE prejemnik (
+                                         id_prejemnika integer,
+                                         ime_prejemnika text,
+                                         datum_vloge date,
+                                         id_lokacije_zdravljenja text)", con=conn))
     
     #tabele relacij:
     
-    #donira <- dbSendQuery(conn, build_sql("CREATE TABLE donira(
-    #                            id_donator INTEGER NOT NULL REFERENCES oseba(id),
-    #                            stevilka_vrecke INTEGER NOT NULL REFERENCES kri(stevilka_vrecke))", con=conn))
+    
     
     #prejme <- dbSendQuery(conn, build_sql("CREATE TABLE hrani(
     #           prejemnik_id TEXT NOT NULL REFERENCES prejemnik(id),
@@ -112,7 +117,7 @@ insert_data <- function(){
     dbWriteTable(conn, name="oseba", oseba, append=T, row.names=FALSE)
     dbWriteTable(conn, name="bolnisnica", bolnisnica, append=T, row.names=FALSE)
     dbWriteTable(conn, name="kri", kri, append=T, row.names=FALSE)
-    #dbWriteTable(conn, name="donira", donira, append=T, row.names=FALSE)
+    dbWriteTable(conn, name="prejemnik", prejemnik, append=T, row.names=FALSE)
     #dbWriteTable(conn, name="hrani", hrani, append=T, row.names=FALSE)
     #dbWriteTable(conn, name="nahaja", nahaja, append=T, row.names=FALSE)
     

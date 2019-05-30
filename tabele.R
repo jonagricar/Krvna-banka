@@ -321,7 +321,7 @@ colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "datum_prejetja", "donator",
 
 
 
-# RELACISJKE TABELE
+# RELACIJSKE TABELE
 
 
 
