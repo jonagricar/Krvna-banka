@@ -23,7 +23,7 @@ delete_table <- function(){
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS oseba CASCADE", con=conn))
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS bolnisnica CASCADE", con=conn))
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS kri CASCADE", con=conn))
-    #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS donira CASCADE", con=conn))
+    ##dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS donira CASCADE", con=conn))
     #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS hrani CASCADE", con=conn))
     #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS nahaja CASCADE", con=conn))
     

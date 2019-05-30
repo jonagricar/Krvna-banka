@@ -227,7 +227,7 @@ prejemnik <- oseba[is.na(oseba$datum_vpisa_v_evidenco),]
 prejemnik <- merge(prejemnik,prejemnikx, by=c("id"),all.x=TRUE)
 prejemnik <- prejemnik[, c(1,2,16)]
 colnames(prejemnik) <- c("id_prejemnika", "ime_prejemnika", "datum_vloge")
-#stolpci id_prejemnika, ime prejemnika, ime bolnisnice in datum vloge
+#stolpci id_prejemnika, ime_prejemnika, ime bolnisnice in datum vloge
 
 # RELACIJSKE TABELE
 
