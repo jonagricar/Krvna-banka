@@ -144,9 +144,12 @@ prejemnik <- rbind(prejemnik1, prejemnik2)
 email_p1 <- read_csv("Podatki/email3.csv")
 email_p2 <- read_csv("Podatki/email4.csv")
 email_p <- rbind(email_p1, email_p2)
+teza_p1 <- read_csv("Podatki/teza_prej1.csv")
+teza_p2 <- read_csv("Podatki/teza_prej2.csv")
+teza_p <- rbind(teza_p1, teza_p2)
 
-prejemnik <- cbind(prejemnik, email_p)
-prejemnik <- prejemnik[, c(1, 8, 3, 4, 5, 9, 7)]
+prejemnik <- cbind(prejemnik, email_p, teza_p)
+prejemnik <- prejemnik[, c(1, 8, 3, 4, 5, 9, 10, 7)]
 prejemnik <- prejemnik %>% mutate(Drzava = drzave.slo[Drzava])
 
 # Funkcija, ki zgenerira naključne krvne skupine za donatorje in prejemnike
@@ -196,14 +199,20 @@ donator <- donator[, c(1:7, 9, 10)]
 colnames(donator) <- c("id", "ime", "kraj", "drzava", "starost", "email",
                        "teza", "datum_vpisa_v_evidenco", "krvna_skupina")
 
-prejemnik <- cbind(prejemnik[, c(2:8)], prej_id)
-prejemnik <- prejemnik[, c(8, 1:7)]
+prejemnik <- cbind(prejemnik[, c(2:9)], prej_id)
+prejemnik <- prejemnik[, c(9, 1:8)]
 colnames(prejemnik) <- c("id", "ime", "kraj", "drzava", "starost", "email",
-                         "datum_vloge", "krvna_skupina")
+                         "teza", "datum_vloge", "krvna_skupina")
+
+#naredimo glavno tabelo z vsemi osebami, združimo po stolpcih donatorja, prejemnike bomo od donatorjev ločili tako, da bodo imeli
+#prejemniki vrednost null pri datumu vpisa v evidenco
+oseba <- merge(donator, prejemnik, all=TRUE)
+oseba <- oseba[, 1:9]
+prejemnikx <- prejemnik
 
 bolnisnica <- cbind(bolnisnica[, c(2:6)], bol_id)
-bolnisnica <- bolnisnica[, c(6, 1:5)]
-colnames(bolnisnica) <- c("id", "ime", "kraj", "drzava", "direktor", "zaloga")
+bolnisnica <- bolnisnica[, c(6, 1:4)]
+colnames(bolnisnica) <- c("id", "ime", "kraj", "drzava", "direktor")
 
 bolnisnica <- bolnisnica %>% group_by(kraj) %>%  filter(row_number()==1) # ena bolnišnica v mestu
 
@@ -211,27 +220,30 @@ kri <- cbind(kri[, c(2:4)], vrecka_id_tabela)
 kri <- kri[, c(4, 1:3)]
 kri <- kri[, c(1, 2, 4)]
 colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "datum_prejetja")
+donira <- oseba[!is.na(oseba$datum_vpisa_v_evidenco),]
+kri$donator <- donira$id[ match(kri$datum_prejetja, donira$datum_vpisa_v_evidenco) ]
 
-# Zaloga bolnišnice: ena vrečka ima 400ml krvi
-
-bolnisnica$zaloga <- bolnisnica$zaloga * 0.4
-
-
+prejemnik <- oseba[is.na(oseba$datum_vpisa_v_evidenco),]
+prejemnik <- merge(prejemnik,prejemnikx, by=c("id"),all.x=TRUE)
+prejemnik <- prejemnik[, c(1,2,16)]
+colnames(prejemnik) <- c("id_prejemnika", "ime_prejemnika", "datum_vloge")
+#stolpci id_prejemnika, ime prejemnika, ime bolnisnice in datum vloge
 
 # RELACIJSKE TABELE
 
 # DONIRA
 
-donira1 <- as.data.frame(donator[, c(1)])
-donira2 <- as.data.frame(kri[, c(1)])
+#donira1 <- oseba[!is.na(oseba$datum_vpisa_v_evidenco),]
+#donira1 <- as.data.frame(donira1[, c(1)])
+#donira2 <- as.data.frame(kri[, c(1)])
 
-donira <-cbind(donira1, donira2)
-colnames(donira) <- c("id", "stevilka_vrecke")
+#donira <-cbind(donira1, donira2)
+#colnames(donira) <- c("id_donator", "stevilka_vrecke")
 
 
 # NAHAJA
 
-prejemnik_pomozna <- prejemnik[ , c(1, 3, 4)]
+prejemnik_pomozna <- prejemnikx[ , c(1, 3, 4)]
 bolnisnica_pomozna <- bolnisnica[ , c(1:4)]
 
 #če je bolnišnica v istem kraju kot prejemnik
@@ -252,15 +264,10 @@ ostali <- ostali[, c(1,2,3)]
 colnames(ostali)[colnames(ostali) == "drzava.x"] <- "drzava"
 
 nahaja2 <- left_join(ostali, bolnisnica_pomozna, by="drzava")
-#prazne <- nahaja2[rowSums(is.na(nahaja2)) > 0,]
 nahaja2 <- nahaja2[, c(1,4)]
 colnames(nahaja2)[colnames(nahaja2) == "id"] <- "id.y"
 nahaja2 <- nahaja2 %>% group_by(id.x) %>%  filter(row_number()==1)
-#prazne2 <- nahaja2[rowSums(is.na(nahaja2)) > 0,]
 
 nahaja <- rbind.data.frame(nahaja1, nahaja2)
 colnames(nahaja) <- c("id_prejemnika", "id_bolnisnice")
 
-#izbrišemo NA ki se pojavijo pri rbind?
-#prazne <- nahaja[rowSums(is.na(nahaja)) > 0,]
-#nahaja <- nahaja [!(nahaja$id_prejemnika %in% prazne$id_prejemnika), ]
