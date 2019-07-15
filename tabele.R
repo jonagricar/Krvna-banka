@@ -238,9 +238,9 @@ kri$donator <- donira$id[ match(kri$datum_prejetja, donira$datum_vpisa_v_evidenc
 
 prejemnik <- oseba[is.na(oseba$datum_vpisa_v_evidenco),]
 prejemnik <- merge(prejemnik,prejemnikx, by=c("id"),all.x=TRUE)
-prejemnik <- prejemnik[, c(1,2,16)]
-colnames(prejemnik) <- c("id_prejemnika", "ime_prejemnika", "datum_vloge")
-#stolpci id_prejemnika, ime_prejemnika, ime bolnisnice in datum vloge
+prejemnik <- prejemnik[, c(1,16)]
+colnames(prejemnik) <- c("id_prejemnika", "datum_vloge")
+#stolpci id_prejemnika, ime bolnisnice in datum vloge
 
 
 
@@ -278,7 +278,7 @@ colnames(lokacija) <- c("id_prejemnika", "id_bolnisnice")
 # tabeli prejemnik dodamo dobljeno lokacijo
 
 prejemnik <- merge(prejemnik, lokacija ,by="id_prejemnika")
-colnames(prejemnik) <- c("id_prejemnika", "ime_prejemnika", "datum_vloge", "id_lokacije_zdravljenja")
+colnames(prejemnik) <- c("id_prejemnika", "datum_vloge", "id_lokacije_zdravljenja")
 
 
 
@@ -313,10 +313,11 @@ lokacija_darovalca <- rbind.data.frame(daruje1, daruje2)
 colnames(lokacija_darovalca) <- c("donator", "id_lokacije_darovalca")
 
 
-# tabelikri dodamo dobljeno lokacijo kot izvor vrečke krvi
+# tabeli kri dodamo dobljeno lokacijo kot izvor vrečke krvi
 
 kri <- merge(kri, lokacija_darovalca ,by="donator")
-colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "datum_prejetja", "donator", "izvor")
+kri <- kri[, c(2,3,4,1,5)]
+colnames(kri) <- c("stevilka_vrecke", "hemoglobin", "datum_prejetja", "donator", "hrani")
 
 
 

@@ -61,11 +61,10 @@ ustvari_tabele <- function(){
                                             hemoglobin numeric,
                                             datum_prejetja date,
                                             donator integer,
-                                            izvor integer)", con=conn))
+                                            hrani integer)", con=conn))
 
     prejemnik <- dbSendQuery(conn, build_sql("CREATE TABLE prejemnik (
                                          id_prejemnika integer,
-                                         ime_prejemnika text,
                                          datum_vloge date,
                                          id_lokacije_zdravljenja text)", con=conn))
     
