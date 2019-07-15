@@ -325,16 +325,16 @@ prejemnik_kri <- oseba[is.na(oseba$datum_vpisa_v_evidenco),]
 prejemnik_kri <- prejemnik_kri[, c(1,8)]
 colnames(prejemnik_kri) <- c("id_prejemnika", "krvna_skupina")
 prejemnik_kri <- merge(prejemnik, prejemnik_kri, by="id_prejemnika")
+colnames(prejemnik_kri) <- c("id_prejemnika", "datum_vloge", "lokacija", "krvna_skupina")
 
 donira_nova <- donira
 colnames(donira_nova)[1] <- "donator"
 vrecka_skupina <- merge(donira_nova, kri, by="donator")
 vrecka_skupina <- vrecka_skupina[, c(1,8,13)]
-colnames(vrecka_skupina)[2] <- "krvna_skupina_vrecka"
+colnames(vrecka_skupina) <- c("donator", "krvna_skupina_vrecka", "lokacija")
 
-
-# RELACIJSKE TABELE
-
+prejme <- merge(vrecka_skupina, prejemnik_kri, by="lokacija")
+prejme$ujemanje <- prejme$krvna_skupina_vrecka == prejme$krvna_skupina
 
 
 
