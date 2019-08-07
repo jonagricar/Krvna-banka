@@ -24,8 +24,6 @@ delete_table <- function(){
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS bolnisnica CASCADE", con=conn))
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS kri CASCADE", con=conn))
     dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS prejemnik CASCADE", con=conn))
-    #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS hrani CASCADE", con=conn))
-    #dbSendQuery(conn,build_sql("DROP TABLE IF EXISTS prejme CASCADE", con=conn))
     
   }, finally = {
     dbDisconnect(conn)
@@ -64,25 +62,12 @@ ustvari_tabele <- function(){
                                             hrani integer)", con=conn))
 
     prejemnik <- dbSendQuery(conn, build_sql("CREATE TABLE prejemnik (
-                                         id_prejemnika integer,
+                                         id_prejemnika integer REFERENCES oseba(id),
                                          datum_vloge date,
-                                         id_lokacije_zdravljenja text)", con=conn))
+                                         id_lokacije_zdravljenja integer REFERENCES bolnisnica(id),
+                                         id serial)", con=conn))
     
-    #tabele relacij:
-    
-    
-    
-    #prejme <- dbSendQuery(conn, build_sql("CREATE TABLE hrani(
-    #           prejemnik_id TEXT NOT NULL REFERENCES prejemnik(id),
-    #           kri_stevilka_vrecke TEXT NOT NULL REFERENCES kri(stevilka_vrecke))", con=conn))
-    
-    #hrani <- dbSendQuery(conn, build_sql("CREATE TABLE hrani(
-    #           kri_stevilka_vrecke TEXT NOT NULL REFERENCES kri(stevilka_vrecke),
-    #           bolnisnica_id TEXT NOT NULL REFERENCES bolnisnica(id))", con=conn))
-    
-    #nahaja <- dbSendQuery(conn, build_sql("CREATE TABLE nahaja(
-    #           id_prejemnika INTEGER NOT NULL REFERENCES prejemnik(id),
-    #           id_bolnisnice INTEGER NOT NULL REFERENCES bolnisnica(id))", con=conn))
+    dbSendQuery(conn, "alter table prejemnik add unique (id_prejemnika, datum_vloge, id_lokacije_zdravljenja);")
     
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
