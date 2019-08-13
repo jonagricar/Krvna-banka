@@ -55,20 +55,23 @@ ustvari_tabele <- function(){
                                            direktor text)", con=conn))
     
     kri <- dbSendQuery(conn, build_sql("CREATE TABLE kri (
-                                            stevilka_vrecke integer PRIMARY KEY,
-                                            hemoglobin numeric,
-                                            datum_prejetja date,
-                                            donator integer,
-                                            hrani integer)", con=conn))
+                                       stevilka_vrecke integer PRIMARY KEY,
+                                       hemoglobin numeric,
+                                       datum_prejetja date,
+                                       donator integer REFERENCES oseba(id),
+                                       hrani integer REFERENCES bolnisnica(id))", con=conn))
+    
 
     prejemnik <- dbSendQuery(conn, build_sql("CREATE TABLE prejemnik (
                                          id_prejemnika integer REFERENCES oseba(id),
                                          datum_vloge date,
                                          id_lokacije_zdravljenja integer REFERENCES bolnisnica(id),
-                                         id serial)", con=conn))
+                                         id serial unique)", con=conn))
     
     dbSendQuery(conn, "alter table prejemnik add unique (id_prejemnika, datum_vloge, id_lokacije_zdravljenja);")
-    
+    dbSendQuery(conn, "alter table kri add prejemnik integer REFERENCES prejemnik(id);")
+
+
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
     
