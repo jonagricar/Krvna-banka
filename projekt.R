@@ -66,12 +66,36 @@ ustvari_tabele <- function(){
                                          id_prejemnika integer REFERENCES oseba(id),
                                          datum_vloge date,
                                          id_lokacije_zdravljenja integer REFERENCES bolnisnica(id),
-                                         id serial unique)", con=conn))
+                                         id serial PRIMARY KEY)", con=conn))
     
     dbSendQuery(conn, "alter table prejemnik add unique (id_prejemnika, datum_vloge, id_lokacije_zdravljenja);")
     dbSendQuery(conn, "alter table kri add prejemnik integer REFERENCES prejemnik(id);")
+    
+    prejemnik <- dbGetQuery(conn,
+                            build_sql("SELECT oseba.id, krvna_skupina, id_lokacije_zdravljenja
+                                   FROM oseba JOIN prejemnik ON oseba.id = id_prejemnika
+                                   ORDER BY datum_vloge",
+                                      con=conn))
+    
+    for (i in 1:nrow(prejemnik)) {
+      vrecka <- dbGetQuery(conn,
+                           build_sql("SELECT stevilka_vrecke FROM kri
+                                  JOIN oseba ON donator = oseba.id
+                                  WHERE hrani = ", prejemnik[i, "id_lokacije_zdravljenja"], "
+                                  AND krvna_skupina = ", prejemnik[i, "krvna_skupina"], "
+                                  AND prejemnik IS NULL
+                                  ORDER BY RANDOM()
+                                  LIMIT 1", con=conn))
+        if (exists("vrecka") && !is.null(vrecka)){
+          dbSendQuery(conn,
+                      build_sql("UPDATE kri SET prejemnik = 'id'
+                             WHERE stevilka_vrecke = 'stevilka_vrecke'", con=conn))
+        } 
+    }
 
 
+    #pravice 
+    
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
     
