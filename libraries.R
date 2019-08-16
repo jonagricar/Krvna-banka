@@ -14,10 +14,22 @@ library(rmarkdown)
 library(DT)
 library(extrafont)
 library(RSQLite)
-library(RSQLite.extfuns)
 library(lubridate)
 library(shiny)
-library(shinyauthr)
+devtools::install_github("paulc91/shinyauthr")
 library(shinyjs)
 library(shinydashboard)
 library(glue)
+library(sqldf)
+m <-dbDriver("SQLite")
+con <- dbConnect(m, dbname = ":memory:")
+
+initExtension(con)  # access extfuns
+
+dbWriteTable(con, 'BOD', BOD, row.names = FALSE)
+
+dbGetQuery(con, 'select variance(demand) from BOD')
+##   variance(demand)
+## 1         21.44267
+
+dbDisconnect(con)
