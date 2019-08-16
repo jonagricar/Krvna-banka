@@ -86,11 +86,13 @@ ustvari_tabele <- function(){
                                   AND prejemnik IS NULL
                                   ORDER BY RANDOM()
                                   LIMIT 1", con=conn))
-        if (exists("vrecka") && !is.null(vrecka)){
-          dbSendQuery(conn,
-                      build_sql("UPDATE kri SET prejemnik = 'id'
-                             WHERE stevilka_vrecke = 'stevilka_vrecke'", con=conn))
-        } 
+      
+      if (nrow(vrecka) > 0) {
+        dbSendQuery(conn,
+                    build_sql("UPDATE kri SET prejemnik = ", prejemnik[i, "id"],"
+                              WHERE stevilka_vrecke = ", vrecka$stevilka_vrecke,
+                              con=conn))
+      } 
     }
 
 
