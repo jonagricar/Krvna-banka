@@ -1,20 +1,18 @@
+source("libraries.R")
+
 user_base <- data_frame(
-  user = c("user1", "user2"),
-  password = c("pass1", "pass2"), 
-  password_hash = sapply(c("pass1", "pass2"), sodium::password_store), 
+  uporabnik = c("zdravnik", "medicinska sestra"),
+  geslo = c("geslo1", "geslo2"), 
+  password_hash = sapply(c("geslo1", "geslo2"), sodium::password_store), 
   permissions = c("admin", "standard"),
-  name = c("User One", "User Two")
+  name = c("zdravnik", "medicinska sestra")
 )
 
 ui <- dashboardPage(
   
-  dashboardHeader(title = "shinyauthr",
+  dashboardHeader(title = "Evropska krvna banka",
                   tags$li(class = "dropdown", style = "padding: 8px;",
-                          shinyauthr::logoutUI("logout")),
-                  tags$li(class = "dropdown", 
-                          tags$a(icon("github"), 
-                                 href = "https://github.com/paulc91/shinyauthr",
-                                 title = "See the code on github"))
+                          shinyauthr::logoutUI("logout"))
   ),
   
   dashboardSidebar(collapsed = TRUE, 
@@ -39,7 +37,7 @@ server <- function(input, output, session) {
   
   credentials <- callModule(shinyauthr::login, "login", 
                             data = user_base,
-                            user_col = user,
+                            user_col = uporabnik,
                             pwd_col = password_hash,
                             sodium_hashed = TRUE,
                             log_out = reactive(logout_init()))
@@ -59,8 +57,7 @@ server <- function(input, output, session) {
     if(credentials()$user_auth) return(NULL)
     
     tagList(
-      tags$p("test the different outputs from the sample logins below 
-             as well as an invalid login attempt.", class = "text-center"),
+      tags$p("Vpišite se kot zdravnik ali medicinska sestra.", class = "text-center"),
       
       renderTable({user_base[, -3]})
     )
@@ -82,7 +79,7 @@ server <- function(input, output, session) {
   output$welcome <- renderText({
     req(credentials()$user_auth)
     
-    glue("Welcome {user_info()$name}")
+    glue("Pozdravljen/a {user_info()$name}")
   })
   
   output$testUI <- renderUI({
@@ -91,10 +88,9 @@ server <- function(input, output, session) {
     fluidRow(
       column(
         width = 12,
-        tags$h2(glue("Your permission level is: {user_info()$permissions}. 
-                     Your data is: {ifelse(user_info()$permissions == 'admin', 'Starwars', 'Storms')}.")),
+        tags$h2(glue("Ker ste {user_info()$name}, lahko {ifelse(user_info()$permissions == 'admin', 'pregledujete in urejate podatke', 'pregledujete podatke')}.")),
         box(width = NULL, status = "primary",
-            title = ifelse(user_info()$permissions == 'admin', "Starwars Data", "Storms Data"),
+            title = ifelse(user_info()$permissions == 'admin', "Pregled in urejanje podatkov", "Pregled podatkov"),
             DT::renderDT(user_data(), options = list(scrollX = TRUE))
         )
       )

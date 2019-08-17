@@ -16,15 +16,15 @@
 #' @author Paul Campbell, \email{pacampbell91@gmail.com}
 #'
 #' @export
-loginUI <- function(id, title = "Please log in", user_title = "User Name", pass_title = "Password",
-                    login_title = "Log in", error_message = "Invalid username or password!") {
+loginUI <- function(id, title = "Vpišite se", user_title = "Uporabniško ime", pass_title = "Geslo",
+                    login_title = "Vpis", error_message = "Napačno uporabniško ime ali geslo!") {
   ns <- shiny::NS(id)
   
   shiny::div(id = ns("panel"), style = "width: 500px; max-width: 100%; margin: 0 auto; padding: 20px;",
              shiny::wellPanel(
                shiny::tags$h2(title, class = "text-center", style = "padding-top: 0;"),
                
-               shiny::textInput(ns("user_name"), shiny::tagList(shiny::icon("user"), user_title)),
+               shiny::textInput(ns("user_name"), shiny::tagList(shiny::icon("uporabnik"), user_title)),
                
                shiny::passwordInput(ns("password"), shiny::tagList(shiny::icon("unlock-alt"), pass_title)),
                
