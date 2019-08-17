@@ -280,7 +280,9 @@ colnames(lokacija) <- c("id_prejemnika", "id_bolnisnice")
 prejemnik <- merge(prejemnik, lokacija ,by="id_prejemnika")
 colnames(prejemnik) <- c("id_prejemnika", "datum_vloge", "id_lokacije_zdravljenja")
 
-
+prejemnik_z_lokacijo <- merge(x = prejemnikx,y = prejemnik, by.x = "id", by.y = "id_prejemnika")
+prejemnik_z_lokacijo <- prejemnik_z_lokacijo[ , c(1:7,9:11)]
+names(prejemnik_z_lokacijo)[9] <- "datum_vloge"
 
 # pomožna tabela za lokacijo donacije krvi donatorja
 
