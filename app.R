@@ -70,15 +70,15 @@ server <- function(input, output, session) {
       }
     }
   })
-#  observe({
-#    input$submit
-#    
-#    feedbackDanger(
-#      inputId = "teza",
-#      condition = nchar(input$teza) >= 50 & nchar(input$teza) <= 150,
-#      text =  "Teža mora biti med 50kg in 150kg"
-#    )
-#  })
+  #  observe({
+  #    input$submit
+  #    
+  #    feedbackDanger(
+  #      inputId = "teza",
+  #      condition = nchar(input$teza) >= 50 & nchar(input$teza) <= 150,
+  #      text =  "Teža mora biti med 50kg in 150kg"
+  #    )
+  #  })
   
   output$logoutbtn <- renderUI({
     req(USER$login)
@@ -95,7 +95,6 @@ server <- function(input, output, session) {
         sidebarMenu(
           menuItem("Glavna stran", tabName = "dashboard", icon = icon("dashboard")),
           menuItem("Pacienti", tabName = "Pacienti", icon = icon("th")),
-          menuItem("Donatorji", tabName = "Donatorji", icon = icon("th")),
           menuItem("Zaloga krvi", tabName = "Kri", icon = icon("th")),
           menuItem("Obrazec", tabName = "Obrazec", icon = icon("th"))
         )
@@ -104,7 +103,6 @@ server <- function(input, output, session) {
         sidebarMenu(
           menuItem("Glavna stran", tabName = "dashboard", icon = icon("dashboard")),
           menuItem("Pacienti", tabName = "Pacienti", icon = icon("th")),
-          menuItem("Donatorji", tabName = "Donatorji", icon = icon("th")),
           menuItem("Zaloga krvi", tabName = "Kri", icon = icon("th"))
         )
         
@@ -129,12 +127,6 @@ server <- function(input, output, session) {
             )
           ),
           tabItem(
-            tabName ="Donatorji",
-            fluidRow(
-              box(width = 12, title = "Podatki o donatorjih", dataTableOutput('results_d'))
-            )
-          ),
-          tabItem(
             tabName ="Kri",
             h2("Coming soon :)")
           ),
@@ -148,12 +140,12 @@ server <- function(input, output, session) {
                 textInput("ime", "Ime in priimek", ""),
                 textInput("kraj", "Kraj"),
                 selectInput("drzava", "Država",
-                          c("",  "Avstrija", "Belgija", "Bosna in Hercegovina", "Danska", "Estonija", "Švica", "Francija", "Italija",
-                            "Lihtenštajn", "Švedska", "Luksemburg", "Norveška","Hrvaška", "Nemcija", "Slovenija","Portugalska","Romunija",
-                            "Združeno Kraljestvo","Crna Gora", "Turcija", "Avstralija", "Bolgarija", "Grcija", "Ciper", "Madžarska",
-                            "Malta","Poljska", "Ceška", "Španija", "Latvija", "Litva", "Finska", "Irska", "Islandija", "Rusija", "Slovaška", 
-                            "Nizozemska", "Makedonija", "Ukrajina", "Srbija", "Albanija", "Andora", "Armenija", "Azerbajdžan", "Belorusija",
-                            "Gruzija", "Moldavija", "Monako", "Kosovo")),
+                            c("",  "Avstrija", "Belgija", "Bosna in Hercegovina", "Danska", "Estonija", "Švica", "Francija", "Italija",
+                              "Lihtenštajn", "Švedska", "Luksemburg", "Norveška","Hrvaška", "Nemcija", "Slovenija","Portugalska","Romunija",
+                              "Združeno Kraljestvo","Crna Gora", "Turcija", "Avstralija", "Bolgarija", "Grcija", "Ciper", "Madžarska",
+                              "Malta","Poljska", "Ceška", "Španija", "Latvija", "Litva", "Finska", "Irska", "Islandija", "Rusija", "Slovaška", 
+                              "Nizozemska", "Makedonija", "Ukrajina", "Srbija", "Albanija", "Andora", "Armenija", "Azerbajdžan", "Belorusija",
+                              "Gruzija", "Moldavija", "Monako", "Kosovo")),
                 sliderInput("starost", "Starost", 18, 65, 30, ticks = TRUE),
                 textInput("email", "E-mail"),
                 numericInput("teza", "Teža v kg", value = NULL, min = 50, max = 150, step =  0.1),
@@ -162,7 +154,7 @@ server <- function(input, output, session) {
                 selectInput("skupina", "Krvna skupina",
                             c("", "A+", "A-", "B+", "B-", "AB+", "AB-", "0+", "0-")),
                 checkboxInput("ze_doniral", "Oseba je v preteklosti kri že donirala", FALSE),
-
+                
                 actionButton("submit", "Dodaj v bazo", class = "btn-primary")
               )
             )
@@ -184,12 +176,6 @@ server <- function(input, output, session) {
             )
           ),
           tabItem(
-            tabName ="Donatorji",
-            fluidRow(
-              box(width = 12, title = "Podatki o donatorjih", dataTableOutput('results_d'))
-            )
-          ),
-          tabItem(
             tabName ="Kri",
             h2("Coming soon :)")
           )
@@ -203,16 +189,13 @@ server <- function(input, output, session) {
   })
   output$results <-  DT::renderDataTable({
     datatable(oseba, options = list(autoWidth = TRUE,
-                                   searching = TRUE))
+                                    searching = TRUE))
   })
   output$results_p <-  DT::renderDataTable({
     datatable(prejemnik_z_lokacijo, options = list(autoWidth = TRUE,
-                                    searching = TRUE))
+                                                   searching = TRUE))
   })
-  output$results_d <-  DT::renderDataTable({
-    datatable(donator, options = list(autoWidth = TRUE,
-                                    searching = TRUE))
-  })
+
 }
 
 runApp(list(ui = ui, server = server))

@@ -221,6 +221,7 @@ colnames(prejemnik) <- c("id", "ime", "kraj", "drzava", "starost", "email",
 #prejemniki vrednost null pri datumu vpisa v evidenco
 oseba <- merge(donator, prejemnik, all=TRUE)
 oseba <- oseba[, 1:9]
+vse_osebe <- oseba[, 2:9]
 prejemnikx <- prejemnik
 
 bolnisnica <- cbind(bolnisnica[, c(2:6)], bol_id)
