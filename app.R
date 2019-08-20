@@ -1,6 +1,5 @@
 source("libraries.R")
-source("tabele.R", encoding="UTF-8")
-#source("projekt.R", encoding="UTF-8")
+source("projekt.R", encoding="UTF-8")
 
 
 # Main login screen
@@ -23,9 +22,9 @@ loginpage <- div(id = "loginpage", style = "width: 500px; max-width: 100%; margi
                                   class = "text-center"))),
                      br(),
                      br(),
-                     tags$code("Uporabnik: sestra  Password: sestra"),
+                     tags$code("Uporabnik: sestra  Geslo: sestra"),
                      br(),
-                     tags$code("Uporabnik: zdravnik  Password: zdravnik")
+                     tags$code("Uporabnik: zdravnik  Geslo: zdravnik")
                    ))
 )
 
@@ -46,6 +45,12 @@ server <- function(input, output, session) {
   
   login = FALSE
   USER <- reactiveValues(login = login)
+  #povežemo se z bazo
+  drv <- dbDriver("PostgreSQL")
+  conn <- dbConnect(drv, dbname = db, host = host, user = user, password = password)
+  cancel.onSessionEnded <- session$onSessionEnded(function() {
+    dbDisconnect(conn) 
+  })
   
   observe({ 
     if (USER$login == FALSE) {
@@ -128,7 +133,9 @@ server <- function(input, output, session) {
           ),
           tabItem(
             tabName ="Kri",
-            h2("Coming soon :)")
+            fluidRow(
+              box(width = 12, title = "Zaloga krvi", dataTableOutput('results_k'))
+            )
           ),
           tabItem(
             tabName ="Obrazec",
@@ -177,9 +184,12 @@ server <- function(input, output, session) {
           ),
           tabItem(
             tabName ="Kri",
-            h2("Coming soon :)")
+            fluidRow(
+              box(width = 12, title = "Zaloga krvi", dataTableOutput('results_k'))
+            )
           )
-        )
+         )
+        
       }
       
     }
@@ -192,8 +202,11 @@ server <- function(input, output, session) {
                                     searching = TRUE))
   })
   output$results_p <-  DT::renderDataTable({
-    datatable(prejemnik_z_lokacijo, options = list(autoWidth = TRUE,
+    datatable(prejemnik, options = list(autoWidth = TRUE,
                                                    searching = TRUE))
+  })
+  output$results_k <- renderUI({
+    dbGetQuery(conn, build_sql("SELECT * FROM kri", con=conn))
   })
 
 }

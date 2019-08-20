@@ -22,6 +22,7 @@ library(shinyFeedback)
 library(glue)
 library(sodium)
 library(sqldf)
+library(DBI)
 m <-dbDriver("SQLite")
 con <- dbConnect(m, dbname = ":memory:")
 
