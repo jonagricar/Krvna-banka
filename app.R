@@ -1,6 +1,9 @@
 source("libraries.R")
 source("projekt.R", encoding="UTF-8")
 
+original.locale <- Sys.getlocale(category="LC_CTYPE")
+Sys.setlocale("LC_CTYPE", "Slovenian_Slovenia.1250") 
+
 
 # Main login screen
 loginpage <- div(id = "loginpage", style = "width: 500px; max-width: 100%; margin: 0 auto; padding: 20px;",
@@ -48,6 +51,9 @@ server <- function(input, output, session) {
   #povežemo se z bazo
   drv <- dbDriver("PostgreSQL")
   conn <- dbConnect(drv, dbname = db, host = host, user = user, password = password)
+  
+  dbGetQuery(conn, "SET CLIENT_ENCODING TO 'utf8'; SET NAMES 'utf8'")
+  
   cancel.onSessionEnded <- session$onSessionEnded(function() {
     dbDisconnect(conn) 
   })
@@ -144,21 +150,21 @@ server <- function(input, output, session) {
               div(
                 id = "form",
                 #useShinyFeedback(),
-                textInput("ime", "Ime in priimek", ""),
-                textInput("kraj", "Kraj"),
-                selectInput("drzava", "Država",
+                textInput("imepri", "Ime in priimek", ""),
+                textInput("kraj1", "Kraj"),
+                selectInput("drzava1", "Država",
                             c("",  "Avstrija", "Belgija", "Bosna in Hercegovina", "Danska", "Estonija", "Švica", "Francija", "Italija",
                               "Lihtenštajn", "Švedska", "Luksemburg", "Norveška","Hrvaška", "Nemcija", "Slovenija","Portugalska","Romunija",
                               "Združeno Kraljestvo","Crna Gora", "Turcija", "Avstralija", "Bolgarija", "Grcija", "Ciper", "Madžarska",
                               "Malta","Poljska", "Ceška", "Španija", "Latvija", "Litva", "Finska", "Irska", "Islandija", "Rusija", "Slovaška", 
                               "Nizozemska", "Makedonija", "Ukrajina", "Srbija", "Albanija", "Andora", "Armenija", "Azerbajdžan", "Belorusija",
                               "Gruzija", "Moldavija", "Monako", "Kosovo")),
-                sliderInput("starost", "Starost", 18, 65, 30, ticks = TRUE),
-                textInput("email", "E-mail"),
-                numericInput("teza", "Teža v kg", value = NULL, min = 50, max = 150, step =  0.1),
+                sliderInput("sta", "Starost", 18, 65, 30, ticks = TRUE),
+                textInput("email1", "E-mail"),
+                numericInput("teza1", "Teža v kg", value = NULL, min = 50, max = 150, step =  0.1),
                 numericInput("hemo", "Hemoglobin", value = NULL, min = 100, max = 200, step =  0.01),
-                dateInput("datum", "Datum vpisa v evidenco", format = "yyyy-mm-dd"),
-                selectInput("skupina", "Krvna skupina",
+                dateInput("dat", "Datum vpisa v evidenco", format = "yyyy-mm-dd"),
+                selectInput("skup", "Krvna skupina",
                             c("", "A+", "A-", "B+", "B-", "AB+", "AB-", "0+", "0-")),
                 checkboxInput("ze_doniral", "Oseba je v preteklosti kri že donirala", FALSE),
                 
@@ -197,18 +203,25 @@ server <- function(input, output, session) {
       loginpage
     }
   })
-  output$results <-  DT::renderDataTable({
-    datatable(oseba, options = list(autoWidth = TRUE,
-                                    searching = TRUE))
+  output$results <- DT::renderDataTable({
+    dbGetQuery(conn, build_sql("SELECT * FROM oseba", con=conn))
   })
   output$results_p <-  DT::renderDataTable({
-    datatable(prejemnik, options = list(autoWidth = TRUE,
-                                                   searching = TRUE))
+    dbGetQuery(conn, build_sql("SELECT * FROM prejemnik", con = conn))
   })
-  output$results_k <- renderUI({
+  output$results_k <- DT::renderDataTable({
     dbGetQuery(conn, build_sql("SELECT * FROM kri", con=conn))
   })
-
+ 
+#pomoje z eventReactive?? 
+#  observeEvent(input$submit,{
+#   sql2 <- build_sql("INSERT INTO results (ime, kraj, drzava, starost, email, teza, hemoglobin, datum_vpisa_v_evidenco, krvna_skupina)
+#                      VALUES(",input$imepri,",", input$kraj1, "," ,input$drzava1,",", input$sta,",",input$email1,",", input$teza1,",", input$hemo,",", input$dat,",", input$skup, con = conn)  
+#    data2 <- dbGetQuery(conn, sql2)
+#    data2
+#    shinyjs::reset("results") # reset po vpisu komentarja
+#  })
+  
 }
 
 runApp(list(ui = ui, server = server))
