@@ -83,7 +83,8 @@ ustvari_tabele <- function(){
     
     dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_jonag TO javnost", con=conn))
     dbSendQuery(conn, build_sql("GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost", con=conn))
-    
+    dbSendQuery(conn, build_sql("GRANT INSERT ON ALL TABLES IN SCHEMA public TO javnost", con = conn))
+    dbSendQuery(conn, build_sql("GRANT UPDATE ON ALL TABLES IN SCHEMA public TO javnost", con = conn))   
     
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
     
@@ -164,6 +165,8 @@ pravice <- function(){
     
     dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_katjam TO javnost", con=conn))
     dbSendQuery(conn, build_sql("GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost", con=conn))
+    dbSendQuery(conn, build_sql("GRANT INSERT ON ALL TABLES IN SCHEMA public TO javnost", con = conn))
+    dbSendQuery(conn, build_sql("GRANT UPDATE ON ALL TABLES IN SCHEMA public TO javnost", con = conn))  
     
     
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
