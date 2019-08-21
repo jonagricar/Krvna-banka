@@ -9,7 +9,7 @@ Sys.setlocale("LC_CTYPE", "Slovenian_Slovenia.1250")
 loginpage <- div(id = "loginpage", style = "width: 500px; max-width: 100%; margin: 0 auto; padding: 20px;",
                  wellPanel(
                    tags$h2("VPIS", class = "text-center", style = "padding-top: 0;color:#333; font-weight:600;"),
-                   textInput("userName", placeholder="Uporabni�ko ime", label = tagList(icon("user"), "Uporabni�ko ime")),
+                   textInput("userName", placeholder="Uporabniško ime", label = tagList(icon("user"), "Uporabniško ime")),
                    passwordInput("passwd", placeholder="Geslo", label = tagList(icon("unlock-alt"), "Geslo")),
                    br(),
                    div(
@@ -19,7 +19,7 @@ loginpage <- div(id = "loginpage", style = "width: 500px; max-width: 100%; margi
                                  font-size: 18px; font-weight: 600;"),
                      shinyjs::hidden(
                        div(id = "nomatch",
-                           tags$p("Napa�no uporabni�ko ime ali geslo!",
+                           tags$p("Napačno uporabniško ime ali geslo!",
                                   style = "color: red; font-weight: 600; 
                                             padding-top: 5px;font-size:16px;", 
                                   class = "text-center"))),
@@ -48,7 +48,7 @@ server <- function(input, output, session) {
   
   login = FALSE
   USER <- reactiveValues(login = login)
-  #povežemo se z bazo
+  #poveĹľemo se z bazo
   drv <- dbDriver("PostgreSQL")
   conn <- dbConnect(drv, dbname = db, host = host, user = user, password = password)
   
@@ -87,7 +87,7 @@ server <- function(input, output, session) {
   #    feedbackDanger(
   #      inputId = "teza",
   #      condition = nchar(input$teza) >= 50 & nchar(input$teza) <= 150,
-  #      text =  "Teža mora biti med 50kg in 150kg"
+  #      text =  "TeĹľa mora biti med 50kg in 150kg"
   #    )
   #  })
   
@@ -154,10 +154,10 @@ server <- function(input, output, session) {
                 textInput("kraj1", "Kraj"),
                 selectInput("drzava1", "Država",
                             c("",  "Avstrija", "Belgija", "Bosna in Hercegovina", "Danska", "Estonija", "Švica", "Francija", "Italija",
-                              "Lihtenštajn", "Švedska", "Luksemburg", "Norveška","Hrvaška", "Nemcija", "Slovenija","Portugalska","Romunija",
-                              "Združeno Kraljestvo","Crna Gora", "Turcija", "Avstralija", "Bolgarija", "Grcija", "Ciper", "Madžarska",
-                              "Malta","Poljska", "Ceška", "Španija", "Latvija", "Litva", "Finska", "Irska", "Islandija", "Rusija", "Slovaška", 
-                              "Nizozemska", "Makedonija", "Ukrajina", "Srbija", "Albanija", "Andora", "Armenija", "Azerbajdžan", "Belorusija",
+                              "Lihtenšajn", "Švedska", "Luksemburg", "Norveška","Hrvaška", "Nemčija", "Slovenija","Portugalska","Romunija",
+                              "Združeno Kraljestvo","Črna Gora", "Turčija", "Avstralija", "Bolgarija", "Grčija", "Ciper", "Madžarska",
+                              "Malta","Poljska", "ČeŠka", "Španija", "Latvija", "Litva", "Finska", "Irska", "Islandija", "Rusija", "Slovaška", 
+                              "Nizozemska", "Makedonija", "Ukrajina", "Srbija", "Albanija", "Andora", "Armenija", "AzerbajdĹľan", "Belorusija",
                               "Gruzija", "Moldavija", "Monako", "Kosovo")),
                 sliderInput("sta", "Starost", 18, 65, 30, ticks = TRUE),
                 textInput("email1", "E-mail"),
@@ -167,7 +167,7 @@ server <- function(input, output, session) {
                 selectInput("skup", "Krvna skupina",
                             c("", "A+", "A-", "B+", "B-", "AB+", "AB-", "0+", "0-")),
                 checkboxInput("ze_doniral", "Oseba je v preteklosti kri že donirala", FALSE),
-                
+                useShinyalert(),
                 actionButton("submit", "Dodaj v bazo", class = "btn-primary")
               )
             )
@@ -215,12 +215,18 @@ server <- function(input, output, session) {
  
   #vstavljanje podatkov
   observeEvent(input$submit, {
+    # poskusili dobiti id z returning - ne deluje:
+    #dodan_id <- dbGetQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
+    #                            VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
+    #                                       input$teza1, ",", input$skup, ",", input$dat, ") RETURNING id;", con=conn))
+    #dbSendQuery(conn, build_sql("INSERT INTO kri (hemoglobin, datum_prejetja, donator)
+    #                            VALUES (", input$hemo, ",", input$dat, ",", dodan_id, ");", con=conn))
     dbSendQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
                                 VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
-                                input$teza1, ",", input$skup, ",", input$dat, ");", con=conn))
-    obrazec_donator <- dbGetQuery(conn, build_sql("SELECT id from oseba ORDER BY asc", con=conn))
-    dbSendQuery(conn, build_sql("INSERT INTO kri (hemoglobin, datum_prejetja)
+                                input$teza1, ",", input$skup, ",", input$dat, ");
+                                INSERT INTO kri (hemoglobin, datum_prejetja)
                                 VALUES (", input$hemo, ",", input$dat, ");", con=conn))
+    shinyalert("OK!", "Donator uspešno dodan.", type = "success")
   })
   
 }
