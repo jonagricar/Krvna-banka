@@ -23,15 +23,3 @@ library(glue)
 library(sodium)
 library(sqldf)
 library(DBI)
-m <-dbDriver("SQLite")
-con <- dbConnect(m, dbname = ":memory:")
-
-initExtension(con)  # access extfuns
-
-dbWriteTable(con, 'BOD', BOD, row.names = FALSE)
-
-dbGetQuery(con, 'select variance(demand) from BOD')
-##   variance(demand)
-## 1         21.44267
-
-dbDisconnect(con)
