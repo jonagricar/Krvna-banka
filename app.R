@@ -213,11 +213,14 @@ server <- function(input, output, session) {
     dbGetQuery(conn, build_sql("SELECT * FROM kri", con=conn))
   })
  
-#vstavljanje podatkov
+  #vstavljanje podatkov
   observeEvent(input$submit, {
     dbSendQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
-                                 VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
+                                VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
                                 input$teza1, ",", input$skup, ",", input$dat, ");", con=conn))
+    obrazec_donator <- dbGetQuery(conn, build_sql("SELECT id from oseba ORDER BY asc", con=conn))
+    dbSendQuery(conn, build_sql("INSERT INTO kri (hemoglobin, datum_prejetja)
+                                VALUES (", input$hemo, ",", input$dat, ");", con=conn))
   })
   
 }
