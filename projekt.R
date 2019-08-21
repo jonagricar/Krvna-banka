@@ -86,9 +86,9 @@ ustvari_tabele <- function(){
     dbSendQuery(conn, build_sql("GRANT INSERT ON ALL TABLES IN SCHEMA public TO javnost", con = conn))
     dbSendQuery(conn, build_sql("GRANT UPDATE ON ALL TABLES IN SCHEMA public TO javnost", con = conn))   
     
-    dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
     
-    dbSendQuery(conn, build_sql("GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))  
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))  
     
   }, finally = {
     # Na koncu nujno prekinemo povezavo z bazo,
@@ -148,10 +148,10 @@ pravice <- function(){
     conn <- dbConnect(drv, dbname = db, host = host,#drv=s čim se povezujemo
                       user = user, password = password)
     
-    dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_katjam TO jonag WITH GRANT OPTION", con=conn))
-    dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_katjam TO javnost WITH GRANT OPTION", con=conn))
+    dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_jonag TO jonag WITH GRANT OPTION", con=conn))
+    dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_jonag TO javnost WITH GRANT OPTION", con=conn))
     
-    dbSendQuery(conn, build_sql("GRANT ALL ON SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    dbSendQuery(conn, build_sql("GRANT ALL ON SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
     #dbSendQuery(conn, build_sql("GRANT ALL ON SCHEMA public TO javnost WITH GRANT OPTION", con=conn))
     
     
@@ -163,15 +163,15 @@ pravice <- function(){
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
     dbSendQuery(conn, build_sql("GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO javnost WITH GRANT OPTION", con=conn))
     
-    dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_katjam TO javnost", con=conn))
+    dbSendQuery(conn, build_sql("GRANT CONNECT ON DATABASE sem2019_jonag TO javnost", con=conn))
     dbSendQuery(conn, build_sql("GRANT SELECT ON ALL TABLES IN SCHEMA public TO javnost", con=conn))
     dbSendQuery(conn, build_sql("GRANT INSERT ON ALL TABLES IN SCHEMA public TO javnost", con = conn))
     dbSendQuery(conn, build_sql("GRANT UPDATE ON ALL TABLES IN SCHEMA public TO javnost", con = conn))  
     
     
-    dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL TABLES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
     
-    dbSendQuery(conn, build_sql("GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO jonag WITH GRANT OPTION", con=conn))
+    dbSendQuery(conn, build_sql("GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO katjam WITH GRANT OPTION", con=conn))
     
   }, finally = {
     # Na koncu nujno prekinemo povezavo z bazo,
