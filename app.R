@@ -214,13 +214,18 @@ server <- function(input, output, session) {
   })
  
 #pomoje z eventReactive?? 
-#  observeEvent(input$submit,{
-#   sql2 <- build_sql("INSERT INTO results (ime, kraj, drzava, starost, email, teza, hemoglobin, datum_vpisa_v_evidenco, krvna_skupina)
-#                      VALUES(",input$imepri,",", input$kraj1, "," ,input$drzava1,",", input$sta,",",input$email1,",", input$teza1,",", input$hemo,",", input$dat,",", input$skup, con = conn)  
-#    data2 <- dbGetQuery(conn, sql2)
-#    data2
-#    shinyjs::reset("results") # reset po vpisu komentarja
-#  })
+  #observeEvent(input$submit,{
+  sql <- reactive({
+         paste("insert into oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco) 
+                     values (",input$imepri,",", 
+                                  input$kraj1, ", ", input$drzava1,",", input$sta, ",", input$email1, ",", input$teza1, ",", input$skup, ",", input$dat,");", con = conn)
+  })
+  result<-reactive({dbSendQuery(con, sql())})
+   #res <- dbSendQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco) VALUES(",input$imepri,",", 
+   #                   input$kraj1, ", ", input$drzava1,",", input$sta, ",", input$email1, ",", input$teza1, ",", input$skup, ",", input$dat,");",con = conn
+    #))
+   #dbSendQuery(con, build_sql("UPDATE oseba", con = conn))
+  #})
   
 }
 
