@@ -105,6 +105,7 @@ server <- function(input, output, session) {
       if (credentials[,"permission"][which(credentials$username_id==input$userName)]=="advanced") {
         sidebarMenu(
           menuItem("Glavna stran", tabName = "dashboard", icon = icon("dashboard")),
+          menuItem("Bolnišnice", tabName = "Bolnišnice", icon = icon("th")),
           menuItem("Pacienti", tabName = "Pacienti", icon = icon("th")),
           menuItem("Zaloga krvi", tabName = "Kri", icon = icon("th")),
           menuItem("Obrazec", tabName = "Obrazec", icon = icon("th"))
@@ -113,6 +114,7 @@ server <- function(input, output, session) {
       else{
         sidebarMenu(
           menuItem("Glavna stran", tabName = "dashboard", icon = icon("dashboard")),
+          menuItem("Bolnišnice", tabName = "Bolnišnice", icon = icon("th")),
           menuItem("Pacienti", tabName = "Pacienti", icon = icon("th")),
           menuItem("Zaloga krvi", tabName = "Kri", icon = icon("th"))
         )
@@ -131,6 +133,12 @@ server <- function(input, output, session) {
               box(width = 12, title = "Podatki o pacientih in donatorjih", dataTableOutput('results'))
             ))
           ,
+          tabItem(
+            tabName ="Bolnišnice",
+            fluidRow(
+              box(width = 12, title = "Bolnišnice", dataTableOutput('results_b'))
+            )
+          ),
           tabItem(
             tabName ="Pacienti",
             fluidRow(
@@ -152,21 +160,21 @@ server <- function(input, output, session) {
                 #useShinyFeedback(),
                 textInput("imepri", "Ime in priimek", ""),
                 textInput("kraj1", "Kraj"),
-                selectInput("drzava1", "DrÅ¾ava",
-                            c("",  "Avstrija", "Belgija", "Bosna in Hercegovina", "Danska", "Estonija", "Å vica", "Francija", "Italija",
-                              "LihtenÅ¡ajn", "Å vedska", "Luksemburg", "NorveÅ¡ka","HrvaÅ¡ka", "NemÄija", "Slovenija","Portugalska","Romunija",
-                              "ZdruÅ¾eno Kraljestvo","ÄŒrna Gora", "TurÄija", "Avstralija", "Bolgarija", "GrÄija", "Ciper", "MadÅ¾arska",
-                              "Malta","Poljska", "ÄŒeÅ ka", "Å panija", "Latvija", "Litva", "Finska", "Irska", "Islandija", "Rusija", "SlovaÅ¡ka", 
-                              "Nizozemska", "Makedonija", "Ukrajina", "Srbija", "Albanija", "Andora", "Armenija", "AzerbajdÄ¹Ä¾an", "Belorusija",
+                selectInput("drzava1", "Drava",
+                            c("",  "Avstrija", "Belgija", "Bosna in Hercegovina", "Danska", "Estonija", "Švica", "Francija", "Italija",
+                              "Lihtenštajn", "Švedska", "Luksemburg", "Norveška","Hrvaška", "NemÄija", "Slovenija","Portugalska","Romunija",
+                              "Zdrueno Kraljestvo","Èrna Gora", "Turèija", "Avstralija", "Bolgarija", "Grèija", "Ciper", "Madarska",
+                              "Malta","Poljska", "Èeška", "Španija", "Latvija", "Litva", "Finska", "Irska", "Islandija", "Rusija", "Slovaška", 
+                              "Nizozemska", "Makedonija", "Ukrajina", "Srbija", "Albanija", "Andora", "Armenija", "Azerbajdan", "Belorusija",
                               "Gruzija", "Moldavija", "Monako", "Kosovo")),
                 sliderInput("sta", "Starost", 18, 65, 30, ticks = TRUE),
                 textInput("email1", "E-mail"),
-                numericInput("teza1", "TeÅ¾a v kg", value = NULL, min = 50, max = 150, step =  0.1),
+                numericInput("teza1", "Tea v kg", value = NULL, min = 50, max = 150, step =  0.1),
                 numericInput("hemo", "Hemoglobin", value = NULL, min = 100, max = 200, step =  0.01),
                 dateInput("dat", "Datum vpisa v evidenco", format = "yyyy-mm-dd"),
                 selectInput("skup", "Krvna skupina",
                             c("", "A+", "A-", "B+", "B-", "AB+", "AB-", "0+", "0-")),
-                checkboxInput("ze_doniral", "Oseba je v preteklosti kri Å¾e donirala", FALSE),
+                checkboxInput("ze_doniral", "Oseba je v preteklosti kri e donirala", FALSE),
                 useShinyalert(),
                 actionButton("submit", "Dodaj v bazo", class = "btn-primary")
               )
@@ -182,6 +190,12 @@ server <- function(input, output, session) {
               box(width = 12, title = "Podatki o pacientih in donatorjih", dataTableOutput('results'))
             ))
           ,
+          tabItem(
+            tabName ="Bolnišnice",
+            fluidRow(
+              box(width = 12, title = "Bolnišnice", dataTableOutput('results_b'))
+            )
+          ),
           tabItem(
             tabName ="Pacienti",
             fluidRow(
@@ -206,6 +220,9 @@ server <- function(input, output, session) {
   output$results <- DT::renderDataTable({
     dbGetQuery(conn, build_sql("SELECT * FROM oseba", con=conn))
   })
+  output$results_b <- DT::renderDataTable({
+    dbGetQuery(conn, build_sql("SELECT * FROM bolnisnica", con = conn))
+  })
   output$results_p <-  DT::renderDataTable({
     dbGetQuery(conn, build_sql("SELECT * FROM prejemnik", con = conn))
   })
@@ -223,12 +240,18 @@ server <- function(input, output, session) {
     #                            VALUES (", input$hemo, ",", input$dat, ",", dodan_id, ");", con=conn))
     dbSendQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
                                 VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
-                                input$teza1, ",", input$skup, ",", input$dat, ");
-                                INSERT INTO kri (hemoglobin, datum_prejetja)
-                                VALUES (", input$hemo, ",", input$dat, ");", con=conn))
-    shinyalert("OK!", "Donator uspeÅ¡no dodan.", type = "success")
+                                input$teza1, ",", input$skup, ",", input$dat, ");", con = conn))
+    id_bolnica <- dbGetQuery(conn, build_sql("IF kraj =", input$kraj1,
+                                               "SELECT id FROM bolnisnica
+                                             ELSE
+                                               SELECT id FROM bolnisnica
+                                               WHERE drzava=", input$drzava1, "
+                                               LIMIT 1);", con=conn))
+                                
+    dbSendQuery(conn, build_sql("INSERT INTO kri (hemoglobin, datum_prejetja, hrani)
+                                VALUES (", input$hemo, ",", input$dat,",", id_bolnica,");", con=conn))
+    shinyalert("OK!", "Donator uspešno dodan.", type = "success")
   })
-  
 }
 
 runApp(list(ui = ui, server = server))
