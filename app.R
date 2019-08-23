@@ -231,19 +231,16 @@ server <- function(input, output, session) {
   #vstavljanje podatkov
   observeEvent(input$submit, {
     if (input$teza1 >= 50 & input$teza1 <= 150 & input$sta >= 18 & input$sta <= 65 & input$hemo >= 100 & input$hemo <= 200) {
-      dbSendQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
-                                VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
-                                input$teza1, ",", input$skup, ",", input$dat, ");", con = conn))
       id_oseba <- dbGetQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
                                              VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
-                                           input$teza1, ",", input$skup, ",", input$dat, ") RETURNING id;", con = conn))
+                                             input$teza1, ",", input$skup, ",", input$dat, ") RETURNING id;", con = conn))
       id_bolnica <- dbGetQuery(conn, build_sql("SELECT id FROM bolnisnica
                                               WHERE drzava = ", input$drzava1, "
                                               ORDER BY kraj = ", input$kraj1, " DESC
                                               LIMIT 1;", con=conn))
       dbSendQuery(conn, build_sql("INSERT INTO kri (hemoglobin, datum_prejetja, donator, hrani)
                                  VALUES (", input$hemo, ",", input$dat, ",", id_oseba[1,1], ",", id_bolnica[1,1],");",
-                                con=conn))
+                                  con=conn))
       shinyalert("OK!", "Donator uspešno dodan.", type = "success")
     } else {
       shinyalert("OPOZORILO!", "Teža/starost/vsebnost hemoglobina ne ustreza pogojem!", type = "warning")
