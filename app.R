@@ -79,15 +79,6 @@ server <- function(input, output, session) {
       }
     }
   })
-  #  observe({
-  #    input$submit
-  #    
-  #    feedbackDanger(
-  #      inputId = "teza",
-  #      condition = nchar(input$teza) >= 50 & nchar(input$teza) <= 150,
-  #      text =  "Teža mora biti med 50kg in 150kg"
-  #    )
-  #  })
   
   output$logoutbtn <- renderUI({
     req(USER$login)
@@ -238,7 +229,9 @@ server <- function(input, output, session) {
  
   #vstavljanje podatkov
   observeEvent(input$submit, {
-    if (input$teza1 >= 50 & input$teza1 <= 150 & input$sta >= 18 & input$sta <= 65 & input$hemo >= 100 & input$hemo <= 200) {
+    if (!(is.na(input$imepri)) && !(is.na(input$kraj1)) && !(is.na(input$drzava1)) && !(is.na(input$email1)) && !(is.na(input$skup)) && 
+        !(is.na(input$dat)) && input$teza1 >= 50 && input$teza1 <= 150 && input$sta >= 18 && input$sta <= 65 && 
+        input$hemo >= 100 && input$hemo <= 200) {
       dbSendQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
                                 VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
                                 input$teza1, ",", input$skup, ",", input$dat, ");", con = conn))
@@ -254,17 +247,41 @@ server <- function(input, output, session) {
                                 con=conn))
       shinyalert("OK!", "Donator uspešno dodan.", type = "success")
     } else {
-      if (input$teza1 <= 50 | input$teza1 >= 150) {
+      if (is.na(input$imepri)) {
+        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Vpišite ime!",
+                    content = "Polje z imenom ne sme biti prazno!", style = "danger")
+      }
+      if (is.na(input$kraj1)) {
+        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Vpišite kraj!",
+                    content = "Polje s krajem ne sme biti prazno!", style = "danger")
+      }
+      if (is.na(input$drzava1)) {
+        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Manjka država!",
+                    content = "V spustnem seznamu izberite državo!", style = "danger")
+      }
+      if (is.na(input$email1)) {
+        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Vpišite e-mail darovalca!",
+                    content = "Polje z e-mailom ne sme biti prazno!", style = "danger")
+      }
+      if (is.na(input$skup)) {
+        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Manjka krvna skupina darovalca!",
+                    content = "V spustnem seznamu izberite krvno skupino!", style = "danger")
+      }
+      if (is.na(input$dat)) {
+        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Izberite datum!",
+                    content = "'Polje z datumom ne sme biti prazno!", style = "danger")
+      }
+      if (is.na(input$teza1) | input$teza1 <= 50 | input$teza1 >= 150) {
         createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna teža!",
-                    content = "'Teža mora biti med 50kg in 150kg!", style = "danger")
+                    content = "Teža mora biti med 50kg in 150kg!", style = "danger")
       }
-      if (input$sta <= 18 | input$sta >= 65) {
+      if (is.na(input$sta) | input$sta <= 18 | input$sta >= 65) {
         createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna starost!",
-                    content = "'Darovalec mora biti star med 18 in 65 let!", style = "danger")
+                    content = "Darovalec mora biti star med 18 in 65 let!", style = "danger")
       }
-      if (input$hemo <= 100 | input$hemo >= 200) {
+      if (is.na(input$hemo) | input$hemo <= 100 | input$hemo >= 200) {
         createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna vsebnost hemoglobina!",
-                    content = "'Vsebnost hemoglobina mora biti med 100 in 200!", style = "danger")
+                    content = "Vsebnost hemoglobina mora biti med 100 in 200!", style = "danger")
       }
     }
   })
