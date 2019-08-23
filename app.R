@@ -154,8 +154,16 @@ server <- function(input, output, session) {
             fluidPage(
               titlePanel("Obrazec za oddajo krvi"),
               div(
+                tags$style(HTML("
+                    input:invalid {
+                    background-color: #FFCCCC;
+                    }")),
+                #### Set up shinyjs ####
+                useShinyjs(),
+                
+                ### shinyBS ###
+                bsAlert("alert"),
                 id = "form",
-                #useShinyFeedback(),
                 textInput("imepri", "Ime in priimek", ""),
                 textInput("kraj1", "Kraj"),
                 selectInput("drzava1", "Država",
@@ -231,19 +239,33 @@ server <- function(input, output, session) {
   #vstavljanje podatkov
   observeEvent(input$submit, {
     if (input$teza1 >= 50 & input$teza1 <= 150 & input$sta >= 18 & input$sta <= 65 & input$hemo >= 100 & input$hemo <= 200) {
+      dbSendQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
+                                VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
+                                input$teza1, ",", input$skup, ",", input$dat, ");", con = conn))
       id_oseba <- dbGetQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
                                              VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
-                                             input$teza1, ",", input$skup, ",", input$dat, ") RETURNING id;", con = conn))
+                                           input$teza1, ",", input$skup, ",", input$dat, ") RETURNING id;", con = conn))
       id_bolnica <- dbGetQuery(conn, build_sql("SELECT id FROM bolnisnica
                                               WHERE drzava = ", input$drzava1, "
                                               ORDER BY kraj = ", input$kraj1, " DESC
                                               LIMIT 1;", con=conn))
       dbSendQuery(conn, build_sql("INSERT INTO kri (hemoglobin, datum_prejetja, donator, hrani)
                                  VALUES (", input$hemo, ",", input$dat, ",", id_oseba[1,1], ",", id_bolnica[1,1],");",
-                                  con=conn))
+                                con=conn))
       shinyalert("OK!", "Donator uspešno dodan.", type = "success")
     } else {
-      shinyalert("OPOZORILO!", "Teža/starost/vsebnost hemoglobina ne ustreza pogojem!", type = "warning")
+      if (input$teza1 <= 50 | input$teza1 >= 150) {
+        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna teža!",
+                    content = "'Teža mora biti med 50kg in 150kg!", style = "danger")
+      }
+      if (input$sta <= 18 | input$sta >= 65) {
+        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna starost!",
+                    content = "'Darovalec mora biti star med 18 in 65 let!", style = "danger")
+      }
+      if (input$hemo <= 100 | input$hemo >= 200) {
+        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna vsebnost hemoglobina!",
+                    content = "'Vsebnost hemoglobina mora biti med 100 in 200!", style = "danger")
+      }
     }
   })
 }
