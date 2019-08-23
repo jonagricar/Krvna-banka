@@ -1,15 +1,13 @@
 source("libraries.R")
-source("auth_public.R", encoding="UTF-8")
-
-original.locale <- Sys.getlocale(category="LC_CTYPE")
-Sys.setlocale("LC_CTYPE", "Slovenian_Slovenia.1250") 
+source("auth_public.R")
+ 
 
 
 # Main login screen
 loginpage <- div(id = "loginpage", style = "width: 500px; max-width: 100%; margin: 0 auto; padding: 20px;",
                  wellPanel(
                    tags$h2("VPIS", class = "text-center", style = "padding-top: 0;color:#333; font-weight:600;"),
-                   textInput("userName", placeholder="Uporabniško ime", label = tagList(icon("user"), "Uporabniško ime")),
+                   textInput("userName", placeholder="Uporabnik", label = tagList(icon("user"), "Uporabnik")),
                    passwordInput("passwd", placeholder="Geslo", label = tagList(icon("unlock-alt"), "Geslo")),
                    br(),
                    div(
@@ -48,7 +46,7 @@ server <- function(input, output, session) {
   
   login = FALSE
   USER <- reactiveValues(login = login)
-  #poveĹľemo se z bazo
+  #povežemo se z bazo
   drv <- dbDriver("PostgreSQL")
   conn <- dbConnect(drv, dbname = db, host = host, user = user, password = password)
   
@@ -87,7 +85,7 @@ server <- function(input, output, session) {
   #    feedbackDanger(
   #      inputId = "teza",
   #      condition = nchar(input$teza) >= 50 & nchar(input$teza) <= 150,
-  #      text =  "TeĹľa mora biti med 50kg in 150kg"
+  #      text =  "Teža mora biti med 50kg in 150kg"
   #    )
   #  })
   
@@ -105,7 +103,7 @@ server <- function(input, output, session) {
       if (credentials[,"permission"][which(credentials$username_id==input$userName)]=="advanced") {
         sidebarMenu(
           menuItem("Glavna stran", tabName = "dashboard", icon = icon("dashboard")),
-          menuItem("Bolni�nice", tabName = "Bolni�nice", icon = icon("th")),
+          menuItem("Bolnišnice", tabName = "Bolnišnice", icon = icon("th")),
           menuItem("Pacienti", tabName = "Pacienti", icon = icon("th")),
           menuItem("Zaloga krvi", tabName = "Kri", icon = icon("th")),
           menuItem("Obrazec", tabName = "Obrazec", icon = icon("th"))
@@ -114,7 +112,7 @@ server <- function(input, output, session) {
       else{
         sidebarMenu(
           menuItem("Glavna stran", tabName = "dashboard", icon = icon("dashboard")),
-          menuItem("Bolni�nice", tabName = "Bolni�nice", icon = icon("th")),
+          menuItem("Bolnišnice", tabName = "Bolnišnice", icon = icon("th")),
           menuItem("Pacienti", tabName = "Pacienti", icon = icon("th")),
           menuItem("Zaloga krvi", tabName = "Kri", icon = icon("th"))
         )
@@ -134,9 +132,9 @@ server <- function(input, output, session) {
             ))
           ,
           tabItem(
-            tabName ="Bolni�nice",
+            tabName ="Bolnišnice",
             fluidRow(
-              box(width = 12, title = "Bolni�nice", dataTableOutput('results_b'))
+              box(width = 12, title = "Bolnišnice", dataTableOutput('results_b'))
             )
           ),
           tabItem(
@@ -160,21 +158,21 @@ server <- function(input, output, session) {
                 #useShinyFeedback(),
                 textInput("imepri", "Ime in priimek", ""),
                 textInput("kraj1", "Kraj"),
-                selectInput("drzava1", "Dr�ava",
-                            c("",  "Avstrija", "Belgija", "Bosna in Hercegovina", "Danska", "Estonija", "�vica", "Francija", "Italija",
-                              "Lihten�tajn", "�vedska", "Luksemburg", "Norve�ka","Hrva�ka", "Nemčija", "Slovenija","Portugalska","Romunija",
-                              "Zdru�eno Kraljestvo","�rna Gora", "Tur�ija", "Avstralija", "Bolgarija", "Gr�ija", "Ciper", "Mad�arska",
-                              "Malta","Poljska", "�e�ka", "�panija", "Latvija", "Litva", "Finska", "Irska", "Islandija", "Rusija", "Slova�ka", 
-                              "Nizozemska", "Makedonija", "Ukrajina", "Srbija", "Albanija", "Andora", "Armenija", "Azerbajd�an", "Belorusija",
+                selectInput("drzava1", "Država",
+                            c("",  "Avstrija", "Belgija", "Bosna in Hercegovina", "Danska", "Estonija", "Švica", "Francija", "Italija",
+                              "Lihtenštajn", "Švedska", "Luksemburg", "Norveška","Hrvaška", "Nemčija", "Slovenija","Portugalska","Romunija",
+                              "Združeno Kraljestvo","Črna Gora", "Turčija", "Avstralija", "Bolgarija", "Grčija", "Ciper", "Madžarska",
+                              "Malta","Poljska", "Češka", "Španija", "Latvija", "Litva", "Finska", "Irska", "Islandija", "Rusija", "Slovaška", 
+                              "Nizozemska", "Makedonija", "Ukrajina", "Srbija", "Albanija", "Andora", "Armenija", "Azerbajdžan", "Belorusija",
                               "Gruzija", "Moldavija", "Monako", "Kosovo")),
                 sliderInput("sta", "Starost", 18, 65, 30, ticks = TRUE),
                 textInput("email1", "E-mail"),
-                numericInput("teza1", "Te�a v kg", value = NULL, min = 50, max = 150, step =  0.1),
+                numericInput("teza1", "Teža v kg", value = NULL, min = 50, max = 150, step =  0.1),
                 numericInput("hemo", "Hemoglobin", value = NULL, min = 100, max = 200, step =  0.01),
                 dateInput("dat", "Datum vpisa v evidenco", format = "yyyy-mm-dd"),
                 selectInput("skup", "Krvna skupina",
                             c("", "A+", "A-", "B+", "B-", "AB+", "AB-", "0+", "0-")),
-                checkboxInput("ze_doniral", "Oseba je v preteklosti kri �e donirala", FALSE),
+                checkboxInput("ze_doniral", "Oseba je v preteklosti kri že donirala", FALSE),
                 useShinyalert(),
                 actionButton("submit", "Dodaj v bazo", class = "btn-primary")
               )
@@ -191,9 +189,9 @@ server <- function(input, output, session) {
             ))
           ,
           tabItem(
-            tabName ="Bolni�nice",
+            tabName ="Bolnišnice",
             fluidRow(
-              box(width = 12, title = "Bolni�nice", dataTableOutput('results_b'))
+              box(width = 12, title = "Bolnišnice", dataTableOutput('results_b'))
             )
           ),
           tabItem(
@@ -232,25 +230,24 @@ server <- function(input, output, session) {
  
   #vstavljanje podatkov
   observeEvent(input$submit, {
-    # poskusili dobiti id z returning - ne deluje:
-    #dodan_id <- dbGetQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
-    #                            VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
-    #                                       input$teza1, ",", input$skup, ",", input$dat, ") RETURNING id;", con=conn))
-    #dbSendQuery(conn, build_sql("INSERT INTO kri (hemoglobin, datum_prejetja, donator)
-    #                            VALUES (", input$hemo, ",", input$dat, ",", dodan_id, ");", con=conn))
-    dbSendQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
+    if (input$teza1 >= 50 & input$teza1 <= 150 & input$sta >= 18 & input$sta <= 65 & input$hemo >= 100 & input$hemo <= 200) {
+      dbSendQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
                                 VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
                                 input$teza1, ",", input$skup, ",", input$dat, ");", con = conn))
-    id_bolnica <- dbGetQuery(conn, build_sql("IF kraj =", input$kraj1,
-                                               "SELECT id FROM bolnisnica
-                                             ELSE
-                                               SELECT id FROM bolnisnica
-                                               WHERE drzava=", input$drzava1, "
-                                               LIMIT 1);", con=conn))
-                                
-    dbSendQuery(conn, build_sql("INSERT INTO kri (hemoglobin, datum_prejetja, hrani)
-                                VALUES (", input$hemo, ",", input$dat,",", id_bolnica,");", con=conn))
-    shinyalert("OK!", "Donator uspe�no dodan.", type = "success")
+      id_oseba <- dbGetQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
+                                             VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
+                                           input$teza1, ",", input$skup, ",", input$dat, ") RETURNING id;", con = conn))
+      id_bolnica <- dbGetQuery(conn, build_sql("SELECT id FROM bolnisnica
+                                              WHERE drzava = ", input$drzava1, "
+                                              ORDER BY kraj = ", input$kraj1, " DESC
+                                              LIMIT 1;", con=conn))
+      dbSendQuery(conn, build_sql("INSERT INTO kri (hemoglobin, datum_prejetja, donator, hrani)
+                                 VALUES (", input$hemo, ",", input$dat, ",", id_oseba[1,1], ",", id_bolnica[1,1],");",
+                                con=conn))
+      shinyalert("OK!", "Donator uspešno dodan.", type = "success")
+    } else {
+      shinyalert("OPOZORILO!", "Teža/starost/vsebnost hemoglobina ne ustreza pogojem!", type = "warning")
+    }
   })
 }
 
