@@ -103,7 +103,7 @@ server <- function(input, output, session) {
       if (credentials[,"permission"][which(credentials$username_id==input$userName)]=="advanced") {
         sidebarMenu(
           menuItem("Glavna stran", tabName = "dashboard", icon = icon("dashboard")),
-          menuItem("Bolnišnice", tabName = "Bolnišnice", icon = icon("th")),
+          menuItem("Seznam bolnic", tabName = "Bolnice", icon = icon("th")),
           menuItem("Pacienti", tabName = "Pacienti", icon = icon("th")),
           menuItem("Zaloga krvi", tabName = "Kri", icon = icon("th")),
           menuItem("Obrazec", tabName = "Obrazec", icon = icon("th"))
@@ -112,7 +112,7 @@ server <- function(input, output, session) {
       else{
         sidebarMenu(
           menuItem("Glavna stran", tabName = "dashboard", icon = icon("dashboard")),
-          menuItem("Bolnišnice", tabName = "Bolnišnice", icon = icon("th")),
+          menuItem("Seznam bolnic", tabName = "Bolnice", icon = icon("th")),
           menuItem("Pacienti", tabName = "Pacienti", icon = icon("th")),
           menuItem("Zaloga krvi", tabName = "Kri", icon = icon("th"))
         )
@@ -132,9 +132,9 @@ server <- function(input, output, session) {
             ))
           ,
           tabItem(
-            tabName ="Bolnišnice",
+            tabName ="Bolnice",
             fluidRow(
-              box(width = 12, title = "Bolnišnice", dataTableOutput('results_b'))
+              box(width = 12, title = "Podatki o bolnicah", dataTableOutput('results_b'))
             )
           ),
           tabItem(
@@ -189,9 +189,9 @@ server <- function(input, output, session) {
             ))
           ,
           tabItem(
-            tabName ="Bolnišnice",
+            tabName ="Bolnice",
             fluidRow(
-              box(width = 12, title = "Bolnišnice", dataTableOutput('results_b'))
+              box(width = 12, title = "Podatki o bolnicah", dataTableOutput('results_b'))
             )
           ),
           tabItem(
