@@ -3,7 +3,7 @@ source("auth_public.R")
  
 
 
-# Main login screen
+#Začetna stran
 loginpage <- div(id = "loginpage", style = "width: 500px; max-width: 100%; margin: 0 auto; padding: 20px;",
                  wellPanel(
                    tags$h2("VPIS", class = "text-center", style = "padding-top: 0;color:#333; font-weight:600;"),
@@ -29,6 +29,7 @@ loginpage <- div(id = "loginpage", style = "width: 500px; max-width: 100%; margi
                    ))
 )
 
+#uporabniki in dostopi
 credentials = data.frame(
   username_id = c("sestra", "zdravnik"),
   passod   = sapply(c("sestra", "zdravnik"),password_store),
@@ -41,6 +42,19 @@ header <- dashboardHeader( title = "Evropska krvna banka", uiOutput("logoutbtn")
 sidebar <- dashboardSidebar(uiOutput("sidebarpanel")) 
 body <- dashboardBody(shinyjs::useShinyjs(), uiOutput("body"))
 ui<-dashboardPage(header, sidebar, body, skin = "red")
+
+#obvezna polja za obrazec
+fieldsMandatory <- c("imepri", "kraj1", "drzava1", "email1", "sta")
+
+labelMandatory <- function(label) {
+  tagList(
+    label,
+    span("*", class = "mandatory_star")
+  )
+}
+
+appCSS <-
+  ".mandatory_star { color: red; }"
 
 server <- function(input, output, session) {
   
@@ -56,6 +70,7 @@ server <- function(input, output, session) {
     dbDisconnect(conn) 
   })
   
+  #ali je pravo ime in geslo
   observe({ 
     if (USER$login == FALSE) {
       if (!is.null(input$login)) {
@@ -80,6 +95,7 @@ server <- function(input, output, session) {
     }
   })
   
+  #gumb za logout iz aplikacije
   output$logoutbtn <- renderUI({
     req(USER$login)
     tags$li(a(icon("fa fa-sign-out"), "Logout", 
@@ -88,7 +104,7 @@ server <- function(input, output, session) {
             style = "background-color: #ffffff !important; border: 0;
                     font-weight: bold; margin:5px; padding: 10px;")
   })
-  
+  #da vidi zdravnik dodaten zavihek obrazec
   output$sidebarpanel <- renderUI({
     if (USER$login == TRUE ){ 
       if (credentials[,"permission"][which(credentials$username_id==input$userName)]=="advanced") {
@@ -111,9 +127,9 @@ server <- function(input, output, session) {
       }
     }
   })
-  
   output$body <- renderUI({
     if (USER$login == TRUE ) {
+      #zavihki ki jih vidi zdravnik
       if (credentials[,"permission"][which(credentials$username_id==input$userName)]=="advanced") {
         tabItems(
           tabItem(
@@ -144,6 +160,7 @@ server <- function(input, output, session) {
             tabName ="Obrazec",
             fluidPage(
               titlePanel("Obrazec za oddajo krvi"),
+              h4("Vsa polja so obvezna!"),
               div(
                 tags$style(HTML("
                     input:invalid {
@@ -151,6 +168,7 @@ server <- function(input, output, session) {
                     }")),
                 #### Set up shinyjs ####
                 useShinyjs(),
+                shinyjs::inlineCSS(appCSS),
                 
                 ### shinyBS ###
                 bsAlert("alert"),
@@ -180,6 +198,7 @@ server <- function(input, output, session) {
         )
       } 
       else {
+        #zavihki ki jih vidi sestra
         tabItems(
           tabItem(
             tabName ="dashboard", class = "active",
@@ -214,6 +233,7 @@ server <- function(input, output, session) {
       loginpage
     }
   })
+  #dodajanje tabel iz baze
   output$results <- DT::renderDataTable({
     dbGetQuery(conn, build_sql("SELECT * FROM oseba", con=conn))
   })
@@ -228,9 +248,23 @@ server <- function(input, output, session) {
   })
  
   #vstavljanje podatkov
+  observe({
+    # ali so obvezna polja izpolnjena
+    mandatoryFilled <-
+      vapply(fieldsMandatory,
+             function(x) {
+               !is.null(input[[x]]) && input[[x]] != ""
+             },
+             logical(1))
+    mandatoryFilled <- all(mandatoryFilled)
+    
+    # enable/disable the submit button
+    shinyjs::toggleState(id = "submit", condition = mandatoryFilled)
+  })
+  
   observeEvent(input$submit, {
-    if (!(is.na(input$imepri)) && !(is.na(input$kraj1)) && !(is.na(input$drzava1)) && !(is.na(input$email1)) && !(is.na(input$skup)) && 
-        !(is.na(input$dat)) && input$teza1 >= 50 && input$teza1 <= 150 && input$sta >= 18 && input$sta <= 65 && 
+    #pregleda če teža, hemoglobin in starost ustrezajo in vstavi podatke iz obrazca v tabele
+    if (input$teza1 >= 50 && input$teza1 <= 150 && input$sta >= 18 && input$sta <= 65 && 
         input$hemo >= 100 && input$hemo <= 200) {
       dbSendQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
                                 VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
@@ -247,30 +281,7 @@ server <- function(input, output, session) {
                                 con=conn))
       shinyalert("OK!", "Donator uspešno dodan.", type = "success")
     } else {
-      if (is.na(input$imepri)) {
-        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Vpišite ime!",
-                    content = "Polje z imenom ne sme biti prazno!", style = "danger")
-      }
-      if (is.na(input$kraj1)) {
-        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Vpišite kraj!",
-                    content = "Polje s krajem ne sme biti prazno!", style = "danger")
-      }
-      if (is.na(input$drzava1)) {
-        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Manjka država!",
-                    content = "V spustnem seznamu izberite državo!", style = "danger")
-      }
-      if (is.na(input$email1)) {
-        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Vpišite e-mail darovalca!",
-                    content = "Polje z e-mailom ne sme biti prazno!", style = "danger")
-      }
-      if (is.na(input$skup)) {
-        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Manjka krvna skupina darovalca!",
-                    content = "V spustnem seznamu izberite krvno skupino!", style = "danger")
-      }
-      if (is.na(input$dat)) {
-        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Izberite datum!",
-                    content = "'Polje z datumom ne sme biti prazno!", style = "danger")
-      }
+      #če niso ustrezni podatki vrne opozorilo
       if (is.na(input$teza1) | input$teza1 <= 50 | input$teza1 >= 150) {
         createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna teža!",
                     content = "Teža mora biti med 50kg in 150kg!", style = "danger")
