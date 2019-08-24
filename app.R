@@ -268,9 +268,6 @@ server <- function(input, output, session) {
     #pregleda če teža, hemoglobin in starost ustrezajo in vstavi podatke iz obrazca v tabele
     if (input$teza1 >= 50 && input$teza1 <= 150 && input$sta >= 18 && input$sta <= 65 && 
         input$hemo >= 100 && input$hemo <= 200) {
-      dbSendQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
-                                VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
-                                input$teza1, ",", input$skup, ",", input$dat, ");", con = conn))
       id_oseba <- dbGetQuery(conn, build_sql("INSERT INTO oseba (ime, kraj, drzava, starost, email, teza, krvna_skupina, datum_vpisa_v_evidenco)
                                              VALUES (", input$imepri, ",", input$kraj1, ", ", input$drzava1, ",", input$sta, ",", input$email1, ",",
                                            input$teza1, ",", input$skup, ",", input$dat, ") RETURNING id;", con = conn))
