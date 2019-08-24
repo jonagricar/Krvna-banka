@@ -1,7 +1,9 @@
 source("libraries.R")
 source("auth_public.R")
- 
 
+#open in browser, da delajo šumniki 
+#če presežeš max št povezav, zaženi:
+#RPostgreSQL::dbDisconnect(RPostgreSQL::dbListConnections(RPostgreSQL::PostgreSQL())[[1]]) 
 
 #Začetna stran
 loginpage <- div(id = "loginpage", style = "width: 500px; max-width: 100%; margin: 0 auto; padding: 20px;",
