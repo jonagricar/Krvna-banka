@@ -177,7 +177,7 @@ server <- function(input, output, session) {
                 id = "form",
                 textInput("imepri", "Ime in priimek", ""),
                 textInput("kraj1", "Kraj"),
-                selectInput("drzava1", "Država",
+                selectInput("drzava1", "Drzava",
                             c("",  "Avstrija", "Belgija", "Bosna in Hercegovina", "Danska", "Estonija", "Svica", "Francija", "Italija",
                               "Lihtenstajn", "Svedska", "Luksemburg", "Norveska","Hrvaska", "Nemcija", "Slovenija","Portugalska","Romunija",
                               "Zdruzeno Kraljestvo","Crna Gora", "Turcija", "Avstralija", "Bolgarija", "Grcija", "Ciper", "Madzarska",
@@ -186,12 +186,12 @@ server <- function(input, output, session) {
                               "Gruzija", "Moldavija", "Monako", "Kosovo")),
                 sliderInput("sta", "Starost", 18, 65, 30, ticks = TRUE),
                 textInput("email1", "E-mail"),
-                numericInput("teza1", "Teža v kg", value = NULL, min = 50, max = 150, step =  0.1),
+                numericInput("teza1", "Teza v kg", value = NULL, min = 50, max = 150, step =  0.1),
                 numericInput("hemo", "Hemoglobin", value = NULL, min = 100, max = 200, step =  0.01),
                 dateInput("dat", "Datum vpisa v evidenco", format = "yyyy-mm-dd"),
                 selectInput("skup", "Krvna skupina",
                             c("", "A+", "A-", "B+", "B-", "AB+", "AB-", "0+", "0-")),
-                checkboxInput("ze_doniral", "Oseba je v preteklosti kri že donirala", FALSE),
+                checkboxInput("ze_doniral", "Oseba je v preteklosti kri ze donirala", FALSE),
                 useShinyalert(),
                 actionButton("submit", "Dodaj v bazo", class = "btn-primary")
               )
@@ -278,12 +278,12 @@ server <- function(input, output, session) {
       dbSendQuery(conn, build_sql("INSERT INTO kri (hemoglobin, datum_prejetja, donator, hrani)
                                  VALUES (", input$hemo, ",", input$dat, ",", id_oseba[1,1], ",", id_bolnica[1,1],");",
                                 con=conn))
-      shinyalert("OK!", "Donator uspešno dodan.", type = "success")
+      shinyalert("OK!", "Donator dodan v sistem.", type = "success")
     } else {
       #če niso ustrezni podatki vrne opozorilo
       if (is.na(input$teza1) | input$teza1 <= 50 | input$teza1 >= 150) {
-        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna teža!",
-                    content = "Teža mora biti med 50kg in 150kg!", style = "danger")
+        createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna teza!",
+                    content = "Teza mora biti med 50kg in 150kg!", style = "danger")
       }
       if (is.na(input$sta) | input$sta <= 18 | input$sta >= 65) {
         createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna starost!",
