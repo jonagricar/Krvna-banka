@@ -279,20 +279,19 @@ server <- function(input, output, session) {
                                  VALUES (", input$hemo, ",", input$dat, ",", id_oseba[1,1], ",", id_bolnica[1,1],");",
                                 con=conn))
       shinyalert("OK!", "Donator dodan v sistem.", type = "success")
-    } else {
-      #če niso ustrezni podatki vrne opozorilo
-      if (is.na(input$teza1) | input$teza1 <= 50 | input$teza1 >= 150) {
+    } 
+    #če niso ustrezni podatki vrne opozorilo
+    if (is.na(input$teza1) | input$teza1 <= 50 | input$teza1 >= 150) {
         createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna teza!",
                     content = "Teza mora biti med 50kg in 150kg!", style = "danger")
-      }
-      if (is.na(input$sta) | input$sta <= 18 | input$sta >= 65) {
+    }
+    if (is.na(input$sta) | input$sta <= 18 | input$sta >= 65) {
         createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna starost!",
                     content = "Darovalec mora biti star med 18 in 65 let!", style = "danger")
-      }
-      if (is.na(input$hemo) | input$hemo <= 100 | input$hemo >= 200) {
+    }
+    if (is.na(input$hemo) | input$hemo <= 100 | input$hemo >= 200) {
         createAlert(session, "alert", "myValueAlert", title = "Opozorilo: Neveljavna vsebnost hemoglobina!",
                     content = "Vsebnost hemoglobina mora biti med 100 in 200!", style = "danger")
-      }
     }
   })
 }
