@@ -83,8 +83,8 @@ drzave.slo <- c(
 # Uvozimo podatke za bolnišnice
 
 bolnisnica1 <- read_csv("Podatki/bolnisnica.csv", 
-                       col_types = cols(id = col_integer(), 
-                                        zaloga = col_number()))
+                        col_types = cols(id = col_integer(), 
+                                         zaloga = col_number()))
 
 bolnisnica2 <- read_csv("Podatki/bolnice_dodatno.csv", 
                         col_types = cols(id = col_integer(), 
@@ -164,7 +164,7 @@ prejemnik <- prejemnik %>% mutate(Drzava = drzave.slo[Drzava])
 # (sample upošteva pogostost krvnih skupin v Evropi)
 
 x <- c("A+", "A-", "B+", "B-", "AB+", "AB-", "0+", "0-")
-  
+
 skupine_donator <- sample(x, prob = c(.34, .06, 0.09, 0.02, 0.03, 0.01, 0.38, 0.07), size = 2000, replace = TRUE) 
 
 vektor_donator <- as.data.frame(skupine_donator)
@@ -337,6 +337,3 @@ colnames(vrecka_skupina) <- c("donator", "krvna_skupina_vrecka", "lokacija")
 
 prejme <- merge(vrecka_skupina, prejemnik_kri, by="lokacija")
 prejme$ujemanje <- prejme$krvna_skupina_vrecka == prejme$krvna_skupina
-
-
-

@@ -294,6 +294,10 @@ server <- function(input, output, session) {
                     content = "Vsebnost hemoglobina mora biti med 100 in 200!", style = "danger")
     }
   })
+  observeEvent(input$submit, {
+    reset("body")
+  })
+
 }
 
 runApp(list(ui = ui, server = server))
